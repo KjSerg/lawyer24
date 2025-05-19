@@ -33885,7 +33885,6 @@ var Application = /*#__PURE__*/function () {
         t.loadMore();
         _this2.showLoaderOnClick();
         _this2.linkListener();
-        _this2.mainProductTrigger();
         var form = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_7__["default"]('.form-js');
         var slick = new _plugins_Slick__WEBPACK_IMPORTED_MODULE_10__["default"]();
         slick.gallerySliderRefresh();
@@ -34849,7 +34848,6 @@ window.$ = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
 __webpack_provided_window_dot_jQuery = (jquery__WEBPACK_IMPORTED_MODULE_0___default());
 
 var fancyboxInit = function fancyboxInit() {
-  modalLanguageInit();
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('[data-fancybox]').fancybox({
     placeFocusBack: false,
     backFocus: false

@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Bold.eot');
+    src: local('☞Noir Pro Bold'), local('NoirPro-Bold'),
+        url('../fonts/NoirPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-Bold.woff2') format('woff2'),
+        url('../fonts/NoirPro-Bold.woff') format('woff'),
+        url('../fonts/NoirPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-BoldItalic.eot');
+    src: local('☞Noir Pro Bold Italic'), local('NoirPro-BoldItalic'),
+        url('../fonts/NoirPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-BoldItalic.woff2') format('woff2'),
+        url('../fonts/NoirPro-BoldItalic.woff') format('woff'),
+        url('../fonts/NoirPro-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-SemiBoldItalic.eot');
+    src: local('☞Noir Pro Semi Bold Italic'), local('NoirPro-SemiBoldItalic'),
+        url('../fonts/NoirPro-SemiBoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-SemiBoldItalic.woff2') format('woff2'),
+        url('../fonts/NoirPro-SemiBoldItalic.woff') format('woff'),
+        url('../fonts/NoirPro-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face { 
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-LightItalic.eot');
+    src: local('☞Noir Pro Light Italic'), local('NoirPro-LightItalic'),
+        url('../fonts/NoirPro-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-LightItalic.woff2') format('woff2'),
+        url('../fonts/NoirPro-LightItalic.woff') format('woff'),
+        url('../fonts/NoirPro-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Heavy.eot');
+    src: local('☞Noir Pro Heavy'), local('NoirPro-Heavy'),
+        url('../fonts/NoirPro-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-Heavy.woff2') format('woff2'),
+        url('../fonts/NoirPro-Heavy.woff') format('woff'),
+        url('../fonts/NoirPro-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Italic.eot');
+    src: local('☞Noir Pro Italic'), local('NoirPro-Italic'),
+        url('../fonts/NoirPro-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-Italic.woff2') format('woff2'),
+        url('../fonts/NoirPro-Italic.woff') format('woff'),
+        url('../fonts/NoirPro-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Medium.eot');
+    src: local('☞Noir Pro Medium'), local('NoirPro-Medium'),
+        url('../fonts/NoirPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-Medium.woff2') format('woff2'),
+        url('../fonts/NoirPro-Medium.woff') format('woff'),
+        url('../fonts/NoirPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Regular.eot');
+    src: local('☞Noir Pro'), local('NoirPro-Regular'),
+        url('../fonts/NoirPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-Regular.woff2') format('woff2'),
+        url('../fonts/NoirPro-Regular.woff') format('woff'),
+        url('../fonts/NoirPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Light.eot');
+    src: local('☞Noir Pro Light'), local('NoirPro-Light'),
+        url('../fonts/NoirPro-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-Light.woff2') format('woff2'),
+        url('../fonts/NoirPro-Light.woff') format('woff'),
+        url('../fonts/NoirPro-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-HeavyItalic.eot');
+    src: local('☞Noir Pro Heavy Italic'), local('NoirPro-HeavyItalic'),
+        url('../fonts/NoirPro-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-HeavyItalic.woff2') format('woff2'),
+        url('../fonts/NoirPro-HeavyItalic.woff') format('woff'),
+        url('../fonts/NoirPro-HeavyItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-MediumItalic.eot');
+    src: local('☞Noir Pro Medium Italic'), local('NoirPro-MediumItalic'),
+        url('../fonts/NoirPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/NoirPro-MediumItalic.woff2') format('woff2'),
+        url('../fonts/NoirPro-MediumItalic.woff') format('woff'),
+        url('../fonts/NoirPro-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+

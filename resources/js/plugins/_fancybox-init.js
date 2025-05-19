@@ -5,7 +5,6 @@ window.jQuery = $;
 import '@fancyapps/fancybox';
 
 export const fancyboxInit = () => {
-    modalLanguageInit();
     $('[data-fancybox]').fancybox({
         placeFocusBack: false, backFocus: false
     });

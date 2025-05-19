@@ -106,13 +106,8 @@ section {
 
 .container {
   width: 100%;
-  max-width: 156rem;
+  max-width: 153rem;
   margin: 0 auto;
-
-  &--small {
-    max-width: 128.4rem;
-  }
-
   @media (max-width: 1600px) {
     padding: 0 1.6rem;
   }
@@ -158,3 +153,6 @@ input, textarea {
   }
 }
 
+.title{
+  font-family: 'NoirPro', serif;
+}
