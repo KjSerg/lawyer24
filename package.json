@@ -27,6 +27,7 @@
     "inputmask": "^5.0.9",
     "instead": "^1.0.3",
     "jquery": "^3.7.1",
+    "photoswipe": "^5.4.4",
     "selectric": "^1.13.0",
     "slick-carousel": "^1.8.1"
   }
