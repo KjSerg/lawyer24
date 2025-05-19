@@ -10,6 +10,7 @@ import {toggler} from "./ui/_togglers";
 import {tabs} from "./ui/_tabs";
 import Slick, {initGallery} from "../plugins/Slick";
 import {copyLink} from "./ui/_copy-link";
+import {initScreensNav} from "./ui/_screens";
 
 export default class Application {
     constructor() {
@@ -50,7 +51,6 @@ export default class Application {
         });
     }
 
-
     initComponents() {
         let t = this;
 
@@ -68,6 +68,7 @@ export default class Application {
             copyLink();
             initGallery();
             t.loadMore();
+            initScreensNav();
             this.showLoaderOnClick();
             this.linkListener();
             const form = new FormHandler('.form-js');
@@ -76,7 +77,6 @@ export default class Application {
         });
 
     }
-
 
     linkListener() {
         const t = this;
@@ -116,6 +116,7 @@ export default class Application {
             window.location.href = href;
         });
     }
+
     loadMore() {
         let load = false;
         const parser = new DOMParser();
@@ -142,4 +143,6 @@ export default class Application {
             });
         });
     }
+
+
 }

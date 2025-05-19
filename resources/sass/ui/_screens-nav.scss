@@ -1,0 +1,25 @@
+.screens-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  z-index: 10;
+  position: fixed;
+  padding: 4rem 3rem;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border-radius: 2rem 0rem 0rem 2rem;
+  background: #F8F8F8;
+
+  a {
+    display: block;
+    width: 3px;
+    height: 1rem;
+    background: rgba(21, 22, 22, 0.20);
+    transition: 0.5s ease-in-out;
+    &.active {
+      background: #BC3631;
+      height: 3rem;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+.affairs {
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    &-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: calc(25% - 1.5rem);
+      padding: 1.6rem;
+      height: 45.7rem;
+      border-radius: 3rem;
+      background:  #E6E6E6;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom center;
+      overflow: hidden;
+      &-footer{
+        gap: 1.2rem;
+        margin-top: auto;
+        padding: 1.2rem;
+        display: flex;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.70);
+        backdrop-filter: blur(12.5px);
+        color:  #151616;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 3rem;
+        .icon{
+          width: 2.8rem;
+          height: 2.8rem;
+          flex-shrink: 0;
+          flex-grow: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      &-link{
+        margin-top: auto;
+        gap: 4px;
+        align-items: center;
+        display: inline-flex;
+        color:  #FFF;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 2.6rem;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+      &-title{
+        margin-bottom: 1.2rem;
+        color: #FFF;
+        font-size: 2rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 3rem;
+      }
+      &-text{
+        max-height: 26rem;
+        overflow: auto;
+      }
+      &-content{
+        opacity: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 2.4rem;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background: #BC3631;
+        color: rgba(#FFF, 0.7);
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 2.6rem;
+        transition: 0.4s ease-in-out;
+        & > * {
+          position: relative;
+          z-index: 1 ;
+        }
+        &:after{
+          z-index: 0;
+          position: absolute;
+          display: block;
+          content: '';
+          width: 24.3rem;
+          height: 24.3rem;
+          flex-shrink: 0;
+          background: linear-gradient(314deg, rgba(188, 54, 49, 0.00) 1.14%, #9E0600 98.86%);
+          border-radius: 50%;
+          top: -8.4rem;
+          left: 20rem;
+        }
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

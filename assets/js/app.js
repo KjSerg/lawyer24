@@ -33806,6 +33806,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_tabs__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./ui/_tabs */ "./resources/js/components/ui/_tabs.js");
 /* harmony import */ var _plugins_Slick__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../plugins/Slick */ "./resources/js/plugins/Slick.js");
 /* harmony import */ var _ui_copy_link__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ui/_copy-link */ "./resources/js/components/ui/_copy-link.js");
+/* harmony import */ var _ui_screens__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui/_screens */ "./resources/js/components/ui/_screens.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -33813,6 +33814,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -33883,6 +33885,7 @@ var Application = /*#__PURE__*/function () {
         (0,_ui_copy_link__WEBPACK_IMPORTED_MODULE_11__.copyLink)();
         (0,_plugins_Slick__WEBPACK_IMPORTED_MODULE_10__.initGallery)();
         t.loadMore();
+        (0,_ui_screens__WEBPACK_IMPORTED_MODULE_12__.initScreensNav)();
         _this2.showLoaderOnClick();
         _this2.linkListener();
         var form = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_7__["default"]('.form-js');
@@ -34448,6 +34451,85 @@ var copyLink = function copyLink() {
 
 /***/ }),
 
+/***/ "./resources/js/components/ui/_screens.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/ui/_screens.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   initScreensNav: () => (/* binding */ initScreensNav),
+/* harmony export */   isElementInView: () => (/* binding */ isElementInView)
+/* harmony export */ });
+/* harmony import */ var _utils_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/_helpers */ "./resources/js/components/utils/_helpers.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+var $screens = _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('main section');
+var $nav = _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('.screens-nav');
+function addNavEl() {
+  if ($nav.length === 0) return;
+  if ($screens.length === 0) {
+    $nav.remove();
+    return;
+  }
+  var html = '';
+  $screens.each(function (index) {
+    var $t = $(this);
+    var id = $t.attr('id');
+    if (id === undefined) {
+      id = 'home-screen-' + index;
+      $t.attr('id', id);
+    }
+    var cls = index === 0 ? 'active' : '';
+    html += '<a class="' + cls + '" href="#' + id + '"></a>';
+  });
+  $nav.html(html);
+}
+function isElementInView(el) {
+  if (typeof jQuery === "function" && el instanceof jQuery) {
+    el = el[0];
+  }
+  var rect = el.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0 // частково в межах вікна
+  ;
+}
+var setActiveScreen = function setActiveScreen() {
+  var updateActive = function updateActive() {
+    $screens.each(function () {
+      var $t = $(this);
+      var id = $t.attr('id');
+      var $link = _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find(".screens-nav a[href=\"#".concat(id, "\"]"));
+      if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isElementInViewport)($t)) {
+        $link.addClass('active');
+      } else {
+        $link.removeClass('active');
+      }
+    });
+  };
+
+  // Виклик одразу
+  updateActive();
+
+  // Навішування подій (тільки раз)
+  $(window).on('load scroll resize', updateActive);
+};
+var initScreensNav = function initScreensNav() {
+  addNavEl();
+  setActiveScreen();
+  _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.on('click', '.screens-nav a', function (e) {
+    e.preventDefault();
+    var $t = $(this);
+    _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('.screens-nav a').removeClass('active');
+    $t.addClass('active');
+    (0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.moveToElement)($($t.attr('id')));
+  });
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/ui/_tabs.js":
 /*!*********************************************!*\
   !*** ./resources/js/components/ui/_tabs.js ***!
@@ -34547,6 +34629,7 @@ var toggler = function toggler() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   $doc: () => (/* binding */ $doc),
 /* harmony export */   bytesToKB: () => (/* binding */ bytesToKB),
 /* harmony export */   bytesToMB: () => (/* binding */ bytesToMB),
 /* harmony export */   copyToClipboard: () => (/* binding */ copyToClipboard),
@@ -34586,6 +34669,7 @@ function removeArrayElement(element, array) {
   }
   return array;
 }
+var $doc = $(document);
 function showPreloader() {
   $('.preloader').addClass('active');
 }
@@ -34604,11 +34688,15 @@ var isObjectEmpty = function isObjectEmpty(objectName) {
   return JSON.stringify(objectName) === "{}";
 };
 function isElementInViewport(el) {
-  if (typeof jQuery === "function" && el instanceof jQuery) {
+  if (typeof jQuery === 'function' && el instanceof jQuery) {
     el = el[0];
   }
   var rect = el.getBoundingClientRect();
-  return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+  var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  var windowWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  // Елемент вважається видимим, якщо його верхня частина в межах вікна
+  return rect.top >= 0 && rect.left >= 0 && rect.top <= windowHeight && rect.right <= windowWidth;
 }
 function getCurrentDate() {
   var today = new Date();

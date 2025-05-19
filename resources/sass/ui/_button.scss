@@ -1,0 +1,26 @@
+.button{
+
+  display: inline-flex;
+  padding: 1rem 1.6rem;
+  justify-content: center;
+  align-items: center;border-radius: 1rem;
+  background: #BC3631;
+  border: 1px solid #BC3631;
+  gap: 1rem;
+  color: #FFF;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.6rem;
+  @media (max-width: 450px) {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.4rem
+  }
+  &:hover {
+
+    background: #FFF;
+    color: #BC3631;
+  }
+}
