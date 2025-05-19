@@ -1,7 +1,10 @@
 html {
   font-size: 10px;
-  @media (max-width: 1700px) {
+  @media (max-width: 1600px) {
     font-size: 9px;
+  }
+  @media (max-width: 450px) {
+    font-size: 10px;
   }
 }
 

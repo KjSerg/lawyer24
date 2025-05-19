@@ -34403,13 +34403,16 @@ var burger = function burger() {
     e.preventDefault();
     var $t = $(this);
     var isActive = $t.hasClass('active');
-    var $menu = $doc.find('.header-nav');
+    var $menu = $doc.find('.header-wrap');
+    var $body = $doc.find('body');
     if (isActive) {
       $t.removeClass('active');
       $menu.removeClass('active');
+      $body.removeClass('open-header-menu');
     } else {
       $t.addClass('active');
       $menu.addClass('active');
+      $body.addClass('open-header-menu');
     }
   });
 };
