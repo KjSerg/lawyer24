@@ -1,0 +1,253 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem 1rem;
+  justify-content: space-between;
+
+  @media (max-width: 450px) {
+
+    gap: 1.2rem 1rem;
+  }
+  &-label {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: rgba(#020a1b, 1);
+    font-family: "Inter", serif;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 165%;
+
+    &.half {
+      width: calc(50% - 0.5rem);
+      @media (max-width: 450px) {
+        width: 100%;
+      }
+    }
+
+    &.third {
+      width: calc(33.3% - 0.7rem);
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+
+    &.quarter {
+      width: calc(25% - 0.8rem);
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+
+    &-head {
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    &.error {
+      color: red !important;
+
+      .form-consent {
+        color: red !important;
+      }
+
+      .selectric, .book-form-photos {
+        border-color: red !important;
+      }
+    }
+  }
+
+  &-consent {
+    width: 100%;
+    display: flex;
+    color: rgba(#151616, 0.7);
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.6rem;
+
+    @media (max-width: 450px) {
+      font-size: 1.2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 2rem
+    }
+
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      margin-right: 1.2rem;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 0.6rem;
+      border: 1px solid #BC3631;
+      background: #BC3631;
+      cursor: pointer;
+      flex-grow: 0;
+      flex-shrink: 0;
+
+      span {
+        display: block;
+        width: 1rem;
+        height: 2.2rem;
+        border-right: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        transition: 0.2s ease-in-out;
+        opacity: 0;
+        transform: rotate(20deg);
+      }
+
+      input {
+        display: none;
+
+        &:checked + span {
+          opacity: 1;
+          transform: rotate(45deg);
+        }
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    width: 100%;
+    display: flex;
+    height: 5.4rem;
+    padding: 1rem 1.6rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    align-self: stretch;
+    border-radius: 1rem;
+    background: #BC3631;
+    color: #FFF;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.6rem;
+    border: 1px solid #BC3631;
+    outline: none;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    @media (max-width: 450px) {
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 2.4rem
+    }
+
+    &:hover {
+
+      background: #FFF;
+      color: #BC3631;
+    }
+  }
+}
+
+select.select {
+  opacity: 0;
+}
+
+.selectric {
+  background-color: #fff;
+  border: 1px solid #D0D4DD;
+
+  &-items {
+    background-color: #fff;
+
+    li {
+      color: rgba(#020A1B, 0.6);
+      font-family: "Inter", serif;
+      font-size: 1.7rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 165%;
+    }
+  }
+
+  .button {
+    padding: 0;
+    height: 100%;
+    background: transparent;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  .label {
+    padding: 1rem 0;
+    height: auto;
+    color: rgba(#020a1b, 1);
+    font-family: "Inter", serif;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 165%;
+  }
+
+  &-below {
+    .label {
+
+      color: rgba(#020A1B, 1);
+    }
+  }
+}
+
+
+input, textarea {
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1rem 1.6rem;
+  border: 1px solid rgba(21, 22, 22, 0.05);
+  background: #F8F8F8;
+  font-family: "Montserrat", sans-serif;
+  color: #151616;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.6rem;
+
+  @media (max-width: 450px) {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.4rem;
+  }
+  &::placeholder {
+    font-family: "Montserrat", sans-serif;
+    color: rgba(#151616, 0.7);
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.6rem;
+    @media (max-width: 450px) {
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 2.4rem;
+    }
+  }
+}
+
+input, textarea {
+  &.error {
+    border-color: red !important;
+  }
+}
+
+textarea {
+  resize: none;
+  outline: none;
+}
+
+.checkbox-group {
+  width: 100%;
+}

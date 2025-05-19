@@ -18,7 +18,18 @@ body {
   font-weight: 500;
   line-height: 3rem;
   color: #151616;
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
 
+
+  @media (max-width: 450px) {
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.4rem;
+  }
   &.safari * {
   }
 }
@@ -36,7 +47,7 @@ main.content {
   flex: 1;
 }
 
-a {
+a, button {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
 }
@@ -132,29 +143,6 @@ em, i {
   cursor: pointer;
 }
 
-input, textarea {
-  font-family: "Montserrat", sans-serif;
-  color: #151616;
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 2.6rem;
-
-  &::placeholder {
-    font-family: "Montserrat", sans-serif;
-    color: rgba(#151616, 0.7);
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 2.6rem;
-  }
-}
-
-input, textarea {
-  &.error {
-    border-color: red !important;
-  }
-}
 
 .title{
   font-family: 'NoirPro', serif;
