@@ -11,6 +11,7 @@ import {tabs} from "./ui/_tabs";
 import Slick, {initGallery} from "../plugins/Slick";
 import {copyLink} from "./ui/_copy-link";
 import {initScreensNav} from "./ui/_screens";
+import {scrollBarInit} from "../plugins/_scroll-bar-init";
 
 export default class Application {
     constructor() {
@@ -69,6 +70,7 @@ export default class Application {
             initGallery();
             t.loadMore();
             initScreensNav();
+            scrollBarInit();
             this.showLoaderOnClick();
             this.linkListener();
             const form = new FormHandler('.form-js');

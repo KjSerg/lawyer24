@@ -20245,6 +20245,3847 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./node_modules/lodash-es/_Symbol.js":
+/*!*******************************************!*\
+  !*** ./node_modules/lodash-es/_Symbol.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "./node_modules/lodash-es/_root.js");
+
+
+/** Built-in value references. */
+var Symbol = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Symbol;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Symbol);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_baseGetTag.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lodash-es/_baseGetTag.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "./node_modules/lodash-es/_Symbol.js");
+/* harmony import */ var _getRawTag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_getRawTag.js */ "./node_modules/lodash-es/_getRawTag.js");
+/* harmony import */ var _objectToString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_objectToString.js */ "./node_modules/lodash-es/_objectToString.js");
+
+
+
+
+/** `Object#toString` result references. */
+var nullTag = '[object Null]',
+    undefinedTag = '[object Undefined]';
+
+/** Built-in value references. */
+var symToStringTag = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].toStringTag : undefined;
+
+/**
+ * The base implementation of `getTag` without fallbacks for buggy environments.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the `toStringTag`.
+ */
+function baseGetTag(value) {
+  if (value == null) {
+    return value === undefined ? undefinedTag : nullTag;
+  }
+  return (symToStringTag && symToStringTag in Object(value))
+    ? (0,_getRawTag_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)
+    : (0,_objectToString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (baseGetTag);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_baseTrim.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash-es/_baseTrim.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_trimmedEndIndex.js */ "./node_modules/lodash-es/_trimmedEndIndex.js");
+
+
+/** Used to match leading whitespace. */
+var reTrimStart = /^\s+/;
+
+/**
+ * The base implementation of `_.trim`.
+ *
+ * @private
+ * @param {string} string The string to trim.
+ * @returns {string} Returns the trimmed string.
+ */
+function baseTrim(string) {
+  return string
+    ? string.slice(0, (0,_trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__["default"])(string) + 1).replace(reTrimStart, '')
+    : string;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (baseTrim);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_freeGlobal.js":
+/*!***********************************************!*\
+  !*** ./node_modules/lodash-es/_freeGlobal.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (freeGlobal);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_getRawTag.js":
+/*!**********************************************!*\
+  !*** ./node_modules/lodash-es/_getRawTag.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Symbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_Symbol.js */ "./node_modules/lodash-es/_Symbol.js");
+
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/** Built-in value references. */
+var symToStringTag = _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"] ? _Symbol_js__WEBPACK_IMPORTED_MODULE_0__["default"].toStringTag : undefined;
+
+/**
+ * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
+ *
+ * @private
+ * @param {*} value The value to query.
+ * @returns {string} Returns the raw `toStringTag`.
+ */
+function getRawTag(value) {
+  var isOwn = hasOwnProperty.call(value, symToStringTag),
+      tag = value[symToStringTag];
+
+  try {
+    value[symToStringTag] = undefined;
+    var unmasked = true;
+  } catch (e) {}
+
+  var result = nativeObjectToString.call(value);
+  if (unmasked) {
+    if (isOwn) {
+      value[symToStringTag] = tag;
+    } else {
+      delete value[symToStringTag];
+    }
+  }
+  return result;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getRawTag);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_objectToString.js":
+/*!***************************************************!*\
+  !*** ./node_modules/lodash-es/_objectToString.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var nativeObjectToString = objectProto.toString;
+
+/**
+ * Converts `value` to a string using `Object.prototype.toString`.
+ *
+ * @private
+ * @param {*} value The value to convert.
+ * @returns {string} Returns the converted string.
+ */
+function objectToString(value) {
+  return nativeObjectToString.call(value);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (objectToString);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_root.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash-es/_root.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_freeGlobal.js */ "./node_modules/lodash-es/_freeGlobal.js");
+
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__["default"] || freeSelf || Function('return this')();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (root);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_trimmedEndIndex.js":
+/*!****************************************************!*\
+  !*** ./node_modules/lodash-es/_trimmedEndIndex.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/** Used to match a single whitespace character. */
+var reWhitespace = /\s/;
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+ * character of `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the index of the last non-whitespace character.
+ */
+function trimmedEndIndex(string) {
+  var index = string.length;
+
+  while (index-- && reWhitespace.test(string.charAt(index))) {}
+  return index;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (trimmedEndIndex);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/debounce.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash-es/debounce.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
+/* harmony import */ var _now_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./now.js */ "./node_modules/lodash-es/now.js");
+/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toNumber.js */ "./node_modules/lodash-es/toNumber.js");
+
+
+
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = (0,_toNumber_js__WEBPACK_IMPORTED_MODULE_0__["default"])(wait) || 0;
+  if ((0,_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax((0,_toNumber_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        timeWaiting = wait - timeSinceLastCall;
+
+    return maxing
+      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+      : timeWaiting;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = (0,_now_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge((0,_now_js__WEBPACK_IMPORTED_MODULE_2__["default"])());
+  }
+
+  function debounced() {
+    var time = (0,_now_js__WEBPACK_IMPORTED_MODULE_2__["default"])(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        clearTimeout(timerId);
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (debounce);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/isObject.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash-es/isObject.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isObject);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/isObjectLike.js":
+/*!************************************************!*\
+  !*** ./node_modules/lodash-es/isObjectLike.js ***!
+  \************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isObjectLike);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/isSymbol.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash-es/isSymbol.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _baseGetTag_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseGetTag.js */ "./node_modules/lodash-es/_baseGetTag.js");
+/* harmony import */ var _isObjectLike_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObjectLike.js */ "./node_modules/lodash-es/isObjectLike.js");
+
+
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    ((0,_isObjectLike_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value) && (0,_baseGetTag_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value) == symbolTag);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isSymbol);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/now.js":
+/*!***************************************!*\
+  !*** ./node_modules/lodash-es/now.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "./node_modules/lodash-es/_root.js");
+
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].Date.now();
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (now);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/throttle.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash-es/throttle.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _debounce_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./debounce.js */ "./node_modules/lodash-es/debounce.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
+
+
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed `func` invocations and a `flush` method to
+ * immediately invoke them. Provide `options` to indicate whether `func`
+ * should be invoked on the leading and/or trailing edge of the `wait`
+ * timeout. The `func` is invoked with the last arguments provided to the
+ * throttled function. Subsequent calls to the throttled function return the
+ * result of the last `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the throttled function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=true]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // Avoid excessively updating the position while scrolling.
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+ * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+ * jQuery(element).on('click', throttled);
+ *
+ * // Cancel the trailing throttled invocation.
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+  var leading = true,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if ((0,_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return (0,_debounce_js__WEBPACK_IMPORTED_MODULE_1__["default"])(func, wait, {
+    'leading': leading,
+    'maxWait': wait,
+    'trailing': trailing
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (throttle);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/toNumber.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash-es/toNumber.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _baseTrim_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseTrim.js */ "./node_modules/lodash-es/_baseTrim.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isSymbol.js */ "./node_modules/lodash-es/isSymbol.js");
+
+
+
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if ((0,_isSymbol_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+    return NAN;
+  }
+  if ((0,_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = (0,_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = (0,_baseTrim_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value);
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toNumber);
+
+
+/***/ }),
+
+/***/ "./node_modules/overlayscrollbars/overlayscrollbars.mjs":
+/*!**************************************************************!*\
+  !*** ./node_modules/overlayscrollbars/overlayscrollbars.mjs ***!
+  \**************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ClickScrollPlugin: () => (/* binding */ zt),
+/* harmony export */   OverlayScrollbars: () => (/* binding */ OverlayScrollbars),
+/* harmony export */   ScrollbarsHidingPlugin: () => (/* binding */ Ht),
+/* harmony export */   SizeObserverPlugin: () => (/* binding */ Ct)
+/* harmony export */ });
+/*!
+ * OverlayScrollbars
+ * Version: 2.11.3
+ *
+ * Copyright (c) Rene Haas | KingSora.
+ * https://github.com/KingSora
+ *
+ * Released under the MIT license.
+ */
+const createCache = (t, n) => {
+  const {o: o, i: s, u: e} = t;
+  let c = o;
+  let r;
+  const cacheUpdateContextual = (t, n) => {
+    const o = c;
+    const i = t;
+    const l = n || (s ? !s(o, i) : o !== i);
+    if (l || e) {
+      c = i;
+      r = o;
+    }
+    return [ c, l, r ];
+  };
+  const cacheUpdateIsolated = t => cacheUpdateContextual(n(c, r), t);
+  const getCurrentCache = t => [ c, !!t, r ];
+  return [ n ? cacheUpdateIsolated : cacheUpdateContextual, getCurrentCache ];
+};
+
+const t = typeof window !== "undefined" && typeof HTMLElement !== "undefined" && !!window.document;
+
+const n = t ? window : {};
+
+const o = Math.max;
+
+const s = Math.min;
+
+const e = Math.round;
+
+const c = Math.abs;
+
+const r = Math.sign;
+
+const i = n.cancelAnimationFrame;
+
+const l = n.requestAnimationFrame;
+
+const a = n.setTimeout;
+
+const u = n.clearTimeout;
+
+const getApi = t => typeof n[t] !== "undefined" ? n[t] : void 0;
+
+const f = getApi("MutationObserver");
+
+const _ = getApi("IntersectionObserver");
+
+const d = getApi("ResizeObserver");
+
+const p = getApi("ScrollTimeline");
+
+const isUndefined = t => t === void 0;
+
+const isNull = t => t === null;
+
+const isNumber = t => typeof t === "number";
+
+const isString = t => typeof t === "string";
+
+const isBoolean = t => typeof t === "boolean";
+
+const isFunction = t => typeof t === "function";
+
+const isArray = t => Array.isArray(t);
+
+const isObject = t => typeof t === "object" && !isArray(t) && !isNull(t);
+
+const isArrayLike = t => {
+  const n = !!t && t.length;
+  const o = isNumber(n) && n > -1 && n % 1 == 0;
+  return isArray(t) || !isFunction(t) && o ? n > 0 && isObject(t) ? n - 1 in t : true : false;
+};
+
+const isPlainObject = t => !!t && t.constructor === Object;
+
+const isHTMLElement = t => t instanceof HTMLElement;
+
+const isElement = t => t instanceof Element;
+
+const animationCurrentTime = () => performance.now();
+
+const animateNumber = (t, n, s, e, c) => {
+  let r = 0;
+  const a = animationCurrentTime();
+  const u = o(0, s);
+  const frame = s => {
+    const i = animationCurrentTime();
+    const f = i - a;
+    const _ = f >= u;
+    const d = s ? 1 : 1 - (o(0, a + u - i) / u || 0);
+    const p = (n - t) * (isFunction(c) ? c(d, d * u, 0, 1, u) : d) + t;
+    const v = _ || d === 1;
+    if (e) {
+      e(p, d, v);
+    }
+    r = v ? 0 : l((() => frame()));
+  };
+  frame();
+  return t => {
+    i(r);
+    if (t) {
+      frame(t);
+    }
+  };
+};
+
+function each(t, n) {
+  if (isArrayLike(t)) {
+    for (let o = 0; o < t.length; o++) {
+      if (n(t[o], o, t) === false) {
+        break;
+      }
+    }
+  } else if (t) {
+    each(Object.keys(t), (o => n(t[o], o, t)));
+  }
+  return t;
+}
+
+const inArray = (t, n) => t.indexOf(n) >= 0;
+
+const concat = (t, n) => t.concat(n);
+
+const push = (t, n, o) => {
+  if (!isString(n) && isArrayLike(n)) {
+    Array.prototype.push.apply(t, n);
+  } else {
+    t.push(n);
+  }
+  return t;
+};
+
+const from = t => Array.from(t || []);
+
+const createOrKeepArray = t => {
+  if (isArray(t)) {
+    return t;
+  }
+  return !isString(t) && isArrayLike(t) ? from(t) : [ t ];
+};
+
+const isEmptyArray = t => !!t && !t.length;
+
+const deduplicateArray = t => from(new Set(t));
+
+const runEachAndClear = (t, n, o) => {
+  const runFn = t => t ? t.apply(void 0, n || []) : true;
+  each(t, runFn);
+  if (!o) {
+    t.length = 0;
+  }
+};
+
+const v = "paddingTop";
+
+const g = "paddingRight";
+
+const h = "paddingLeft";
+
+const b = "paddingBottom";
+
+const w = "marginLeft";
+
+const y = "marginRight";
+
+const S = "marginBottom";
+
+const m = "overflowX";
+
+const O = "overflowY";
+
+const $ = "width";
+
+const C = "height";
+
+const x = "visible";
+
+const H = "hidden";
+
+const E = "scroll";
+
+const capitalizeFirstLetter = t => {
+  const n = String(t || "");
+  return n ? n[0].toUpperCase() + n.slice(1) : "";
+};
+
+const equal = (t, n, o, s) => {
+  if (t && n) {
+    let s = true;
+    each(o, (o => {
+      const e = t[o];
+      const c = n[o];
+      if (e !== c) {
+        s = false;
+      }
+    }));
+    return s;
+  }
+  return false;
+};
+
+const equalWH = (t, n) => equal(t, n, [ "w", "h" ]);
+
+const equalXY = (t, n) => equal(t, n, [ "x", "y" ]);
+
+const equalTRBL = (t, n) => equal(t, n, [ "t", "r", "b", "l" ]);
+
+const bind = (t, ...n) => t.bind(0, ...n);
+
+const selfClearTimeout = t => {
+  let n;
+  const o = t ? a : l;
+  const s = t ? u : i;
+  return [ e => {
+    s(n);
+    n = o((() => e()), isFunction(t) ? t() : t);
+  }, () => s(n) ];
+};
+
+const getDebouncer = t => {
+  const n = isFunction(t) ? t() : t;
+  if (isNumber(n)) {
+    const t = n ? a : l;
+    const o = n ? u : i;
+    return s => {
+      const e = t((() => s()), n);
+      return () => {
+        o(e);
+      };
+    };
+  }
+  return n && n._;
+};
+
+const debounce = (t, n) => {
+  const {p: o, v: s, S: e, m: c} = n || {};
+  let r;
+  let i;
+  let l;
+  let a;
+  let u;
+  const f = function invokeFunctionToDebounce(n) {
+    if (i) {
+      i();
+    }
+    if (r) {
+      r();
+    }
+    u = i = r = l = void 0;
+    t.apply(this, n);
+  };
+  const mergeParms = t => c && l ? c(l, t) : t;
+  const flush = () => {
+    if (i) {
+      f(mergeParms(a) || a);
+    }
+  };
+  const _ = function debouncedFn() {
+    const t = from(arguments);
+    const n = getDebouncer(o);
+    if (n) {
+      const o = getDebouncer(s);
+      const c = mergeParms(t);
+      const _ = c || t;
+      const d = f.bind(0, _);
+      if (i) {
+        i();
+      }
+      if (e && !u) {
+        d();
+        u = true;
+        i = n((() => u = void 0));
+      } else {
+        i = n(d);
+        if (o && !r) {
+          r = o(flush);
+        }
+      }
+      l = a = _;
+    } else {
+      f(t);
+    }
+  };
+  _.O = flush;
+  return _;
+};
+
+const hasOwnProperty = (t, n) => Object.prototype.hasOwnProperty.call(t, n);
+
+const keys = t => t ? Object.keys(t) : [];
+
+const assignDeep = (t, n, o, s, e, c, r) => {
+  const i = [ n, o, s, e, c, r ];
+  if ((typeof t !== "object" || isNull(t)) && !isFunction(t)) {
+    t = {};
+  }
+  each(i, (n => {
+    each(n, ((o, s) => {
+      const e = n[s];
+      if (t === e) {
+        return true;
+      }
+      const c = isArray(e);
+      if (e && isPlainObject(e)) {
+        const n = t[s];
+        let o = n;
+        if (c && !isArray(n)) {
+          o = [];
+        } else if (!c && !isPlainObject(n)) {
+          o = {};
+        }
+        t[s] = assignDeep(o, e);
+      } else {
+        t[s] = c ? e.slice() : e;
+      }
+    }));
+  }));
+  return t;
+};
+
+const removeUndefinedProperties = (t, n) => each(assignDeep({}, t), ((t, n, o) => {
+  if (t === void 0) {
+    delete o[n];
+  } else if (t && isPlainObject(t)) {
+    o[n] = removeUndefinedProperties(t);
+  }
+}));
+
+const isEmptyObject = t => !keys(t).length;
+
+const noop = () => {};
+
+const capNumber = (t, n, e) => o(t, s(n, e));
+
+const getDomTokensArray = t => deduplicateArray((isArray(t) ? t : (t || "").split(" ")).filter((t => t)));
+
+const getAttr = (t, n) => t && t.getAttribute(n);
+
+const hasAttr = (t, n) => t && t.hasAttribute(n);
+
+const setAttrs = (t, n, o) => {
+  each(getDomTokensArray(n), (n => {
+    if (t) {
+      t.setAttribute(n, String(o || ""));
+    }
+  }));
+};
+
+const removeAttrs = (t, n) => {
+  each(getDomTokensArray(n), (n => t && t.removeAttribute(n)));
+};
+
+const domTokenListAttr = (t, n) => {
+  const o = getDomTokensArray(getAttr(t, n));
+  const s = bind(setAttrs, t, n);
+  const domTokenListOperation = (t, n) => {
+    const s = new Set(o);
+    each(getDomTokensArray(t), (t => {
+      s[n](t);
+    }));
+    return from(s).join(" ");
+  };
+  return {
+    $: t => s(domTokenListOperation(t, "delete")),
+    C: t => s(domTokenListOperation(t, "add")),
+    H: t => {
+      const n = getDomTokensArray(t);
+      return n.reduce(((t, n) => t && o.includes(n)), n.length > 0);
+    }
+  };
+};
+
+const removeAttrClass = (t, n, o) => {
+  domTokenListAttr(t, n).$(o);
+  return bind(addAttrClass, t, n, o);
+};
+
+const addAttrClass = (t, n, o) => {
+  domTokenListAttr(t, n).C(o);
+  return bind(removeAttrClass, t, n, o);
+};
+
+const addRemoveAttrClass = (t, n, o, s) => (s ? addAttrClass : removeAttrClass)(t, n, o);
+
+const hasAttrClass = (t, n, o) => domTokenListAttr(t, n).H(o);
+
+const createDomTokenListClass = t => domTokenListAttr(t, "class");
+
+const removeClass = (t, n) => {
+  createDomTokenListClass(t).$(n);
+};
+
+const addClass = (t, n) => {
+  createDomTokenListClass(t).C(n);
+  return bind(removeClass, t, n);
+};
+
+const find = (t, n) => {
+  const o = n ? isElement(n) && n : document;
+  return o ? from(o.querySelectorAll(t)) : [];
+};
+
+const findFirst = (t, n) => {
+  const o = n ? isElement(n) && n : document;
+  return o && o.querySelector(t);
+};
+
+const is = (t, n) => isElement(t) && t.matches(n);
+
+const isBodyElement = t => is(t, "body");
+
+const contents = t => t ? from(t.childNodes) : [];
+
+const parent = t => t && t.parentElement;
+
+const closest = (t, n) => isElement(t) && t.closest(n);
+
+const getFocusedElement = t => document.activeElement;
+
+const liesBetween = (t, n, o) => {
+  const s = closest(t, n);
+  const e = t && findFirst(o, s);
+  const c = closest(e, n) === s;
+  return s && e ? s === t || e === t || c && closest(closest(t, o), n) !== s : false;
+};
+
+const removeElements = t => {
+  each(createOrKeepArray(t), (t => {
+    const n = parent(t);
+    if (t && n) {
+      n.removeChild(t);
+    }
+  }));
+};
+
+const appendChildren = (t, n) => bind(removeElements, t && n && each(createOrKeepArray(n), (n => {
+  if (n) {
+    t.appendChild(n);
+  }
+})));
+
+let z;
+
+const getTrustedTypePolicy = () => z;
+
+const setTrustedTypePolicy = t => {
+  z = t;
+};
+
+const createDiv = t => {
+  const n = document.createElement("div");
+  setAttrs(n, "class", t);
+  return n;
+};
+
+const createDOM = t => {
+  const n = createDiv();
+  const o = getTrustedTypePolicy();
+  const s = t.trim();
+  n.innerHTML = o ? o.createHTML(s) : s;
+  return each(contents(n), (t => removeElements(t)));
+};
+
+const getCSSVal = (t, n) => t.getPropertyValue(n) || t[n] || "";
+
+const validFiniteNumber = t => {
+  const n = t || 0;
+  return isFinite(n) ? n : 0;
+};
+
+const parseToZeroOrNumber = t => validFiniteNumber(parseFloat(t || ""));
+
+const roundCssNumber = t => Math.round(t * 1e4) / 1e4;
+
+const numberToCssPx = t => `${roundCssNumber(validFiniteNumber(t))}px`;
+
+function setStyles(t, n) {
+  t && n && each(n, ((n, o) => {
+    try {
+      const s = t.style;
+      const e = isNull(n) || isBoolean(n) ? "" : isNumber(n) ? numberToCssPx(n) : n;
+      if (o.indexOf("--") === 0) {
+        s.setProperty(o, e);
+      } else {
+        s[o] = e;
+      }
+    } catch (s) {}
+  }));
+}
+
+function getStyles(t, o, s) {
+  const e = isString(o);
+  let c = e ? "" : {};
+  if (t) {
+    const r = n.getComputedStyle(t, s) || t.style;
+    c = e ? getCSSVal(r, o) : from(o).reduce(((t, n) => {
+      t[n] = getCSSVal(r, n);
+      return t;
+    }), c);
+  }
+  return c;
+}
+
+const topRightBottomLeft = (t, n, o) => {
+  const s = n ? `${n}-` : "";
+  const e = o ? `-${o}` : "";
+  const c = `${s}top${e}`;
+  const r = `${s}right${e}`;
+  const i = `${s}bottom${e}`;
+  const l = `${s}left${e}`;
+  const a = getStyles(t, [ c, r, i, l ]);
+  return {
+    t: parseToZeroOrNumber(a[c]),
+    r: parseToZeroOrNumber(a[r]),
+    b: parseToZeroOrNumber(a[i]),
+    l: parseToZeroOrNumber(a[l])
+  };
+};
+
+const getTrasformTranslateValue = (t, n) => `translate${isObject(t) ? `(${t.x},${t.y})` : `${n ? "X" : "Y"}(${t})`}`;
+
+const elementHasDimensions = t => !!(t.offsetWidth || t.offsetHeight || t.getClientRects().length);
+
+const I = {
+  w: 0,
+  h: 0
+};
+
+const getElmWidthHeightProperty = (t, n) => n ? {
+  w: n[`${t}Width`],
+  h: n[`${t}Height`]
+} : I;
+
+const getWindowSize = t => getElmWidthHeightProperty("inner", t || n);
+
+const T = bind(getElmWidthHeightProperty, "offset");
+
+const A = bind(getElmWidthHeightProperty, "client");
+
+const D = bind(getElmWidthHeightProperty, "scroll");
+
+const getFractionalSize = t => {
+  const n = parseFloat(getStyles(t, $)) || 0;
+  const o = parseFloat(getStyles(t, C)) || 0;
+  return {
+    w: n - e(n),
+    h: o - e(o)
+  };
+};
+
+const getBoundingClientRect = t => t.getBoundingClientRect();
+
+const hasDimensions = t => !!t && elementHasDimensions(t);
+
+const domRectHasDimensions = t => !!(t && (t[C] || t[$]));
+
+const domRectAppeared = (t, n) => {
+  const o = domRectHasDimensions(t);
+  const s = domRectHasDimensions(n);
+  return !s && o;
+};
+
+const removeEventListener = (t, n, o, s) => {
+  each(getDomTokensArray(n), (n => {
+    if (t) {
+      t.removeEventListener(n, o, s);
+    }
+  }));
+};
+
+const addEventListener = (t, n, o, s) => {
+  var e;
+  const c = (e = s && s.I) != null ? e : true;
+  const r = s && s.T || false;
+  const i = s && s.A || false;
+  const l = {
+    passive: c,
+    capture: r
+  };
+  return bind(runEachAndClear, getDomTokensArray(n).map((n => {
+    const s = i ? e => {
+      removeEventListener(t, n, s, r);
+      if (o) {
+        o(e);
+      }
+    } : o;
+    if (t) {
+      t.addEventListener(n, s, l);
+    }
+    return bind(removeEventListener, t, n, s, r);
+  })));
+};
+
+const stopPropagation = t => t.stopPropagation();
+
+const preventDefault = t => t.preventDefault();
+
+const stopAndPrevent = t => stopPropagation(t) || preventDefault(t);
+
+const scrollElementTo = (t, n) => {
+  const {x: o, y: s} = isNumber(n) ? {
+    x: n,
+    y: n
+  } : n || {};
+  isNumber(o) && (t.scrollLeft = o);
+  isNumber(s) && (t.scrollTop = s);
+};
+
+const getElementScroll = t => ({
+  x: t.scrollLeft,
+  y: t.scrollTop
+});
+
+const getZeroScrollCoordinates = () => ({
+  D: {
+    x: 0,
+    y: 0
+  },
+  M: {
+    x: 0,
+    y: 0
+  }
+});
+
+const sanitizeScrollCoordinates = (t, n) => {
+  const {D: o, M: s} = t;
+  const {w: e, h: i} = n;
+  const sanitizeAxis = (t, n, o) => {
+    let s = r(t) * o;
+    let e = r(n) * o;
+    if (s === e) {
+      const o = c(t);
+      const r = c(n);
+      e = o > r ? 0 : e;
+      s = o < r ? 0 : s;
+    }
+    s = s === e ? 0 : s;
+    return [ s + 0, e + 0 ];
+  };
+  const [l, a] = sanitizeAxis(o.x, s.x, e);
+  const [u, f] = sanitizeAxis(o.y, s.y, i);
+  return {
+    D: {
+      x: l,
+      y: u
+    },
+    M: {
+      x: a,
+      y: f
+    }
+  };
+};
+
+const isDefaultDirectionScrollCoordinates = ({D: t, M: n}) => {
+  const getAxis = (t, n) => t === 0 && t <= n;
+  return {
+    x: getAxis(t.x, n.x),
+    y: getAxis(t.y, n.y)
+  };
+};
+
+const getScrollCoordinatesPercent = ({D: t, M: n}, o) => {
+  const getAxis = (t, n, o) => capNumber(0, 1, (t - o) / (t - n) || 0);
+  return {
+    x: getAxis(t.x, n.x, o.x),
+    y: getAxis(t.y, n.y, o.y)
+  };
+};
+
+const focusElement = t => {
+  if (t && t.focus) {
+    t.focus({
+      preventScroll: true
+    });
+  }
+};
+
+const manageListener = (t, n) => {
+  each(createOrKeepArray(n), t);
+};
+
+const createEventListenerHub = t => {
+  const n = new Map;
+  const removeEvent = (t, o) => {
+    if (t) {
+      const s = n.get(t);
+      manageListener((t => {
+        if (s) {
+          s[t ? "delete" : "clear"](t);
+        }
+      }), o);
+    } else {
+      n.forEach((t => {
+        t.clear();
+      }));
+      n.clear();
+    }
+  };
+  const addEvent = (t, o) => {
+    if (isString(t)) {
+      const s = n.get(t) || new Set;
+      n.set(t, s);
+      manageListener((t => {
+        if (isFunction(t)) {
+          s.add(t);
+        }
+      }), o);
+      return bind(removeEvent, t, o);
+    }
+    if (isBoolean(o) && o) {
+      removeEvent();
+    }
+    const s = keys(t);
+    const e = [];
+    each(s, (n => {
+      const o = t[n];
+      if (o) {
+        push(e, addEvent(n, o));
+      }
+    }));
+    return bind(runEachAndClear, e);
+  };
+  const triggerEvent = (t, o) => {
+    each(from(n.get(t)), (t => {
+      if (o && !isEmptyArray(o)) {
+        t.apply(0, o);
+      } else {
+        t();
+      }
+    }));
+  };
+  addEvent(t || {});
+  return [ addEvent, removeEvent, triggerEvent ];
+};
+
+const M = {};
+
+const k = {};
+
+const addPlugins = t => {
+  each(t, (t => each(t, ((n, o) => {
+    M[o] = t[o];
+  }))));
+};
+
+const registerPluginModuleInstances = (t, n, o) => keys(t).map((s => {
+  const {static: e, instance: c} = t[s];
+  const [r, i, l] = o || [];
+  const a = o ? c : e;
+  if (a) {
+    const t = o ? a(r, i, n) : a(n);
+    return (l || k)[s] = t;
+  }
+}));
+
+const getStaticPluginModuleInstance = t => k[t];
+
+const R = "__osOptionsValidationPlugin";
+
+const V = `data-overlayscrollbars`;
+
+const L = "os-environment";
+
+const U = `${L}-scrollbar-hidden`;
+
+const P = `${V}-initialize`;
+
+const N = "noClipping";
+
+const q = `${V}-body`;
+
+const B = V;
+
+const F = "host";
+
+const j = `${V}-viewport`;
+
+const X = m;
+
+const Y = O;
+
+const W = "arrange";
+
+const J = "measuring";
+
+const G = "scrolling";
+
+const K = "scrollbarHidden";
+
+const Q = "noContent";
+
+const Z = `${V}-padding`;
+
+const tt = `${V}-content`;
+
+const nt = "os-size-observer";
+
+const ot = `${nt}-appear`;
+
+const st = `${nt}-listener`;
+
+const et = `${st}-scroll`;
+
+const ct = `${st}-item`;
+
+const rt = `${ct}-final`;
+
+const it = "os-trinsic-observer";
+
+const lt = "os-theme-none";
+
+const at = "os-scrollbar";
+
+const ut = `${at}-rtl`;
+
+const ft = `${at}-horizontal`;
+
+const _t = `${at}-vertical`;
+
+const dt = `${at}-track`;
+
+const pt = `${at}-handle`;
+
+const vt = `${at}-visible`;
+
+const gt = `${at}-cornerless`;
+
+const ht = `${at}-interaction`;
+
+const bt = `${at}-unusable`;
+
+const wt = `${at}-auto-hide`;
+
+const yt = `${wt}-hidden`;
+
+const St = `${at}-wheel`;
+
+const mt = `${dt}-interactive`;
+
+const Ot = `${pt}-interactive`;
+
+const $t = "__osSizeObserverPlugin";
+
+const Ct = /* @__PURE__ */ (() => ({
+  [$t]: {
+    static: () => (t, n, o) => {
+      const s = 3333333;
+      const e = "scroll";
+      const c = createDOM(`<div class="${ct}" dir="ltr"><div class="${ct}"><div class="${rt}"></div></div><div class="${ct}"><div class="${rt}" style="width: 200%; height: 200%"></div></div></div>`);
+      const r = c[0];
+      const a = r.lastChild;
+      const u = r.firstChild;
+      const f = u == null ? void 0 : u.firstChild;
+      let _ = T(r);
+      let d = _;
+      let p = false;
+      let v;
+      const reset = () => {
+        scrollElementTo(u, s);
+        scrollElementTo(a, s);
+      };
+      const onResized = t => {
+        v = 0;
+        if (p) {
+          _ = d;
+          n(t === true);
+        }
+      };
+      const onScroll = t => {
+        d = T(r);
+        p = !t || !equalWH(d, _);
+        if (t) {
+          stopPropagation(t);
+          if (p && !v) {
+            i(v);
+            v = l(onResized);
+          }
+        } else {
+          onResized(t === false);
+        }
+        reset();
+      };
+      const g = [ appendChildren(t, c), addEventListener(u, e, onScroll), addEventListener(a, e, onScroll) ];
+      addClass(t, et);
+      setStyles(f, {
+        [$]: s,
+        [C]: s
+      });
+      l(reset);
+      return [ o ? bind(onScroll, false) : reset, g ];
+    }
+  }
+}))();
+
+const getShowNativeOverlaidScrollbars = (t, n) => {
+  const {k: o} = n;
+  const [s, e] = t("showNativeOverlaidScrollbars");
+  return [ s && o.x && o.y, e ];
+};
+
+const overflowIsVisible = t => t.indexOf(x) === 0;
+
+const overflowBehaviorToOverflowStyle = t => t.replace(`${x}-`, "");
+
+const overflowCssValueToOverflowStyle = (t, n) => {
+  if (t === "auto") {
+    return n ? E : H;
+  }
+  const o = t || H;
+  return [ H, E, x ].includes(o) ? o : H;
+};
+
+const getElementOverflowStyle = (t, n) => {
+  const {overflowX: o, overflowY: s} = getStyles(t, [ m, O ]);
+  return {
+    x: overflowCssValueToOverflowStyle(o, n.x),
+    y: overflowCssValueToOverflowStyle(s, n.y)
+  };
+};
+
+const xt = "__osScrollbarsHidingPlugin";
+
+const Ht = /* @__PURE__ */ (() => ({
+  [xt]: {
+    static: () => ({
+      R: (t, n, o, s, e) => {
+        const {V: c, L: r} = t;
+        const {U: i, k: l, P: a} = s;
+        const u = !c && !i && (l.x || l.y);
+        const [f] = getShowNativeOverlaidScrollbars(e, s);
+        const _getViewportOverflowHideOffset = t => {
+          const n = i || f ? 0 : 42;
+          const getHideOffsetPerAxis = (t, o, s) => {
+            const e = t ? n : s;
+            const c = o && !i ? e : 0;
+            const r = t && !!n;
+            return [ c, r ];
+          };
+          const [o, s] = getHideOffsetPerAxis(l.x, t.x === E, a.x);
+          const [e, c] = getHideOffsetPerAxis(l.y, t.y === E, a.y);
+          return {
+            N: {
+              x: o,
+              y: e
+            },
+            q: {
+              x: s,
+              y: c
+            }
+          };
+        };
+        const _hideNativeScrollbars = t => {
+          if (!c) {
+            const {B: s} = o;
+            const e = assignDeep({}, {
+              [y]: 0,
+              [S]: 0,
+              [w]: 0
+            });
+            const {N: c, q: r} = _getViewportOverflowHideOffset(t);
+            const {x: i, y: l} = r;
+            const {x: a, y: f} = c;
+            const {F: _} = n;
+            const d = s ? w : y;
+            const p = s ? h : g;
+            const v = _[d];
+            const m = _[S];
+            const O = _[p];
+            const C = _[b];
+            e[$] = `calc(100% + ${f + v * -1}px)`;
+            e[d] = -f + v;
+            e[S] = -a + m;
+            if (u) {
+              e[p] = O + (l ? f : 0);
+              e[b] = C + (i ? a : 0);
+            }
+            return e;
+          }
+        };
+        const _arrangeViewport = (t, s, e) => {
+          if (u) {
+            const {F: c} = n;
+            const {N: i, q: l} = _getViewportOverflowHideOffset(t);
+            const {x: a, y: u} = l;
+            const {x: f, y: _} = i;
+            const {B: d} = o;
+            const p = d ? g : h;
+            const v = c[p];
+            const b = c.paddingTop;
+            const w = s.w + e.w;
+            const y = s.h + e.h;
+            const S = {
+              w: _ && u ? `${_ + w - v}px` : "",
+              h: f && a ? `${f + y - b}px` : ""
+            };
+            setStyles(r, {
+              "--os-vaw": S.w,
+              "--os-vah": S.h
+            });
+          }
+          return u;
+        };
+        const _undoViewportArrange = () => {
+          if (u) {
+            const {j: t, F: o} = n;
+            const s = getElementOverflowStyle(r, t);
+            const {q: e} = _getViewportOverflowHideOffset(s);
+            const {x: c, y: i} = e;
+            const l = {};
+            const assignProps = t => each(t, (t => {
+              l[t] = o[t];
+            }));
+            if (c) {
+              assignProps([ S, v, b ]);
+            }
+            if (i) {
+              assignProps([ w, y, h, g ]);
+            }
+            const a = getStyles(r, keys(l));
+            const u = removeAttrClass(r, j, W);
+            setStyles(r, l);
+            return () => {
+              setStyles(r, assignDeep({}, a, _hideNativeScrollbars(s)));
+              u();
+            };
+          }
+          return noop;
+        };
+        return {
+          X: _arrangeViewport,
+          Y: _undoViewportArrange,
+          W: _hideNativeScrollbars
+        };
+      }
+    })
+  }
+}))();
+
+const Et = "__osClickScrollPlugin";
+
+const zt = /* @__PURE__ */ (() => ({
+  [Et]: {
+    static: () => (t, n, o, s) => {
+      let e = false;
+      let c = noop;
+      const r = 133;
+      const i = 222;
+      const [l, a] = selfClearTimeout(r);
+      const u = Math.sign(n);
+      const f = o * u;
+      const _ = f / 2;
+      const easing = t => 1 - (1 - t) * (1 - t);
+      const easedEndPressAnimation = (n, o) => animateNumber(n, o, i, t, easing);
+      const linearPressAnimation = (o, s) => animateNumber(o, n - f, r * s, ((o, s, e) => {
+        t(o);
+        if (e) {
+          c = easedEndPressAnimation(o, n);
+        }
+      }));
+      const d = animateNumber(0, f, i, ((r, i, a) => {
+        t(r);
+        if (a) {
+          s(e);
+          if (!e) {
+            const t = n - r;
+            const s = Math.sign(t - _) === u;
+            if (s) {
+              l((() => {
+                const s = t - f;
+                const e = Math.sign(s) === u;
+                c = e ? linearPressAnimation(r, Math.abs(s) / o) : easedEndPressAnimation(r, n);
+              }));
+            }
+          }
+        }
+      }), easing);
+      return t => {
+        e = true;
+        if (t) {
+          d();
+        }
+        a();
+        c();
+      };
+    }
+  }
+}))();
+
+const opsStringify = t => JSON.stringify(t, ((t, n) => {
+  if (isFunction(n)) {
+    throw 0;
+  }
+  return n;
+}));
+
+const getPropByPath = (t, n) => t ? `${n}`.split(".").reduce(((t, n) => t && hasOwnProperty(t, n) ? t[n] : void 0), t) : void 0;
+
+const It = {
+  paddingAbsolute: false,
+  showNativeOverlaidScrollbars: false,
+  update: {
+    elementEvents: [ [ "img", "load" ] ],
+    debounce: [ 0, 33 ],
+    attributes: null,
+    ignoreMutation: null
+  },
+  overflow: {
+    x: "scroll",
+    y: "scroll"
+  },
+  scrollbars: {
+    theme: "os-theme-dark",
+    visibility: "auto",
+    autoHide: "never",
+    autoHideDelay: 1300,
+    autoHideSuspend: false,
+    dragScroll: true,
+    clickScroll: false,
+    pointers: [ "mouse", "touch", "pen" ]
+  }
+};
+
+const getOptionsDiff = (t, n) => {
+  const o = {};
+  const s = concat(keys(n), keys(t));
+  each(s, (s => {
+    const e = t[s];
+    const c = n[s];
+    if (isObject(e) && isObject(c)) {
+      assignDeep(o[s] = {}, getOptionsDiff(e, c));
+      if (isEmptyObject(o[s])) {
+        delete o[s];
+      }
+    } else if (hasOwnProperty(n, s) && c !== e) {
+      let t = true;
+      if (isArray(e) || isArray(c)) {
+        try {
+          if (opsStringify(e) === opsStringify(c)) {
+            t = false;
+          }
+        } catch (r) {}
+      }
+      if (t) {
+        o[s] = c;
+      }
+    }
+  }));
+  return o;
+};
+
+const createOptionCheck = (t, n, o) => s => [ getPropByPath(t, s), o || getPropByPath(n, s) !== void 0 ];
+
+let Tt;
+
+const getNonce = () => Tt;
+
+const setNonce = t => {
+  Tt = t;
+};
+
+let At;
+
+const createEnvironment = () => {
+  const getNativeScrollbarSize = (t, n, o) => {
+    appendChildren(document.body, t);
+    appendChildren(document.body, t);
+    const s = A(t);
+    const e = T(t);
+    const c = getFractionalSize(n);
+    if (o) {
+      removeElements(t);
+    }
+    return {
+      x: e.h - s.h + c.h,
+      y: e.w - s.w + c.w
+    };
+  };
+  const getNativeScrollbarsHiding = t => {
+    let n = false;
+    const o = addClass(t, U);
+    try {
+      n = getStyles(t, "scrollbar-width") === "none" || getStyles(t, "display", "::-webkit-scrollbar") === "none";
+    } catch (s) {}
+    o();
+    return n;
+  };
+  const t = `.${L}{scroll-behavior:auto!important;position:fixed;opacity:0;visibility:hidden;overflow:scroll;height:200px;width:200px;z-index:-1}.${L} div{width:200%;height:200%;margin:10px 0}.${U}{scrollbar-width:none!important}.${U}::-webkit-scrollbar,.${U}::-webkit-scrollbar-corner{appearance:none!important;display:none!important;width:0!important;height:0!important}`;
+  const o = createDOM(`<div class="${L}"><div></div><style>${t}</style></div>`);
+  const s = o[0];
+  const e = s.firstChild;
+  const c = s.lastChild;
+  const r = getNonce();
+  if (r) {
+    c.nonce = r;
+  }
+  const [i, , l] = createEventListenerHub();
+  const [a, u] = createCache({
+    o: getNativeScrollbarSize(s, e),
+    i: equalXY
+  }, bind(getNativeScrollbarSize, s, e, true));
+  const [f] = u();
+  const _ = getNativeScrollbarsHiding(s);
+  const d = {
+    x: f.x === 0,
+    y: f.y === 0
+  };
+  const v = {
+    elements: {
+      host: null,
+      padding: !_,
+      viewport: t => _ && isBodyElement(t) && t,
+      content: false
+    },
+    scrollbars: {
+      slot: true
+    },
+    cancel: {
+      nativeScrollbarsOverlaid: false,
+      body: null
+    }
+  };
+  const g = assignDeep({}, It);
+  const h = bind(assignDeep, {}, g);
+  const b = bind(assignDeep, {}, v);
+  const w = {
+    P: f,
+    k: d,
+    U: _,
+    J: !!p,
+    G: bind(i, "r"),
+    K: b,
+    Z: t => assignDeep(v, t) && b(),
+    tt: h,
+    nt: t => assignDeep(g, t) && h(),
+    ot: assignDeep({}, v),
+    st: assignDeep({}, g)
+  };
+  removeAttrs(s, "style");
+  removeElements(s);
+  addEventListener(n, "resize", (() => {
+    l("r", []);
+  }));
+  if (isFunction(n.matchMedia) && !_ && (!d.x || !d.y)) {
+    const addZoomListener = t => {
+      const o = n.matchMedia(`(resolution: ${n.devicePixelRatio}dppx)`);
+      addEventListener(o, "change", (() => {
+        t();
+        addZoomListener(t);
+      }), {
+        A: true
+      });
+    };
+    addZoomListener((() => {
+      const [t, n] = a();
+      assignDeep(w.P, t);
+      l("r", [ n ]);
+    }));
+  }
+  return w;
+};
+
+const getEnvironment = () => {
+  if (!At) {
+    At = createEnvironment();
+  }
+  return At;
+};
+
+const createEventContentChange = (t, n, o) => {
+  let s = false;
+  const e = o ? new WeakMap : false;
+  const destroy = () => {
+    s = true;
+  };
+  const updateElements = c => {
+    if (e && o) {
+      const r = o.map((n => {
+        const [o, s] = n || [];
+        const e = s && o ? (c || find)(o, t) : [];
+        return [ e, s ];
+      }));
+      each(r, (o => each(o[0], (c => {
+        const r = o[1];
+        const i = e.get(c) || [];
+        const l = t.contains(c);
+        if (l && r) {
+          const t = addEventListener(c, r, (o => {
+            if (s) {
+              t();
+              e.delete(c);
+            } else {
+              n(o);
+            }
+          }));
+          e.set(c, push(i, t));
+        } else {
+          runEachAndClear(i);
+          e.delete(c);
+        }
+      }))));
+    }
+  };
+  updateElements();
+  return [ destroy, updateElements ];
+};
+
+const createDOMObserver = (t, n, o, s) => {
+  let e = false;
+  const {et: c, ct: r, rt: i, it: l, lt: a, ut: u} = s || {};
+  const _ = debounce((() => e && o(true)), {
+    p: 33,
+    v: 99
+  });
+  const [d, p] = createEventContentChange(t, _, i);
+  const v = c || [];
+  const g = r || [];
+  const h = concat(v, g);
+  const observerCallback = (e, c) => {
+    if (!isEmptyArray(c)) {
+      const r = a || noop;
+      const i = u || noop;
+      const f = [];
+      const _ = [];
+      let d = false;
+      let v = false;
+      each(c, (o => {
+        const {attributeName: e, target: c, type: a, oldValue: u, addedNodes: p, removedNodes: h} = o;
+        const b = a === "attributes";
+        const w = a === "childList";
+        const y = t === c;
+        const S = b && e;
+        const m = S && getAttr(c, e || "");
+        const O = isString(m) ? m : null;
+        const $ = S && u !== O;
+        const C = inArray(g, e) && $;
+        if (n && (w || !y)) {
+          const n = b && $;
+          const a = n && l && is(c, l);
+          const _ = a ? !r(c, e, u, O) : !b || n;
+          const d = _ && !i(o, !!a, t, s);
+          each(p, (t => push(f, t)));
+          each(h, (t => push(f, t)));
+          v = v || d;
+        }
+        if (!n && y && $ && !r(c, e, u, O)) {
+          push(_, e);
+          d = d || C;
+        }
+      }));
+      p((t => deduplicateArray(f).reduce(((n, o) => {
+        push(n, find(t, o));
+        return is(o, t) ? push(n, o) : n;
+      }), [])));
+      if (n) {
+        if (!e && v) {
+          o(false);
+        }
+        return [ false ];
+      }
+      if (!isEmptyArray(_) || d) {
+        const t = [ deduplicateArray(_), d ];
+        if (!e) {
+          o.apply(0, t);
+        }
+        return t;
+      }
+    }
+  };
+  const b = new f(bind(observerCallback, false));
+  return [ () => {
+    b.observe(t, {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: h,
+      subtree: n,
+      childList: n,
+      characterData: n
+    });
+    e = true;
+    return () => {
+      if (e) {
+        d();
+        b.disconnect();
+        e = false;
+      }
+    };
+  }, () => {
+    if (e) {
+      _.O();
+      return observerCallback(true, b.takeRecords());
+    }
+  } ];
+};
+
+let Dt = null;
+
+const createSizeObserver = (t, n, o) => {
+  const {ft: s} = o || {};
+  const e = getStaticPluginModuleInstance($t);
+  const [c] = createCache({
+    o: false,
+    u: true
+  });
+  return () => {
+    const o = [];
+    const r = createDOM(`<div class="${nt}"><div class="${st}"></div></div>`);
+    const i = r[0];
+    const l = i.firstChild;
+    const onSizeChangedCallbackProxy = t => {
+      const o = isArray(t) && !isEmptyArray(t);
+      let s = false;
+      let e = false;
+      if (o) {
+        const n = t[0];
+        const [o, , r] = c(n.contentRect);
+        const i = domRectHasDimensions(o);
+        e = domRectAppeared(o, r);
+        s = !e && !i;
+      } else {
+        e = t === true;
+      }
+      if (!s) {
+        n({
+          _t: true,
+          ft: e
+        });
+      }
+    };
+    if (d) {
+      if (!isBoolean(Dt)) {
+        const n = new d(noop);
+        n.observe(t, {
+          get box() {
+            Dt = true;
+          }
+        });
+        Dt = Dt || false;
+        n.disconnect();
+      }
+      const n = debounce(onSizeChangedCallbackProxy, {
+        p: 0,
+        v: 0
+      });
+      const resizeObserverCallback = t => n(t);
+      const s = new d(resizeObserverCallback);
+      s.observe(Dt ? t : l);
+      push(o, [ () => {
+        s.disconnect();
+      }, !Dt && appendChildren(t, i) ]);
+      if (Dt) {
+        const n = new d(resizeObserverCallback);
+        n.observe(t, {
+          box: "border-box"
+        });
+        push(o, (() => n.disconnect()));
+      }
+    } else if (e) {
+      const [n, c] = e(l, onSizeChangedCallbackProxy, s);
+      push(o, concat([ addClass(i, ot), addEventListener(i, "animationstart", n), appendChildren(t, i) ], c));
+    } else {
+      return noop;
+    }
+    return bind(runEachAndClear, o);
+  };
+};
+
+const createTrinsicObserver = (t, n) => {
+  let o;
+  const isHeightIntrinsic = t => t.h === 0 || t.isIntersecting || t.intersectionRatio > 0;
+  const s = createDiv(it);
+  const [e] = createCache({
+    o: false
+  });
+  const triggerOnTrinsicChangedCallback = (t, o) => {
+    if (t) {
+      const s = e(isHeightIntrinsic(t));
+      const [, c] = s;
+      return c && !o && n(s) && [ s ];
+    }
+  };
+  const intersectionObserverCallback = (t, n) => triggerOnTrinsicChangedCallback(n.pop(), t);
+  return [ () => {
+    const n = [];
+    if (_) {
+      o = new _(bind(intersectionObserverCallback, false), {
+        root: t
+      });
+      o.observe(s);
+      push(n, (() => {
+        o.disconnect();
+      }));
+    } else {
+      const onSizeChanged = () => {
+        const t = T(s);
+        triggerOnTrinsicChangedCallback(t);
+      };
+      push(n, createSizeObserver(s, onSizeChanged)());
+      onSizeChanged();
+    }
+    return bind(runEachAndClear, push(n, appendChildren(t, s)));
+  }, () => o && intersectionObserverCallback(true, o.takeRecords()) ];
+};
+
+const createObserversSetup = (t, n, o, s) => {
+  let e;
+  let c;
+  let r;
+  let i;
+  let l;
+  let a;
+  const u = `[${B}]`;
+  const f = `[${j}]`;
+  const _ = [ "id", "class", "style", "open", "wrap", "cols", "rows" ];
+  const {dt: p, vt: v, L: g, gt: h, ht: b, V: w, bt: y, wt: S, yt: m, St: O} = t;
+  const getDirectionIsRTL = t => getStyles(t, "direction") === "rtl";
+  const $ = {
+    Ot: false,
+    B: getDirectionIsRTL(p)
+  };
+  const C = getEnvironment();
+  const x = getStaticPluginModuleInstance(xt);
+  const [H] = createCache({
+    i: equalWH,
+    o: {
+      w: 0,
+      h: 0
+    }
+  }, (() => {
+    const s = x && x.R(t, n, $, C, o).Y;
+    const e = y && w;
+    const c = !e && hasAttrClass(v, B, N);
+    const r = !w && S(W);
+    const i = r && getElementScroll(h);
+    const l = i && O();
+    const a = m(J, c);
+    const u = r && s && s();
+    const f = D(g);
+    const _ = getFractionalSize(g);
+    if (u) {
+      u();
+    }
+    scrollElementTo(h, i);
+    if (l) {
+      l();
+    }
+    if (c) {
+      a();
+    }
+    return {
+      w: f.w + _.w,
+      h: f.h + _.h
+    };
+  }));
+  const E = debounce(s, {
+    p: () => e,
+    v: () => c,
+    m(t, n) {
+      const [o] = t;
+      const [s] = n;
+      return [ concat(keys(o), keys(s)).reduce(((t, n) => {
+        t[n] = o[n] || s[n];
+        return t;
+      }), {}) ];
+    }
+  });
+  const setDirection = t => {
+    const n = getDirectionIsRTL(p);
+    assignDeep(t, {
+      $t: a !== n
+    });
+    assignDeep($, {
+      B: n
+    });
+    a = n;
+  };
+  const onTrinsicChanged = (t, n) => {
+    const [o, e] = t;
+    const c = {
+      Ct: e
+    };
+    assignDeep($, {
+      Ot: o
+    });
+    if (!n) {
+      s(c);
+    }
+    return c;
+  };
+  const onSizeChanged = ({_t: t, ft: n}) => {
+    const o = t && !n;
+    const e = !o && C.U ? E : s;
+    const c = {
+      _t: t || n,
+      ft: n
+    };
+    setDirection(c);
+    e(c);
+  };
+  const onContentMutation = (t, n) => {
+    const [, o] = H();
+    const e = {
+      xt: o
+    };
+    setDirection(e);
+    const c = t ? s : E;
+    if (o && !n) {
+      c(e);
+    }
+    return e;
+  };
+  const onHostMutation = (t, n, o) => {
+    const s = {
+      Ht: n
+    };
+    setDirection(s);
+    if (n && !o) {
+      E(s);
+    }
+    return s;
+  };
+  const [z, I] = b ? createTrinsicObserver(v, onTrinsicChanged) : [];
+  const T = !w && createSizeObserver(v, onSizeChanged, {
+    ft: true
+  });
+  const [A, M] = createDOMObserver(v, false, onHostMutation, {
+    ct: _,
+    et: _
+  });
+  const k = w && d && new d((t => {
+    const n = t[t.length - 1].contentRect;
+    onSizeChanged({
+      _t: true,
+      ft: domRectAppeared(n, l)
+    });
+    l = n;
+  }));
+  const R = debounce((() => {
+    const [, t] = H();
+    s({
+      xt: t
+    });
+  }), {
+    p: 222,
+    S: true
+  });
+  return [ () => {
+    if (k) {
+      k.observe(v);
+    }
+    const t = T && T();
+    const n = z && z();
+    const o = A();
+    const s = C.G((t => {
+      if (t) {
+        E({
+          Et: t
+        });
+      } else {
+        R();
+      }
+    }));
+    return () => {
+      if (k) {
+        k.disconnect();
+      }
+      if (t) {
+        t();
+      }
+      if (n) {
+        n();
+      }
+      if (i) {
+        i();
+      }
+      o();
+      s();
+    };
+  }, ({zt: t, It: n, Tt: o}) => {
+    const s = {};
+    const [l] = t("update.ignoreMutation");
+    const [a, d] = t("update.attributes");
+    const [p, v] = t("update.elementEvents");
+    const [h, y] = t("update.debounce");
+    const S = v || d;
+    const m = n || o;
+    const ignoreMutationFromOptions = t => isFunction(l) && l(t);
+    if (S) {
+      if (r) {
+        r();
+      }
+      if (i) {
+        i();
+      }
+      const [t, n] = createDOMObserver(b || g, true, onContentMutation, {
+        et: concat(_, a || []),
+        rt: p,
+        it: u,
+        ut: (t, n) => {
+          const {target: o, attributeName: s} = t;
+          const e = !n && s && !w ? liesBetween(o, u, f) : false;
+          return e || !!closest(o, `.${at}`) || !!ignoreMutationFromOptions(t);
+        }
+      });
+      i = t();
+      r = n;
+    }
+    if (y) {
+      E.O();
+      if (isArray(h)) {
+        const t = h[0];
+        const n = h[1];
+        e = isNumber(t) && t;
+        c = isNumber(n) && n;
+      } else if (isNumber(h)) {
+        e = h;
+        c = false;
+      } else {
+        e = false;
+        c = false;
+      }
+    }
+    if (m) {
+      const t = M();
+      const n = I && I();
+      const o = r && r();
+      if (t) {
+        assignDeep(s, onHostMutation(t[0], t[1], m));
+      }
+      if (n) {
+        assignDeep(s, onTrinsicChanged(n[0], m));
+      }
+      if (o) {
+        assignDeep(s, onContentMutation(o[0], m));
+      }
+    }
+    setDirection(s);
+    return s;
+  }, $ ];
+};
+
+const resolveInitialization = (t, n) => isFunction(n) ? n.apply(0, t) : n;
+
+const staticInitializationElement = (t, n, o, s) => {
+  const e = isUndefined(s) ? o : s;
+  const c = resolveInitialization(t, e);
+  return c || n.apply(0, t);
+};
+
+const dynamicInitializationElement = (t, n, o, s) => {
+  const e = isUndefined(s) ? o : s;
+  const c = resolveInitialization(t, e);
+  return !!c && (isHTMLElement(c) ? c : n.apply(0, t));
+};
+
+const cancelInitialization = (t, n) => {
+  const {nativeScrollbarsOverlaid: o, body: s} = n || {};
+  const {k: e, U: c, K: r} = getEnvironment();
+  const {nativeScrollbarsOverlaid: i, body: l} = r().cancel;
+  const a = o != null ? o : i;
+  const u = isUndefined(s) ? l : s;
+  const f = (e.x || e.y) && a;
+  const _ = t && (isNull(u) ? !c : u);
+  return !!f || !!_;
+};
+
+const createScrollbarsSetupElements = (t, n, o, s) => {
+  const e = "--os-viewport-percent";
+  const c = "--os-scroll-percent";
+  const r = "--os-scroll-direction";
+  const {K: i} = getEnvironment();
+  const {scrollbars: l} = i();
+  const {slot: a} = l;
+  const {dt: u, vt: f, L: _, At: d, gt: v, bt: g, V: h} = n;
+  const {scrollbars: b} = d ? {} : t;
+  const {slot: w} = b || {};
+  const y = [];
+  const S = [];
+  const m = [];
+  const O = dynamicInitializationElement([ u, f, _ ], (() => h && g ? u : f), a, w);
+  const initScrollTimeline = t => {
+    if (p) {
+      let n = null;
+      let s = [];
+      const e = new p({
+        source: v,
+        axis: t
+      });
+      const cancelAnimation = () => {
+        if (n) {
+          n.cancel();
+        }
+        n = null;
+      };
+      const _setScrollPercentAnimation = c => {
+        const {Dt: r} = o;
+        const i = isDefaultDirectionScrollCoordinates(r)[t];
+        const l = t === "x";
+        const a = [ getTrasformTranslateValue(0, l), getTrasformTranslateValue(`calc(100cq${l ? "w" : "h"} + -100%)`, l) ];
+        const u = i ? a : a.reverse();
+        if (s[0] === u[0] && s[1] === u[1]) {
+          return cancelAnimation;
+        }
+        cancelAnimation();
+        s = u;
+        n = c.Mt.animate({
+          clear: [ "left" ],
+          transform: u
+        }, {
+          timeline: e
+        });
+        return cancelAnimation;
+      };
+      return {
+        kt: _setScrollPercentAnimation
+      };
+    }
+  };
+  const $ = {
+    x: initScrollTimeline("x"),
+    y: initScrollTimeline("y")
+  };
+  const getViewportPercent = () => {
+    const {Rt: t, Vt: n} = o;
+    const getAxisValue = (t, n) => capNumber(0, 1, t / (t + n) || 0);
+    return {
+      x: getAxisValue(n.x, t.x),
+      y: getAxisValue(n.y, t.y)
+    };
+  };
+  const scrollbarStructureAddRemoveClass = (t, n, o) => {
+    const s = o ? addClass : removeClass;
+    each(t, (t => {
+      s(t.Lt, n);
+    }));
+  };
+  const scrollbarStyle = (t, n) => {
+    each(t, (t => {
+      const [o, s] = n(t);
+      setStyles(o, s);
+    }));
+  };
+  const scrollbarsAddRemoveClass = (t, n, o) => {
+    const s = isBoolean(o);
+    const e = s ? o : true;
+    const c = s ? !o : true;
+    if (e) {
+      scrollbarStructureAddRemoveClass(S, t, n);
+    }
+    if (c) {
+      scrollbarStructureAddRemoveClass(m, t, n);
+    }
+  };
+  const refreshScrollbarsHandleLength = () => {
+    const t = getViewportPercent();
+    const createScrollbarStyleFn = t => n => [ n.Lt, {
+      [e]: roundCssNumber(t) + ""
+    } ];
+    scrollbarStyle(S, createScrollbarStyleFn(t.x));
+    scrollbarStyle(m, createScrollbarStyleFn(t.y));
+  };
+  const refreshScrollbarsHandleOffset = () => {
+    if (!p) {
+      const {Dt: t} = o;
+      const n = getScrollCoordinatesPercent(t, getElementScroll(v));
+      const createScrollbarStyleFn = t => n => [ n.Lt, {
+        [c]: roundCssNumber(t) + ""
+      } ];
+      scrollbarStyle(S, createScrollbarStyleFn(n.x));
+      scrollbarStyle(m, createScrollbarStyleFn(n.y));
+    }
+  };
+  const refreshScrollbarsScrollCoordinates = () => {
+    const {Dt: t} = o;
+    const n = isDefaultDirectionScrollCoordinates(t);
+    const createScrollbarStyleFn = t => n => [ n.Lt, {
+      [r]: t ? "0" : "1"
+    } ];
+    scrollbarStyle(S, createScrollbarStyleFn(n.x));
+    scrollbarStyle(m, createScrollbarStyleFn(n.y));
+    if (p) {
+      S.forEach($.x.kt);
+      m.forEach($.y.kt);
+    }
+  };
+  const refreshScrollbarsScrollbarOffset = () => {
+    if (h && !g) {
+      const {Rt: t, Dt: n} = o;
+      const s = isDefaultDirectionScrollCoordinates(n);
+      const e = getScrollCoordinatesPercent(n, getElementScroll(v));
+      const styleScrollbarPosition = n => {
+        const {Lt: o} = n;
+        const c = parent(o) === _ && o;
+        const getTranslateValue = (t, n, o) => {
+          const s = n * t;
+          return numberToCssPx(o ? s : -s);
+        };
+        return [ c, c && {
+          transform: getTrasformTranslateValue({
+            x: getTranslateValue(e.x, t.x, s.x),
+            y: getTranslateValue(e.y, t.y, s.y)
+          })
+        } ];
+      };
+      scrollbarStyle(S, styleScrollbarPosition);
+      scrollbarStyle(m, styleScrollbarPosition);
+    }
+  };
+  const generateScrollbarDOM = t => {
+    const n = t ? "x" : "y";
+    const o = t ? ft : _t;
+    const e = createDiv(`${at} ${o}`);
+    const c = createDiv(dt);
+    const r = createDiv(pt);
+    const i = {
+      Lt: e,
+      Ut: c,
+      Mt: r
+    };
+    const l = $[n];
+    push(t ? S : m, i);
+    push(y, [ appendChildren(e, c), appendChildren(c, r), bind(removeElements, e), l && l.kt(i), s(i, scrollbarsAddRemoveClass, t) ]);
+    return i;
+  };
+  const C = bind(generateScrollbarDOM, true);
+  const x = bind(generateScrollbarDOM, false);
+  const appendElements = () => {
+    appendChildren(O, S[0].Lt);
+    appendChildren(O, m[0].Lt);
+    return bind(runEachAndClear, y);
+  };
+  C();
+  x();
+  return [ {
+    Pt: refreshScrollbarsHandleLength,
+    Nt: refreshScrollbarsHandleOffset,
+    qt: refreshScrollbarsScrollCoordinates,
+    Bt: refreshScrollbarsScrollbarOffset,
+    Ft: scrollbarsAddRemoveClass,
+    jt: {
+      Xt: S,
+      Yt: C,
+      Wt: bind(scrollbarStyle, S)
+    },
+    Jt: {
+      Xt: m,
+      Yt: x,
+      Wt: bind(scrollbarStyle, m)
+    }
+  }, appendElements ];
+};
+
+const createScrollbarsSetupEvents = (t, n, o, s) => (r, i, l) => {
+  const {vt: u, L: f, V: _, gt: d, Gt: p, St: v} = n;
+  const {Lt: g, Ut: h, Mt: b} = r;
+  const [w, y] = selfClearTimeout(333);
+  const [S, m] = selfClearTimeout(444);
+  const scrollOffsetElementScrollBy = t => {
+    if (isFunction(d.scrollBy)) {
+      d.scrollBy({
+        behavior: "smooth",
+        left: t.x,
+        top: t.y
+      });
+    }
+  };
+  const createInteractiveScrollEvents = () => {
+    const n = "pointerup pointercancel lostpointercapture";
+    const s = `client${l ? "X" : "Y"}`;
+    const r = l ? $ : C;
+    const i = l ? "left" : "top";
+    const a = l ? "w" : "h";
+    const u = l ? "x" : "y";
+    const createRelativeHandleMove = (t, n) => s => {
+      const {Rt: e} = o;
+      const c = T(h)[a] - T(b)[a];
+      const r = n * s / c;
+      const i = r * e[u];
+      scrollElementTo(d, {
+        [u]: t + i
+      });
+    };
+    const f = [];
+    return addEventListener(h, "pointerdown", (o => {
+      const l = closest(o.target, `.${pt}`) === b;
+      const _ = l ? b : h;
+      const g = t.scrollbars;
+      const w = g[l ? "dragScroll" : "clickScroll"];
+      const {button: y, isPrimary: O, pointerType: $} = o;
+      const {pointers: C} = g;
+      const x = y === 0 && O && w && (C || []).includes($);
+      if (x) {
+        runEachAndClear(f);
+        m();
+        const t = !l && (o.shiftKey || w === "instant");
+        const g = bind(getBoundingClientRect, b);
+        const y = bind(getBoundingClientRect, h);
+        const getHandleOffset = (t, n) => (t || g())[i] - (n || y())[i];
+        const O = e(getBoundingClientRect(d)[r]) / T(d)[a] || 1;
+        const $ = createRelativeHandleMove(getElementScroll(d)[u], 1 / O);
+        const C = o[s];
+        const x = g();
+        const H = y();
+        const E = x[r];
+        const z = getHandleOffset(x, H) + E / 2;
+        const I = C - H[i];
+        const A = l ? 0 : I - z;
+        const releasePointerCapture = t => {
+          runEachAndClear(k);
+          _.releasePointerCapture(t.pointerId);
+        };
+        const D = l || t;
+        const M = v();
+        const k = [ addEventListener(p, n, releasePointerCapture), addEventListener(p, "selectstart", (t => preventDefault(t)), {
+          I: false
+        }), addEventListener(h, n, releasePointerCapture), D && addEventListener(h, "pointermove", (t => $(A + (t[s] - C)))), D && (() => {
+          const t = getElementScroll(d);
+          M();
+          const n = getElementScroll(d);
+          const o = {
+            x: n.x - t.x,
+            y: n.y - t.y
+          };
+          if (c(o.x) > 3 || c(o.y) > 3) {
+            v();
+            scrollElementTo(d, t);
+            scrollOffsetElementScrollBy(o);
+            S(M);
+          }
+        }) ];
+        _.setPointerCapture(o.pointerId);
+        if (t) {
+          $(A);
+        } else if (!l) {
+          const t = getStaticPluginModuleInstance(Et);
+          if (t) {
+            const n = t($, A, E, (t => {
+              if (t) {
+                M();
+              } else {
+                push(k, M);
+              }
+            }));
+            push(k, n);
+            push(f, bind(n, true));
+          }
+        }
+      }
+    }));
+  };
+  let O = true;
+  return bind(runEachAndClear, [ addEventListener(b, "pointermove pointerleave", s), addEventListener(g, "pointerenter", (() => {
+    i(ht, true);
+  })), addEventListener(g, "pointerleave pointercancel", (() => {
+    i(ht, false);
+  })), !_ && addEventListener(g, "mousedown", (() => {
+    const t = getFocusedElement();
+    if (hasAttr(t, j) || hasAttr(t, B) || t === document.body) {
+      a(bind(focusElement, f), 25);
+    }
+  })), addEventListener(g, "wheel", (t => {
+    const {deltaX: n, deltaY: o, deltaMode: s} = t;
+    if (O && s === 0 && parent(g) === u) {
+      scrollOffsetElementScrollBy({
+        x: n,
+        y: o
+      });
+    }
+    O = false;
+    i(St, true);
+    w((() => {
+      O = true;
+      i(St);
+    }));
+    preventDefault(t);
+  }), {
+    I: false,
+    T: true
+  }), addEventListener(g, "pointerdown", bind(addEventListener, p, "click", stopAndPrevent, {
+    A: true,
+    T: true,
+    I: false
+  }), {
+    T: true
+  }), createInteractiveScrollEvents(), y, m ]);
+};
+
+const createScrollbarsSetup = (t, n, o, s, e, c) => {
+  let r;
+  let i;
+  let l;
+  let a;
+  let u;
+  let f = noop;
+  let _ = 0;
+  const d = [ "mouse", "pen" ];
+  const isHoverablePointerType = t => d.includes(t.pointerType);
+  const [p, v] = selfClearTimeout();
+  const [g, h] = selfClearTimeout(100);
+  const [b, w] = selfClearTimeout(100);
+  const [y, S] = selfClearTimeout((() => _));
+  const [m, O] = createScrollbarsSetupElements(t, e, s, createScrollbarsSetupEvents(n, e, s, (t => isHoverablePointerType(t) && manageScrollbarsAutoHideInstantInteraction())));
+  const {vt: $, Kt: C, bt: H} = e;
+  const {Ft: z, Pt: I, Nt: T, qt: A, Bt: D} = m;
+  const manageScrollbarsAutoHide = (t, n) => {
+    S();
+    if (t) {
+      z(yt);
+    } else {
+      const t = bind(z, yt, true);
+      if (_ > 0 && !n) {
+        y(t);
+      } else {
+        t();
+      }
+    }
+  };
+  const manageScrollbarsAutoHideInstantInteraction = () => {
+    if (l ? !r : !a) {
+      manageScrollbarsAutoHide(true);
+      g((() => {
+        manageScrollbarsAutoHide(false);
+      }));
+    }
+  };
+  const manageAutoHideSuspension = t => {
+    z(wt, t, true);
+    z(wt, t, false);
+  };
+  const onHostMouseEnter = t => {
+    if (isHoverablePointerType(t)) {
+      r = l;
+      if (l) {
+        manageScrollbarsAutoHide(true);
+      }
+    }
+  };
+  const M = [ S, h, w, v, () => f(), addEventListener($, "pointerover", onHostMouseEnter, {
+    A: true
+  }), addEventListener($, "pointerenter", onHostMouseEnter), addEventListener($, "pointerleave", (t => {
+    if (isHoverablePointerType(t)) {
+      r = false;
+      if (l) {
+        manageScrollbarsAutoHide(false);
+      }
+    }
+  })), addEventListener($, "pointermove", (t => {
+    if (isHoverablePointerType(t) && i) {
+      manageScrollbarsAutoHideInstantInteraction();
+    }
+  })), addEventListener(C, "scroll", (t => {
+    p((() => {
+      T();
+      manageScrollbarsAutoHideInstantInteraction();
+    }));
+    c(t);
+    D();
+  })) ];
+  return [ () => bind(runEachAndClear, push(M, O())), ({zt: t, Tt: n, Qt: e, Zt: c}) => {
+    const {tn: r, nn: d, sn: p, en: v} = c || {};
+    const {$t: g, ft: h} = e || {};
+    const {B: w} = o;
+    const {k: y} = getEnvironment();
+    const {cn: S, j: m} = s;
+    const [O, $] = t("showNativeOverlaidScrollbars");
+    const [M, k] = t("scrollbars.theme");
+    const [R, V] = t("scrollbars.visibility");
+    const [L, U] = t("scrollbars.autoHide");
+    const [P, N] = t("scrollbars.autoHideSuspend");
+    const [q] = t("scrollbars.autoHideDelay");
+    const [B, F] = t("scrollbars.dragScroll");
+    const [j, X] = t("scrollbars.clickScroll");
+    const [Y, W] = t("overflow");
+    const J = h && !n;
+    const G = m.x || m.y;
+    const K = r || d || v || g || n;
+    const Q = p || V || W;
+    const Z = O && y.x && y.y;
+    const setScrollbarVisibility = (t, n, o) => {
+      const s = t.includes(E) && (R === x || R === "auto" && n === E);
+      z(vt, s, o);
+      return s;
+    };
+    _ = q;
+    if (J) {
+      if (P && G) {
+        manageAutoHideSuspension(false);
+        f();
+        b((() => {
+          f = addEventListener(C, "scroll", bind(manageAutoHideSuspension, true), {
+            A: true
+          });
+        }));
+      } else {
+        manageAutoHideSuspension(true);
+      }
+    }
+    if ($) {
+      z(lt, Z);
+    }
+    if (k) {
+      z(u);
+      z(M, true);
+      u = M;
+    }
+    if (N && !P) {
+      manageAutoHideSuspension(true);
+    }
+    if (U) {
+      i = L === "move";
+      l = L === "leave";
+      a = L === "never";
+      manageScrollbarsAutoHide(a, true);
+    }
+    if (F) {
+      z(Ot, B);
+    }
+    if (X) {
+      z(mt, !!j);
+    }
+    if (Q) {
+      const t = setScrollbarVisibility(Y.x, S.x, true);
+      const n = setScrollbarVisibility(Y.y, S.y, false);
+      const o = t && n;
+      z(gt, !o);
+    }
+    if (K) {
+      T();
+      I();
+      D();
+      if (v) {
+        A();
+      }
+      z(bt, !m.x, true);
+      z(bt, !m.y, false);
+      z(ut, w && !H);
+    }
+  }, {}, m ];
+};
+
+const createStructureSetupElements = t => {
+  const o = getEnvironment();
+  const {K: s, U: e} = o;
+  const {elements: c} = s();
+  const {padding: r, viewport: i, content: l} = c;
+  const a = isHTMLElement(t);
+  const u = a ? {} : t;
+  const {elements: f} = u;
+  const {padding: _, viewport: d, content: p} = f || {};
+  const v = a ? t : u.target;
+  const g = isBodyElement(v);
+  const h = v.ownerDocument;
+  const b = h.documentElement;
+  const getDocumentWindow = () => h.defaultView || n;
+  const w = bind(staticInitializationElement, [ v ]);
+  const y = bind(dynamicInitializationElement, [ v ]);
+  const S = bind(createDiv, "");
+  const $ = bind(w, S, i);
+  const C = bind(y, S, l);
+  const elementHasOverflow = t => {
+    const n = T(t);
+    const o = D(t);
+    const s = getStyles(t, m);
+    const e = getStyles(t, O);
+    return o.w - n.w > 0 && !overflowIsVisible(s) || o.h - n.h > 0 && !overflowIsVisible(e);
+  };
+  const x = $(d);
+  const H = x === v;
+  const E = H && g;
+  const z = !H && C(p);
+  const I = !H && x === z;
+  const A = E ? b : x;
+  const M = E ? A : v;
+  const k = !H && y(S, r, _);
+  const R = !I && z;
+  const V = [ R, A, k, M ].map((t => isHTMLElement(t) && !parent(t) && t));
+  const elementIsGenerated = t => t && inArray(V, t);
+  const L = !elementIsGenerated(A) && elementHasOverflow(A) ? A : v;
+  const U = E ? b : A;
+  const N = E ? h : A;
+  const X = {
+    dt: v,
+    vt: M,
+    L: A,
+    rn: k,
+    ht: R,
+    gt: U,
+    Kt: N,
+    ln: g ? b : L,
+    Gt: h,
+    bt: g,
+    At: a,
+    V: H,
+    an: getDocumentWindow,
+    wt: t => hasAttrClass(A, j, t),
+    yt: (t, n) => addRemoveAttrClass(A, j, t, n),
+    St: () => addRemoveAttrClass(U, j, G, true)
+  };
+  const {dt: Y, vt: W, rn: J, L: Q, ht: nt} = X;
+  const ot = [ () => {
+    removeAttrs(W, [ B, P ]);
+    removeAttrs(Y, P);
+    if (g) {
+      removeAttrs(b, [ P, B ]);
+    }
+  } ];
+  let st = contents([ nt, Q, J, W, Y ].find((t => t && !elementIsGenerated(t))));
+  const et = E ? Y : nt || Q;
+  const ct = bind(runEachAndClear, ot);
+  const appendElements = () => {
+    const t = getDocumentWindow();
+    const n = getFocusedElement();
+    const unwrap = t => {
+      appendChildren(parent(t), contents(t));
+      removeElements(t);
+    };
+    const prepareWrapUnwrapFocus = t => addEventListener(t, "focusin focusout focus blur", stopAndPrevent, {
+      T: true,
+      I: false
+    });
+    const o = "tabindex";
+    const s = getAttr(Q, o);
+    const c = prepareWrapUnwrapFocus(n);
+    setAttrs(W, B, H ? "" : F);
+    setAttrs(J, Z, "");
+    setAttrs(Q, j, "");
+    setAttrs(nt, tt, "");
+    if (!H) {
+      setAttrs(Q, o, s || "-1");
+      if (g) {
+        setAttrs(b, q, "");
+      }
+    }
+    appendChildren(et, st);
+    appendChildren(W, J);
+    appendChildren(J || W, !H && Q);
+    appendChildren(Q, nt);
+    push(ot, [ c, () => {
+      const t = getFocusedElement();
+      const n = elementIsGenerated(Q);
+      const e = n && t === Q ? Y : t;
+      const c = prepareWrapUnwrapFocus(e);
+      removeAttrs(J, Z);
+      removeAttrs(nt, tt);
+      removeAttrs(Q, j);
+      if (g) {
+        removeAttrs(b, q);
+      }
+      if (s) {
+        setAttrs(Q, o, s);
+      } else {
+        removeAttrs(Q, o);
+      }
+      if (elementIsGenerated(nt)) {
+        unwrap(nt);
+      }
+      if (n) {
+        unwrap(Q);
+      }
+      if (elementIsGenerated(J)) {
+        unwrap(J);
+      }
+      focusElement(e);
+      c();
+    } ]);
+    if (e && !H) {
+      addAttrClass(Q, j, K);
+      push(ot, bind(removeAttrs, Q, j));
+    }
+    focusElement(!H && g && n === Y && t.top === t ? Q : n);
+    c();
+    st = 0;
+    return ct;
+  };
+  return [ X, appendElements, ct ];
+};
+
+const createTrinsicUpdateSegment = ({ht: t}) => ({Qt: n, un: o, Tt: s}) => {
+  const {Ct: e} = n || {};
+  const {Ot: c} = o;
+  const r = t && (e || s);
+  if (r) {
+    setStyles(t, {
+      [C]: c && "100%"
+    });
+  }
+};
+
+const createPaddingUpdateSegment = ({vt: t, rn: n, L: o, V: s}, e) => {
+  const [c, r] = createCache({
+    i: equalTRBL,
+    o: topRightBottomLeft()
+  }, bind(topRightBottomLeft, t, "padding", ""));
+  return ({zt: t, Qt: i, un: l, Tt: a}) => {
+    let [u, f] = r(a);
+    const {U: _} = getEnvironment();
+    const {_t: d, xt: p, $t: m} = i || {};
+    const {B: O} = l;
+    const [C, x] = t("paddingAbsolute");
+    const H = a || p;
+    if (d || f || H) {
+      [u, f] = c(a);
+    }
+    const E = !s && (x || m || f);
+    if (E) {
+      const t = !C || !n && !_;
+      const s = u.r + u.l;
+      const c = u.t + u.b;
+      const r = {
+        [y]: t && !O ? -s : 0,
+        [S]: t ? -c : 0,
+        [w]: t && O ? -s : 0,
+        top: t ? -u.t : 0,
+        right: t ? O ? -u.r : "auto" : 0,
+        left: t ? O ? "auto" : -u.l : 0,
+        [$]: t && `calc(100% + ${s}px)`
+      };
+      const i = {
+        [v]: t ? u.t : 0,
+        [g]: t ? u.r : 0,
+        [b]: t ? u.b : 0,
+        [h]: t ? u.l : 0
+      };
+      setStyles(n || o, r);
+      setStyles(o, i);
+      assignDeep(e, {
+        rn: u,
+        fn: !t,
+        F: n ? i : assignDeep({}, r, i)
+      });
+    }
+    return {
+      _n: E
+    };
+  };
+};
+
+const createOverflowUpdateSegment = (t, s) => {
+  const e = getEnvironment();
+  const {vt: c, rn: r, L: i, V: a, Kt: u, gt: f, bt: _, yt: d, an: p} = t;
+  const {U: v} = e;
+  const g = _ && a;
+  const h = bind(o, 0);
+  const b = {
+    display: () => false,
+    direction: t => t !== "ltr",
+    flexDirection: t => t.endsWith("-reverse"),
+    writingMode: t => t !== "horizontal-tb"
+  };
+  const w = keys(b);
+  const y = {
+    i: equalWH,
+    o: {
+      w: 0,
+      h: 0
+    }
+  };
+  const S = {
+    i: equalXY,
+    o: {}
+  };
+  const setMeasuringMode = t => {
+    d(J, !g && t);
+  };
+  const getMeasuredScrollCoordinates = t => {
+    const n = w.some((n => {
+      const o = t[n];
+      return o && b[n](o);
+    }));
+    if (!n) {
+      return {
+        D: {
+          x: 0,
+          y: 0
+        },
+        M: {
+          x: 1,
+          y: 1
+        }
+      };
+    }
+    setMeasuringMode(true);
+    const o = getElementScroll(f);
+    const s = d(Q, true);
+    const e = addEventListener(u, E, (t => {
+      const n = getElementScroll(f);
+      if (t.isTrusted && n.x === o.x && n.y === o.y) {
+        stopPropagation(t);
+      }
+    }), {
+      T: true,
+      A: true
+    });
+    scrollElementTo(f, {
+      x: 0,
+      y: 0
+    });
+    s();
+    const c = getElementScroll(f);
+    const r = D(f);
+    scrollElementTo(f, {
+      x: r.w,
+      y: r.h
+    });
+    const i = getElementScroll(f);
+    scrollElementTo(f, {
+      x: i.x - c.x < 1 && -r.w,
+      y: i.y - c.y < 1 && -r.h
+    });
+    const a = getElementScroll(f);
+    scrollElementTo(f, o);
+    l((() => e()));
+    return {
+      D: c,
+      M: a
+    };
+  };
+  const getOverflowAmount = (t, o) => {
+    const s = n.devicePixelRatio % 1 !== 0 ? 1 : 0;
+    const e = {
+      w: h(t.w - o.w),
+      h: h(t.h - o.h)
+    };
+    return {
+      w: e.w > s ? e.w : 0,
+      h: e.h > s ? e.h : 0
+    };
+  };
+  const getViewportOverflowStyle = (t, n) => {
+    const getAxisOverflowStyle = (t, n, o, s) => {
+      const e = t === x ? H : overflowBehaviorToOverflowStyle(t);
+      const c = overflowIsVisible(t);
+      const r = overflowIsVisible(o);
+      if (!n && !s) {
+        return H;
+      }
+      if (c && r) {
+        return x;
+      }
+      if (c) {
+        const t = n ? x : H;
+        return n && s ? e : t;
+      }
+      const i = r && s ? x : H;
+      return n ? e : i;
+    };
+    return {
+      x: getAxisOverflowStyle(n.x, t.x, n.y, t.y),
+      y: getAxisOverflowStyle(n.y, t.y, n.x, t.x)
+    };
+  };
+  const setViewportOverflowStyle = t => {
+    const createAllOverflowStyleClassNames = t => [ x, H, E ].map((n => createViewportOverflowStyleClassName(overflowCssValueToOverflowStyle(n), t)));
+    const n = createAllOverflowStyleClassNames(true).concat(createAllOverflowStyleClassNames()).join(" ");
+    d(n);
+    d(keys(t).map((n => createViewportOverflowStyleClassName(t[n], n === "x"))).join(" "), true);
+  };
+  const [m, O] = createCache(y, bind(getFractionalSize, i));
+  const [$, C] = createCache(y, bind(D, i));
+  const [z, I] = createCache(y);
+  const [T] = createCache(S);
+  const [M, k] = createCache(y);
+  const [R] = createCache(S);
+  const [V] = createCache({
+    i: (t, n) => equal(t, n, w),
+    o: {}
+  }, (() => hasDimensions(i) ? getStyles(i, w) : {}));
+  const [L, U] = createCache({
+    i: (t, n) => equalXY(t.D, n.D) && equalXY(t.M, n.M),
+    o: getZeroScrollCoordinates()
+  });
+  const P = getStaticPluginModuleInstance(xt);
+  const createViewportOverflowStyleClassName = (t, n) => {
+    const o = n ? X : Y;
+    return `${o}${capitalizeFirstLetter(t)}`;
+  };
+  return ({zt: n, Qt: o, un: l, Tt: a}, {_n: u}) => {
+    const {_t: f, Ht: _, xt: b, $t: w, ft: y, Et: S} = o || {};
+    const x = P && P.R(t, s, l, e, n);
+    const {X: H, Y: E, W: D} = x || {};
+    const [q, F] = getShowNativeOverlaidScrollbars(n, e);
+    const [j, X] = n("overflow");
+    const Y = overflowIsVisible(j.x);
+    const W = overflowIsVisible(j.y);
+    const J = f || u || b || w || S || F;
+    let G = O(a);
+    let Q = C(a);
+    let tt = I(a);
+    let nt = k(a);
+    if (F && v) {
+      d(K, !q);
+    }
+    if (J) {
+      if (hasAttrClass(c, B, N)) {
+        setMeasuringMode(true);
+      }
+      const t = E && E();
+      const [n] = G = m(a);
+      const [o] = Q = $(a);
+      const s = A(i);
+      const e = g && getWindowSize(p());
+      const r = {
+        w: h(o.w + n.w),
+        h: h(o.h + n.h)
+      };
+      const l = {
+        w: h((e ? e.w : s.w + h(s.w - o.w)) + n.w),
+        h: h((e ? e.h : s.h + h(s.h - o.h)) + n.h)
+      };
+      if (t) {
+        t();
+      }
+      nt = M(l);
+      tt = z(getOverflowAmount(r, l), a);
+    }
+    const [ot, st] = nt;
+    const [et, ct] = tt;
+    const [rt, it] = Q;
+    const [lt, at] = G;
+    const [ut, ft] = T({
+      x: et.w > 0,
+      y: et.h > 0
+    });
+    const _t = Y && W && (ut.x || ut.y) || Y && ut.x && !ut.y || W && ut.y && !ut.x;
+    const dt = u || w || S || at || it || st || ct || X || F || J || _ && g;
+    const [pt, vt] = V(a);
+    const gt = w || y || vt || ft || a;
+    const [ht, bt] = gt ? L(getMeasuredScrollCoordinates(pt), a) : U();
+    let wt = getViewportOverflowStyle(ut, j);
+    setMeasuringMode(false);
+    if (dt) {
+      setViewportOverflowStyle(wt);
+      wt = getElementOverflowStyle(i, ut);
+      if (D && H) {
+        H(wt, rt, lt);
+        setStyles(i, D(wt));
+      }
+    }
+    const [yt, St] = R(wt);
+    addRemoveAttrClass(c, B, N, _t);
+    addRemoveAttrClass(r, Z, N, _t);
+    assignDeep(s, {
+      cn: yt,
+      Vt: {
+        x: ot.w,
+        y: ot.h
+      },
+      Rt: {
+        x: et.w,
+        y: et.h
+      },
+      j: ut,
+      Dt: sanitizeScrollCoordinates(ht, et)
+    });
+    return {
+      sn: St,
+      tn: st,
+      nn: ct,
+      en: bt || ct,
+      dn: gt
+    };
+  };
+};
+
+const createStructureSetup = t => {
+  const [n, o, s] = createStructureSetupElements(t);
+  const e = {
+    rn: {
+      t: 0,
+      r: 0,
+      b: 0,
+      l: 0
+    },
+    fn: false,
+    F: {
+      [y]: 0,
+      [S]: 0,
+      [w]: 0,
+      [v]: 0,
+      [g]: 0,
+      [b]: 0,
+      [h]: 0
+    },
+    Vt: {
+      x: 0,
+      y: 0
+    },
+    Rt: {
+      x: 0,
+      y: 0
+    },
+    cn: {
+      x: H,
+      y: H
+    },
+    j: {
+      x: false,
+      y: false
+    },
+    Dt: getZeroScrollCoordinates()
+  };
+  const {dt: c, gt: r, V: i, St: l} = n;
+  const {U: a, k: u} = getEnvironment();
+  const f = !a && (u.x || u.y);
+  const _ = [ createTrinsicUpdateSegment(n), createPaddingUpdateSegment(n, e), createOverflowUpdateSegment(n, e) ];
+  return [ o, t => {
+    const n = {};
+    const o = f;
+    const s = o && getElementScroll(r);
+    const e = s && l();
+    each(_, (o => {
+      assignDeep(n, o(t, n) || {});
+    }));
+    scrollElementTo(r, s);
+    if (e) {
+      e();
+    }
+    if (!i) {
+      scrollElementTo(c, 0);
+    }
+    return n;
+  }, e, n, s ];
+};
+
+const createSetups = (t, n, o, s, e) => {
+  let c = false;
+  const r = createOptionCheck(n, {});
+  const [i, l, a, u, f] = createStructureSetup(t);
+  const [_, d, p] = createObserversSetup(u, a, r, (t => {
+    update({}, t);
+  }));
+  const [v, g, , h] = createScrollbarsSetup(t, n, p, a, u, e);
+  const updateHintsAreTruthy = t => keys(t).some((n => !!t[n]));
+  const update = (t, e) => {
+    if (o()) {
+      return false;
+    }
+    const {pn: r, Tt: i, It: a, vn: u} = t;
+    const f = r || {};
+    const _ = !!i || !c;
+    const v = {
+      zt: createOptionCheck(n, f, _),
+      pn: f,
+      Tt: _
+    };
+    if (u) {
+      g(v);
+      return false;
+    }
+    const h = e || d(assignDeep({}, v, {
+      It: a
+    }));
+    const b = l(assignDeep({}, v, {
+      un: p,
+      Qt: h
+    }));
+    g(assignDeep({}, v, {
+      Qt: h,
+      Zt: b
+    }));
+    const w = updateHintsAreTruthy(h);
+    const y = updateHintsAreTruthy(b);
+    const S = w || y || !isEmptyObject(f) || _;
+    c = true;
+    if (S) {
+      s(t, {
+        Qt: h,
+        Zt: b
+      });
+    }
+    return S;
+  };
+  return [ () => {
+    const {ln: t, gt: n, St: o} = u;
+    const s = getElementScroll(t);
+    const e = [ _(), i(), v() ];
+    const c = o();
+    scrollElementTo(n, s);
+    c();
+    return bind(runEachAndClear, e);
+  }, update, () => ({
+    gn: p,
+    hn: a
+  }), {
+    bn: u,
+    wn: h
+  }, f ];
+};
+
+const Mt = new WeakMap;
+
+const addInstance = (t, n) => {
+  Mt.set(t, n);
+};
+
+const removeInstance = t => {
+  Mt.delete(t);
+};
+
+const getInstance = t => Mt.get(t);
+
+const OverlayScrollbars = (t, n, o) => {
+  const {tt: s} = getEnvironment();
+  const e = isHTMLElement(t);
+  const c = e ? t : t.target;
+  const r = getInstance(c);
+  if (n && !r) {
+    let r = false;
+    const i = [];
+    const l = {};
+    const validateOptions = t => {
+      const n = removeUndefinedProperties(t);
+      const o = getStaticPluginModuleInstance(R);
+      return o ? o(n, true) : n;
+    };
+    const a = assignDeep({}, s(), validateOptions(n));
+    const [u, f, _] = createEventListenerHub();
+    const [d, p, v] = createEventListenerHub(o);
+    const triggerEvent = (t, n) => {
+      v(t, n);
+      _(t, n);
+    };
+    const [g, h, b, w, y] = createSetups(t, a, (() => r), (({pn: t, Tt: n}, {Qt: o, Zt: s}) => {
+      const {_t: e, $t: c, Ct: r, xt: i, Ht: l, ft: a} = o;
+      const {tn: u, nn: f, sn: _, en: d} = s;
+      triggerEvent("updated", [ S, {
+        updateHints: {
+          sizeChanged: !!e,
+          directionChanged: !!c,
+          heightIntrinsicChanged: !!r,
+          overflowEdgeChanged: !!u,
+          overflowAmountChanged: !!f,
+          overflowStyleChanged: !!_,
+          scrollCoordinatesChanged: !!d,
+          contentMutation: !!i,
+          hostMutation: !!l,
+          appear: !!a
+        },
+        changedOptions: t || {},
+        force: !!n
+      } ]);
+    }), (t => triggerEvent("scroll", [ S, t ])));
+    const destroy = t => {
+      removeInstance(c);
+      runEachAndClear(i);
+      r = true;
+      triggerEvent("destroyed", [ S, t ]);
+      f();
+      p();
+    };
+    const S = {
+      options(t, n) {
+        if (t) {
+          const o = n ? s() : {};
+          const e = getOptionsDiff(a, assignDeep(o, validateOptions(t)));
+          if (!isEmptyObject(e)) {
+            assignDeep(a, e);
+            h({
+              pn: e
+            });
+          }
+        }
+        return assignDeep({}, a);
+      },
+      on: d,
+      off: (t, n) => {
+        if (t && n) {
+          p(t, n);
+        }
+      },
+      state() {
+        const {gn: t, hn: n} = b();
+        const {B: o} = t;
+        const {Vt: s, Rt: e, cn: c, j: i, rn: l, fn: a, Dt: u} = n;
+        return assignDeep({}, {
+          overflowEdge: s,
+          overflowAmount: e,
+          overflowStyle: c,
+          hasOverflow: i,
+          scrollCoordinates: {
+            start: u.D,
+            end: u.M
+          },
+          padding: l,
+          paddingAbsolute: a,
+          directionRTL: o,
+          destroyed: r
+        });
+      },
+      elements() {
+        const {dt: t, vt: n, rn: o, L: s, ht: e, gt: c, Kt: r} = w.bn;
+        const {jt: i, Jt: l} = w.wn;
+        const translateScrollbarStructure = t => {
+          const {Mt: n, Ut: o, Lt: s} = t;
+          return {
+            scrollbar: s,
+            track: o,
+            handle: n
+          };
+        };
+        const translateScrollbarsSetupElement = t => {
+          const {Xt: n, Yt: o} = t;
+          const s = translateScrollbarStructure(n[0]);
+          return assignDeep({}, s, {
+            clone: () => {
+              const t = translateScrollbarStructure(o());
+              h({
+                vn: true
+              });
+              return t;
+            }
+          });
+        };
+        return assignDeep({}, {
+          target: t,
+          host: n,
+          padding: o || s,
+          viewport: s,
+          content: e || s,
+          scrollOffsetElement: c,
+          scrollEventElement: r,
+          scrollbarHorizontal: translateScrollbarsSetupElement(i),
+          scrollbarVertical: translateScrollbarsSetupElement(l)
+        });
+      },
+      update: t => h({
+        Tt: t,
+        It: true
+      }),
+      destroy: bind(destroy, false),
+      plugin: t => l[keys(t)[0]]
+    };
+    push(i, [ y ]);
+    addInstance(c, S);
+    registerPluginModuleInstances(M, OverlayScrollbars, [ S, u, l ]);
+    if (cancelInitialization(w.bn.bt, !e && t.cancel)) {
+      destroy(true);
+      return S;
+    }
+    push(i, g());
+    triggerEvent("initialized", [ S ]);
+    S.update();
+    return S;
+  }
+  return r;
+};
+
+OverlayScrollbars.plugin = t => {
+  const n = isArray(t);
+  const o = n ? t : [ t ];
+  const s = o.map((t => registerPluginModuleInstances(t, OverlayScrollbars)[0]));
+  addPlugins(o);
+  return n ? s : s[0];
+};
+
+OverlayScrollbars.valid = t => {
+  const n = t && t.elements;
+  const o = isFunction(n) && n();
+  return isPlainObject(o) && !!getInstance(o.target);
+};
+
+OverlayScrollbars.env = () => {
+  const {P: t, k: n, U: o, J: s, ot: e, st: c, K: r, Z: i, tt: l, nt: a} = getEnvironment();
+  return assignDeep({}, {
+    scrollbarsSize: t,
+    scrollbarsOverlaid: n,
+    scrollbarsHiding: o,
+    scrollTimeline: s,
+    staticDefaultInitialization: e,
+    staticDefaultOptions: c,
+    getDefaultInitialization: r,
+    setDefaultInitialization: i,
+    getDefaultOptions: l,
+    setDefaultOptions: a
+  });
+};
+
+OverlayScrollbars.nonce = setNonce;
+
+OverlayScrollbars.trustedTypePolicy = setTrustedTypePolicy;
+
+
+//# sourceMappingURL=overlayscrollbars.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/photoswipe/dist/photoswipe-lightbox.esm.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/photoswipe/dist/photoswipe-lightbox.esm.js ***!
@@ -30470,6 +34311,1168 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
+/***/ "./node_modules/simplebar-core/dist/index.mjs":
+/*!****************************************************!*\
+  !*** ./node_modules/simplebar-core/dist/index.mjs ***!
+  \****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SimpleBarCore)
+/* harmony export */ });
+/* harmony import */ var lodash_es_debounce_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash-es/debounce.js */ "./node_modules/lodash-es/debounce.js");
+/* harmony import */ var lodash_es_throttle_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash-es/throttle.js */ "./node_modules/lodash-es/throttle.js");
+/**
+ * simplebar-core - v1.3.1
+ * Scrollbars, simpler.
+ * https://grsmto.github.io/simplebar/
+ *
+ * Made by Adrien Denat from a fork by Jonathan Nicol
+ * Under MIT License
+ */
+
+
+
+
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+function getElementWindow$1(element) {
+    if (!element ||
+        !element.ownerDocument ||
+        !element.ownerDocument.defaultView) {
+        return window;
+    }
+    return element.ownerDocument.defaultView;
+}
+function getElementDocument$1(element) {
+    if (!element || !element.ownerDocument) {
+        return document;
+    }
+    return element.ownerDocument;
+}
+// Helper function to retrieve options from element attributes
+var getOptions$1 = function (obj) {
+    var initialObj = {};
+    var options = Array.prototype.reduce.call(obj, function (acc, attribute) {
+        var option = attribute.name.match(/data-simplebar-(.+)/);
+        if (option) {
+            var key = option[1].replace(/\W+(.)/g, function (_, chr) { return chr.toUpperCase(); });
+            switch (attribute.value) {
+                case 'true':
+                    acc[key] = true;
+                    break;
+                case 'false':
+                    acc[key] = false;
+                    break;
+                case undefined:
+                    acc[key] = true;
+                    break;
+                default:
+                    acc[key] = attribute.value;
+            }
+        }
+        return acc;
+    }, initialObj);
+    return options;
+};
+function addClasses$1(el, classes) {
+    var _a;
+    if (!el)
+        return;
+    (_a = el.classList).add.apply(_a, classes.split(' '));
+}
+function removeClasses$1(el, classes) {
+    if (!el)
+        return;
+    classes.split(' ').forEach(function (className) {
+        el.classList.remove(className);
+    });
+}
+function classNamesToQuery$1(classNames) {
+    return ".".concat(classNames.split(' ').join('.'));
+}
+var canUseDOM = !!(typeof window !== 'undefined' &&
+    window.document &&
+    window.document.createElement);
+
+var helpers = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    addClasses: addClasses$1,
+    canUseDOM: canUseDOM,
+    classNamesToQuery: classNamesToQuery$1,
+    getElementDocument: getElementDocument$1,
+    getElementWindow: getElementWindow$1,
+    getOptions: getOptions$1,
+    removeClasses: removeClasses$1
+});
+
+var cachedScrollbarWidth = null;
+var cachedDevicePixelRatio = null;
+if (canUseDOM) {
+    window.addEventListener('resize', function () {
+        if (cachedDevicePixelRatio !== window.devicePixelRatio) {
+            cachedDevicePixelRatio = window.devicePixelRatio;
+            cachedScrollbarWidth = null;
+        }
+    });
+}
+function scrollbarWidth() {
+    if (cachedScrollbarWidth === null) {
+        if (typeof document === 'undefined') {
+            cachedScrollbarWidth = 0;
+            return cachedScrollbarWidth;
+        }
+        var body = document.body;
+        var box = document.createElement('div');
+        box.classList.add('simplebar-hide-scrollbar');
+        body.appendChild(box);
+        var width = box.getBoundingClientRect().right;
+        body.removeChild(box);
+        cachedScrollbarWidth = width;
+    }
+    return cachedScrollbarWidth;
+}
+
+var getElementWindow = getElementWindow$1, getElementDocument = getElementDocument$1, getOptions = getOptions$1, addClasses = addClasses$1, removeClasses = removeClasses$1, classNamesToQuery = classNamesToQuery$1;
+var SimpleBarCore = /** @class */ (function () {
+    function SimpleBarCore(element, options) {
+        if (options === void 0) { options = {}; }
+        var _this = this;
+        this.removePreventClickId = null;
+        this.minScrollbarWidth = 20;
+        this.stopScrollDelay = 175;
+        this.isScrolling = false;
+        this.isMouseEntering = false;
+        this.isDragging = false;
+        this.scrollXTicking = false;
+        this.scrollYTicking = false;
+        this.wrapperEl = null;
+        this.contentWrapperEl = null;
+        this.contentEl = null;
+        this.offsetEl = null;
+        this.maskEl = null;
+        this.placeholderEl = null;
+        this.heightAutoObserverWrapperEl = null;
+        this.heightAutoObserverEl = null;
+        this.rtlHelpers = null;
+        this.scrollbarWidth = 0;
+        this.resizeObserver = null;
+        this.mutationObserver = null;
+        this.elStyles = null;
+        this.isRtl = null;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.onMouseMove = function () { };
+        this.onWindowResize = function () { };
+        this.onStopScrolling = function () { };
+        this.onMouseEntered = function () { };
+        /**
+         * On scroll event handling
+         */
+        this.onScroll = function () {
+            var elWindow = getElementWindow(_this.el);
+            if (!_this.scrollXTicking) {
+                elWindow.requestAnimationFrame(_this.scrollX);
+                _this.scrollXTicking = true;
+            }
+            if (!_this.scrollYTicking) {
+                elWindow.requestAnimationFrame(_this.scrollY);
+                _this.scrollYTicking = true;
+            }
+            if (!_this.isScrolling) {
+                _this.isScrolling = true;
+                addClasses(_this.el, _this.classNames.scrolling);
+            }
+            _this.showScrollbar('x');
+            _this.showScrollbar('y');
+            _this.onStopScrolling();
+        };
+        this.scrollX = function () {
+            if (_this.axis.x.isOverflowing) {
+                _this.positionScrollbar('x');
+            }
+            _this.scrollXTicking = false;
+        };
+        this.scrollY = function () {
+            if (_this.axis.y.isOverflowing) {
+                _this.positionScrollbar('y');
+            }
+            _this.scrollYTicking = false;
+        };
+        this._onStopScrolling = function () {
+            removeClasses(_this.el, _this.classNames.scrolling);
+            if (_this.options.autoHide) {
+                _this.hideScrollbar('x');
+                _this.hideScrollbar('y');
+            }
+            _this.isScrolling = false;
+        };
+        this.onMouseEnter = function () {
+            if (!_this.isMouseEntering) {
+                addClasses(_this.el, _this.classNames.mouseEntered);
+                _this.showScrollbar('x');
+                _this.showScrollbar('y');
+                _this.isMouseEntering = true;
+            }
+            _this.onMouseEntered();
+        };
+        this._onMouseEntered = function () {
+            removeClasses(_this.el, _this.classNames.mouseEntered);
+            if (_this.options.autoHide) {
+                _this.hideScrollbar('x');
+                _this.hideScrollbar('y');
+            }
+            _this.isMouseEntering = false;
+        };
+        this._onMouseMove = function (e) {
+            _this.mouseX = e.clientX;
+            _this.mouseY = e.clientY;
+            if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) {
+                _this.onMouseMoveForAxis('x');
+            }
+            if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) {
+                _this.onMouseMoveForAxis('y');
+            }
+        };
+        this.onMouseLeave = function () {
+            _this.onMouseMove.cancel();
+            if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) {
+                _this.onMouseLeaveForAxis('x');
+            }
+            if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) {
+                _this.onMouseLeaveForAxis('y');
+            }
+            _this.mouseX = -1;
+            _this.mouseY = -1;
+        };
+        this._onWindowResize = function () {
+            // Recalculate scrollbarWidth in case it's a zoom
+            _this.scrollbarWidth = _this.getScrollbarWidth();
+            _this.hideNativeScrollbar();
+        };
+        this.onPointerEvent = function (e) {
+            if (!_this.axis.x.track.el ||
+                !_this.axis.y.track.el ||
+                !_this.axis.x.scrollbar.el ||
+                !_this.axis.y.scrollbar.el)
+                return;
+            var isWithinTrackXBounds, isWithinTrackYBounds;
+            _this.axis.x.track.rect = _this.axis.x.track.el.getBoundingClientRect();
+            _this.axis.y.track.rect = _this.axis.y.track.el.getBoundingClientRect();
+            if (_this.axis.x.isOverflowing || _this.axis.x.forceVisible) {
+                isWithinTrackXBounds = _this.isWithinBounds(_this.axis.x.track.rect);
+            }
+            if (_this.axis.y.isOverflowing || _this.axis.y.forceVisible) {
+                isWithinTrackYBounds = _this.isWithinBounds(_this.axis.y.track.rect);
+            }
+            // If any pointer event is called on the scrollbar
+            if (isWithinTrackXBounds || isWithinTrackYBounds) {
+                // Prevent event leaking
+                e.stopPropagation();
+                if (e.type === 'pointerdown' && e.pointerType !== 'touch') {
+                    if (isWithinTrackXBounds) {
+                        _this.axis.x.scrollbar.rect =
+                            _this.axis.x.scrollbar.el.getBoundingClientRect();
+                        if (_this.isWithinBounds(_this.axis.x.scrollbar.rect)) {
+                            _this.onDragStart(e, 'x');
+                        }
+                        else {
+                            _this.onTrackClick(e, 'x');
+                        }
+                    }
+                    if (isWithinTrackYBounds) {
+                        _this.axis.y.scrollbar.rect =
+                            _this.axis.y.scrollbar.el.getBoundingClientRect();
+                        if (_this.isWithinBounds(_this.axis.y.scrollbar.rect)) {
+                            _this.onDragStart(e, 'y');
+                        }
+                        else {
+                            _this.onTrackClick(e, 'y');
+                        }
+                    }
+                }
+            }
+        };
+        /**
+         * Drag scrollbar handle
+         */
+        this.drag = function (e) {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
+            if (!_this.draggedAxis || !_this.contentWrapperEl)
+                return;
+            var eventOffset;
+            var track = _this.axis[_this.draggedAxis].track;
+            var trackSize = (_b = (_a = track.rect) === null || _a === void 0 ? void 0 : _a[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _b !== void 0 ? _b : 0;
+            var scrollbar = _this.axis[_this.draggedAxis].scrollbar;
+            var contentSize = (_d = (_c = _this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c[_this.axis[_this.draggedAxis].scrollSizeAttr]) !== null && _d !== void 0 ? _d : 0;
+            var hostSize = parseInt((_f = (_e = _this.elStyles) === null || _e === void 0 ? void 0 : _e[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _f !== void 0 ? _f : '0px', 10);
+            e.preventDefault();
+            e.stopPropagation();
+            if (_this.draggedAxis === 'y') {
+                eventOffset = e.pageY;
+            }
+            else {
+                eventOffset = e.pageX;
+            }
+            // Calculate how far the user's mouse is from the top/left of the scrollbar (minus the dragOffset).
+            var dragPos = eventOffset -
+                ((_h = (_g = track.rect) === null || _g === void 0 ? void 0 : _g[_this.axis[_this.draggedAxis].offsetAttr]) !== null && _h !== void 0 ? _h : 0) -
+                _this.axis[_this.draggedAxis].dragOffset;
+            dragPos =
+                _this.draggedAxis === 'x' && _this.isRtl
+                    ? ((_k = (_j = track.rect) === null || _j === void 0 ? void 0 : _j[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _k !== void 0 ? _k : 0) -
+                        scrollbar.size -
+                        dragPos
+                    : dragPos;
+            // Convert the mouse position into a percentage of the scrollbar height/width.
+            var dragPerc = dragPos / (trackSize - scrollbar.size);
+            // Scroll the content by the same percentage.
+            var scrollPos = dragPerc * (contentSize - hostSize);
+            // Fix browsers inconsistency on RTL
+            if (_this.draggedAxis === 'x' && _this.isRtl) {
+                scrollPos = ((_l = SimpleBarCore.getRtlHelpers()) === null || _l === void 0 ? void 0 : _l.isScrollingToNegative)
+                    ? -scrollPos
+                    : scrollPos;
+            }
+            _this.contentWrapperEl[_this.axis[_this.draggedAxis].scrollOffsetAttr] =
+                scrollPos;
+        };
+        /**
+         * End scroll handle drag
+         */
+        this.onEndDrag = function (e) {
+            _this.isDragging = false;
+            var elDocument = getElementDocument(_this.el);
+            var elWindow = getElementWindow(_this.el);
+            e.preventDefault();
+            e.stopPropagation();
+            removeClasses(_this.el, _this.classNames.dragging);
+            _this.onStopScrolling();
+            elDocument.removeEventListener('mousemove', _this.drag, true);
+            elDocument.removeEventListener('mouseup', _this.onEndDrag, true);
+            _this.removePreventClickId = elWindow.setTimeout(function () {
+                // Remove these asynchronously so we still suppress click events
+                // generated simultaneously with mouseup.
+                elDocument.removeEventListener('click', _this.preventClick, true);
+                elDocument.removeEventListener('dblclick', _this.preventClick, true);
+                _this.removePreventClickId = null;
+            });
+        };
+        /**
+         * Handler to ignore click events during drag
+         */
+        this.preventClick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        };
+        this.el = element;
+        this.options = __assign(__assign({}, SimpleBarCore.defaultOptions), options);
+        this.classNames = __assign(__assign({}, SimpleBarCore.defaultOptions.classNames), options.classNames);
+        this.axis = {
+            x: {
+                scrollOffsetAttr: 'scrollLeft',
+                sizeAttr: 'width',
+                scrollSizeAttr: 'scrollWidth',
+                offsetSizeAttr: 'offsetWidth',
+                offsetAttr: 'left',
+                overflowAttr: 'overflowX',
+                dragOffset: 0,
+                isOverflowing: true,
+                forceVisible: false,
+                track: { size: null, el: null, rect: null, isVisible: false },
+                scrollbar: { size: null, el: null, rect: null, isVisible: false }
+            },
+            y: {
+                scrollOffsetAttr: 'scrollTop',
+                sizeAttr: 'height',
+                scrollSizeAttr: 'scrollHeight',
+                offsetSizeAttr: 'offsetHeight',
+                offsetAttr: 'top',
+                overflowAttr: 'overflowY',
+                dragOffset: 0,
+                isOverflowing: true,
+                forceVisible: false,
+                track: { size: null, el: null, rect: null, isVisible: false },
+                scrollbar: { size: null, el: null, rect: null, isVisible: false }
+            }
+        };
+        if (typeof this.el !== 'object' || !this.el.nodeName) {
+            throw new Error("Argument passed to SimpleBar must be an HTML element instead of ".concat(this.el));
+        }
+        this.onMouseMove = (0,lodash_es_throttle_js__WEBPACK_IMPORTED_MODULE_0__["default"])(this._onMouseMove, 64);
+        this.onWindowResize = (0,lodash_es_debounce_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this._onWindowResize, 64, { leading: true });
+        this.onStopScrolling = (0,lodash_es_debounce_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this._onStopScrolling, this.stopScrollDelay);
+        this.onMouseEntered = (0,lodash_es_debounce_js__WEBPACK_IMPORTED_MODULE_1__["default"])(this._onMouseEntered, this.stopScrollDelay);
+        this.init();
+    }
+    /**
+     * Helper to fix browsers inconsistency on RTL:
+     *  - Firefox inverts the scrollbar initial position
+     *  - IE11 inverts both scrollbar position and scrolling offset
+     * Directly inspired by @KingSora's OverlayScrollbars https://github.com/KingSora/OverlayScrollbars/blob/master/js/OverlayScrollbars.js#L1634
+     */
+    SimpleBarCore.getRtlHelpers = function () {
+        if (SimpleBarCore.rtlHelpers) {
+            return SimpleBarCore.rtlHelpers;
+        }
+        var dummyDiv = document.createElement('div');
+        dummyDiv.innerHTML =
+            '<div class="simplebar-dummy-scrollbar-size"><div></div></div>';
+        var scrollbarDummyEl = dummyDiv.firstElementChild;
+        var dummyChild = scrollbarDummyEl === null || scrollbarDummyEl === void 0 ? void 0 : scrollbarDummyEl.firstElementChild;
+        if (!dummyChild)
+            return null;
+        document.body.appendChild(scrollbarDummyEl);
+        scrollbarDummyEl.scrollLeft = 0;
+        var dummyContainerOffset = SimpleBarCore.getOffset(scrollbarDummyEl);
+        var dummyChildOffset = SimpleBarCore.getOffset(dummyChild);
+        scrollbarDummyEl.scrollLeft = -999;
+        var dummyChildOffsetAfterScroll = SimpleBarCore.getOffset(dummyChild);
+        document.body.removeChild(scrollbarDummyEl);
+        SimpleBarCore.rtlHelpers = {
+            // determines if the scrolling is responding with negative values
+            isScrollOriginAtZero: dummyContainerOffset.left !== dummyChildOffset.left,
+            // determines if the origin scrollbar position is inverted or not (positioned on left or right)
+            isScrollingToNegative: dummyChildOffset.left !== dummyChildOffsetAfterScroll.left
+        };
+        return SimpleBarCore.rtlHelpers;
+    };
+    SimpleBarCore.prototype.getScrollbarWidth = function () {
+        // Try/catch for FF 56 throwing on undefined computedStyles
+        try {
+            // Detect browsers supporting CSS scrollbar styling and do not calculate
+            if ((this.contentWrapperEl &&
+                getComputedStyle(this.contentWrapperEl, '::-webkit-scrollbar')
+                    .display === 'none') ||
+                'scrollbarWidth' in document.documentElement.style ||
+                '-ms-overflow-style' in document.documentElement.style) {
+                return 0;
+            }
+            else {
+                return scrollbarWidth();
+            }
+        }
+        catch (e) {
+            return scrollbarWidth();
+        }
+    };
+    SimpleBarCore.getOffset = function (el) {
+        var rect = el.getBoundingClientRect();
+        var elDocument = getElementDocument(el);
+        var elWindow = getElementWindow(el);
+        return {
+            top: rect.top +
+                (elWindow.pageYOffset || elDocument.documentElement.scrollTop),
+            left: rect.left +
+                (elWindow.pageXOffset || elDocument.documentElement.scrollLeft)
+        };
+    };
+    SimpleBarCore.prototype.init = function () {
+        // We stop here on server-side
+        if (canUseDOM) {
+            this.initDOM();
+            this.rtlHelpers = SimpleBarCore.getRtlHelpers();
+            this.scrollbarWidth = this.getScrollbarWidth();
+            this.recalculate();
+            this.initListeners();
+        }
+    };
+    SimpleBarCore.prototype.initDOM = function () {
+        var _a, _b;
+        // assume that element has his DOM already initiated
+        this.wrapperEl = this.el.querySelector(classNamesToQuery(this.classNames.wrapper));
+        this.contentWrapperEl =
+            this.options.scrollableNode ||
+                this.el.querySelector(classNamesToQuery(this.classNames.contentWrapper));
+        this.contentEl =
+            this.options.contentNode ||
+                this.el.querySelector(classNamesToQuery(this.classNames.contentEl));
+        this.offsetEl = this.el.querySelector(classNamesToQuery(this.classNames.offset));
+        this.maskEl = this.el.querySelector(classNamesToQuery(this.classNames.mask));
+        this.placeholderEl = this.findChild(this.wrapperEl, classNamesToQuery(this.classNames.placeholder));
+        this.heightAutoObserverWrapperEl = this.el.querySelector(classNamesToQuery(this.classNames.heightAutoObserverWrapperEl));
+        this.heightAutoObserverEl = this.el.querySelector(classNamesToQuery(this.classNames.heightAutoObserverEl));
+        this.axis.x.track.el = this.findChild(this.el, "".concat(classNamesToQuery(this.classNames.track)).concat(classNamesToQuery(this.classNames.horizontal)));
+        this.axis.y.track.el = this.findChild(this.el, "".concat(classNamesToQuery(this.classNames.track)).concat(classNamesToQuery(this.classNames.vertical)));
+        this.axis.x.scrollbar.el =
+            ((_a = this.axis.x.track.el) === null || _a === void 0 ? void 0 : _a.querySelector(classNamesToQuery(this.classNames.scrollbar))) || null;
+        this.axis.y.scrollbar.el =
+            ((_b = this.axis.y.track.el) === null || _b === void 0 ? void 0 : _b.querySelector(classNamesToQuery(this.classNames.scrollbar))) || null;
+        if (!this.options.autoHide) {
+            addClasses(this.axis.x.scrollbar.el, this.classNames.visible);
+            addClasses(this.axis.y.scrollbar.el, this.classNames.visible);
+        }
+    };
+    SimpleBarCore.prototype.initListeners = function () {
+        var _this = this;
+        var _a;
+        var elWindow = getElementWindow(this.el);
+        // Event listeners
+        this.el.addEventListener('mouseenter', this.onMouseEnter);
+        this.el.addEventListener('pointerdown', this.onPointerEvent, true);
+        this.el.addEventListener('mousemove', this.onMouseMove);
+        this.el.addEventListener('mouseleave', this.onMouseLeave);
+        (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.addEventListener('scroll', this.onScroll);
+        // Browser zoom triggers a window resize
+        elWindow.addEventListener('resize', this.onWindowResize);
+        if (!this.contentEl)
+            return;
+        if (window.ResizeObserver) {
+            // Hack for https://github.com/WICG/ResizeObserver/issues/38
+            var resizeObserverStarted_1 = false;
+            var resizeObserver = elWindow.ResizeObserver || ResizeObserver;
+            this.resizeObserver = new resizeObserver(function () {
+                if (!resizeObserverStarted_1)
+                    return;
+                elWindow.requestAnimationFrame(function () {
+                    _this.recalculate();
+                });
+            });
+            this.resizeObserver.observe(this.el);
+            this.resizeObserver.observe(this.contentEl);
+            elWindow.requestAnimationFrame(function () {
+                resizeObserverStarted_1 = true;
+            });
+        }
+        // This is required to detect horizontal scroll. Vertical scroll only needs the resizeObserver.
+        this.mutationObserver = new elWindow.MutationObserver(function () {
+            elWindow.requestAnimationFrame(function () {
+                _this.recalculate();
+            });
+        });
+        this.mutationObserver.observe(this.contentEl, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    };
+    SimpleBarCore.prototype.recalculate = function () {
+        if (!this.heightAutoObserverEl ||
+            !this.contentEl ||
+            !this.contentWrapperEl ||
+            !this.wrapperEl ||
+            !this.placeholderEl)
+            return;
+        var elWindow = getElementWindow(this.el);
+        this.elStyles = elWindow.getComputedStyle(this.el);
+        this.isRtl = this.elStyles.direction === 'rtl';
+        var contentElOffsetWidth = this.contentEl.offsetWidth;
+        var isHeightAuto = this.heightAutoObserverEl.offsetHeight <= 1;
+        var isWidthAuto = this.heightAutoObserverEl.offsetWidth <= 1 || contentElOffsetWidth > 0;
+        var contentWrapperElOffsetWidth = this.contentWrapperEl.offsetWidth;
+        var elOverflowX = this.elStyles.overflowX;
+        var elOverflowY = this.elStyles.overflowY;
+        this.contentEl.style.padding = "".concat(this.elStyles.paddingTop, " ").concat(this.elStyles.paddingRight, " ").concat(this.elStyles.paddingBottom, " ").concat(this.elStyles.paddingLeft);
+        this.wrapperEl.style.margin = "-".concat(this.elStyles.paddingTop, " -").concat(this.elStyles.paddingRight, " -").concat(this.elStyles.paddingBottom, " -").concat(this.elStyles.paddingLeft);
+        var contentElScrollHeight = this.contentEl.scrollHeight;
+        var contentElScrollWidth = this.contentEl.scrollWidth;
+        this.contentWrapperEl.style.height = isHeightAuto ? 'auto' : '100%';
+        // Determine placeholder size
+        this.placeholderEl.style.width = isWidthAuto
+            ? "".concat(contentElOffsetWidth || contentElScrollWidth, "px")
+            : 'auto';
+        this.placeholderEl.style.height = "".concat(contentElScrollHeight, "px");
+        var contentWrapperElOffsetHeight = this.contentWrapperEl.offsetHeight;
+        this.axis.x.isOverflowing =
+            contentElOffsetWidth !== 0 && contentElScrollWidth > contentElOffsetWidth;
+        this.axis.y.isOverflowing =
+            contentElScrollHeight > contentWrapperElOffsetHeight;
+        // Set isOverflowing to false if user explicitely set hidden overflow
+        this.axis.x.isOverflowing =
+            elOverflowX === 'hidden' ? false : this.axis.x.isOverflowing;
+        this.axis.y.isOverflowing =
+            elOverflowY === 'hidden' ? false : this.axis.y.isOverflowing;
+        this.axis.x.forceVisible =
+            this.options.forceVisible === 'x' || this.options.forceVisible === true;
+        this.axis.y.forceVisible =
+            this.options.forceVisible === 'y' || this.options.forceVisible === true;
+        this.hideNativeScrollbar();
+        // Set isOverflowing to false if scrollbar is not necessary (content is shorter than offset)
+        var offsetForXScrollbar = this.axis.x.isOverflowing
+            ? this.scrollbarWidth
+            : 0;
+        var offsetForYScrollbar = this.axis.y.isOverflowing
+            ? this.scrollbarWidth
+            : 0;
+        this.axis.x.isOverflowing =
+            this.axis.x.isOverflowing &&
+                contentElScrollWidth > contentWrapperElOffsetWidth - offsetForYScrollbar;
+        this.axis.y.isOverflowing =
+            this.axis.y.isOverflowing &&
+                contentElScrollHeight >
+                    contentWrapperElOffsetHeight - offsetForXScrollbar;
+        this.axis.x.scrollbar.size = this.getScrollbarSize('x');
+        this.axis.y.scrollbar.size = this.getScrollbarSize('y');
+        if (this.axis.x.scrollbar.el)
+            this.axis.x.scrollbar.el.style.width = "".concat(this.axis.x.scrollbar.size, "px");
+        if (this.axis.y.scrollbar.el)
+            this.axis.y.scrollbar.el.style.height = "".concat(this.axis.y.scrollbar.size, "px");
+        this.positionScrollbar('x');
+        this.positionScrollbar('y');
+        this.toggleTrackVisibility('x');
+        this.toggleTrackVisibility('y');
+    };
+    /**
+     * Calculate scrollbar size
+     */
+    SimpleBarCore.prototype.getScrollbarSize = function (axis) {
+        var _a, _b;
+        if (axis === void 0) { axis = 'y'; }
+        if (!this.axis[axis].isOverflowing || !this.contentEl) {
+            return 0;
+        }
+        var contentSize = this.contentEl[this.axis[axis].scrollSizeAttr];
+        var trackSize = (_b = (_a = this.axis[axis].track.el) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetSizeAttr]) !== null && _b !== void 0 ? _b : 0;
+        var scrollbarRatio = trackSize / contentSize;
+        var scrollbarSize;
+        // Calculate new height/position of drag handle.
+        scrollbarSize = Math.max(~~(scrollbarRatio * trackSize), this.options.scrollbarMinSize);
+        if (this.options.scrollbarMaxSize) {
+            scrollbarSize = Math.min(scrollbarSize, this.options.scrollbarMaxSize);
+        }
+        return scrollbarSize;
+    };
+    SimpleBarCore.prototype.positionScrollbar = function (axis) {
+        var _a, _b, _c;
+        if (axis === void 0) { axis = 'y'; }
+        var scrollbar = this.axis[axis].scrollbar;
+        if (!this.axis[axis].isOverflowing ||
+            !this.contentWrapperEl ||
+            !scrollbar.el ||
+            !this.elStyles) {
+            return;
+        }
+        var contentSize = this.contentWrapperEl[this.axis[axis].scrollSizeAttr];
+        var trackSize = ((_a = this.axis[axis].track.el) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetSizeAttr]) || 0;
+        var hostSize = parseInt(this.elStyles[this.axis[axis].sizeAttr], 10);
+        var scrollOffset = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
+        scrollOffset =
+            axis === 'x' &&
+                this.isRtl &&
+                ((_b = SimpleBarCore.getRtlHelpers()) === null || _b === void 0 ? void 0 : _b.isScrollOriginAtZero)
+                ? -scrollOffset
+                : scrollOffset;
+        if (axis === 'x' && this.isRtl) {
+            scrollOffset = ((_c = SimpleBarCore.getRtlHelpers()) === null || _c === void 0 ? void 0 : _c.isScrollingToNegative)
+                ? scrollOffset
+                : -scrollOffset;
+        }
+        var scrollPourcent = scrollOffset / (contentSize - hostSize);
+        var handleOffset = ~~((trackSize - scrollbar.size) * scrollPourcent);
+        handleOffset =
+            axis === 'x' && this.isRtl
+                ? -handleOffset + (trackSize - scrollbar.size)
+                : handleOffset;
+        scrollbar.el.style.transform =
+            axis === 'x'
+                ? "translate3d(".concat(handleOffset, "px, 0, 0)")
+                : "translate3d(0, ".concat(handleOffset, "px, 0)");
+    };
+    SimpleBarCore.prototype.toggleTrackVisibility = function (axis) {
+        if (axis === void 0) { axis = 'y'; }
+        var track = this.axis[axis].track.el;
+        var scrollbar = this.axis[axis].scrollbar.el;
+        if (!track || !scrollbar || !this.contentWrapperEl)
+            return;
+        if (this.axis[axis].isOverflowing || this.axis[axis].forceVisible) {
+            track.style.visibility = 'visible';
+            this.contentWrapperEl.style[this.axis[axis].overflowAttr] = 'scroll';
+            this.el.classList.add("".concat(this.classNames.scrollable, "-").concat(axis));
+        }
+        else {
+            track.style.visibility = 'hidden';
+            this.contentWrapperEl.style[this.axis[axis].overflowAttr] = 'hidden';
+            this.el.classList.remove("".concat(this.classNames.scrollable, "-").concat(axis));
+        }
+        // Even if forceVisible is enabled, scrollbar itself should be hidden
+        if (this.axis[axis].isOverflowing) {
+            scrollbar.style.display = 'block';
+        }
+        else {
+            scrollbar.style.display = 'none';
+        }
+    };
+    SimpleBarCore.prototype.showScrollbar = function (axis) {
+        if (axis === void 0) { axis = 'y'; }
+        if (this.axis[axis].isOverflowing && !this.axis[axis].scrollbar.isVisible) {
+            addClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
+            this.axis[axis].scrollbar.isVisible = true;
+        }
+    };
+    SimpleBarCore.prototype.hideScrollbar = function (axis) {
+        if (axis === void 0) { axis = 'y'; }
+        if (this.isDragging)
+            return;
+        if (this.axis[axis].isOverflowing && this.axis[axis].scrollbar.isVisible) {
+            removeClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
+            this.axis[axis].scrollbar.isVisible = false;
+        }
+    };
+    SimpleBarCore.prototype.hideNativeScrollbar = function () {
+        if (!this.offsetEl)
+            return;
+        this.offsetEl.style[this.isRtl ? 'left' : 'right'] =
+            this.axis.y.isOverflowing || this.axis.y.forceVisible
+                ? "-".concat(this.scrollbarWidth, "px")
+                : '0px';
+        this.offsetEl.style.bottom =
+            this.axis.x.isOverflowing || this.axis.x.forceVisible
+                ? "-".concat(this.scrollbarWidth, "px")
+                : '0px';
+    };
+    SimpleBarCore.prototype.onMouseMoveForAxis = function (axis) {
+        if (axis === void 0) { axis = 'y'; }
+        var currentAxis = this.axis[axis];
+        if (!currentAxis.track.el || !currentAxis.scrollbar.el)
+            return;
+        currentAxis.track.rect = currentAxis.track.el.getBoundingClientRect();
+        currentAxis.scrollbar.rect =
+            currentAxis.scrollbar.el.getBoundingClientRect();
+        if (this.isWithinBounds(currentAxis.track.rect)) {
+            this.showScrollbar(axis);
+            addClasses(currentAxis.track.el, this.classNames.hover);
+            if (this.isWithinBounds(currentAxis.scrollbar.rect)) {
+                addClasses(currentAxis.scrollbar.el, this.classNames.hover);
+            }
+            else {
+                removeClasses(currentAxis.scrollbar.el, this.classNames.hover);
+            }
+        }
+        else {
+            removeClasses(currentAxis.track.el, this.classNames.hover);
+            if (this.options.autoHide) {
+                this.hideScrollbar(axis);
+            }
+        }
+    };
+    SimpleBarCore.prototype.onMouseLeaveForAxis = function (axis) {
+        if (axis === void 0) { axis = 'y'; }
+        removeClasses(this.axis[axis].track.el, this.classNames.hover);
+        removeClasses(this.axis[axis].scrollbar.el, this.classNames.hover);
+        if (this.options.autoHide) {
+            this.hideScrollbar(axis);
+        }
+    };
+    /**
+     * on scrollbar handle drag movement starts
+     */
+    SimpleBarCore.prototype.onDragStart = function (e, axis) {
+        var _a;
+        if (axis === void 0) { axis = 'y'; }
+        this.isDragging = true;
+        var elDocument = getElementDocument(this.el);
+        var elWindow = getElementWindow(this.el);
+        var scrollbar = this.axis[axis].scrollbar;
+        // Measure how far the user's mouse is from the top of the scrollbar drag handle.
+        var eventOffset = axis === 'y' ? e.pageY : e.pageX;
+        this.axis[axis].dragOffset =
+            eventOffset - (((_a = scrollbar.rect) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetAttr]) || 0);
+        this.draggedAxis = axis;
+        addClasses(this.el, this.classNames.dragging);
+        elDocument.addEventListener('mousemove', this.drag, true);
+        elDocument.addEventListener('mouseup', this.onEndDrag, true);
+        if (this.removePreventClickId === null) {
+            elDocument.addEventListener('click', this.preventClick, true);
+            elDocument.addEventListener('dblclick', this.preventClick, true);
+        }
+        else {
+            elWindow.clearTimeout(this.removePreventClickId);
+            this.removePreventClickId = null;
+        }
+    };
+    SimpleBarCore.prototype.onTrackClick = function (e, axis) {
+        var _this = this;
+        var _a, _b, _c, _d;
+        if (axis === void 0) { axis = 'y'; }
+        var currentAxis = this.axis[axis];
+        if (!this.options.clickOnTrack ||
+            !currentAxis.scrollbar.el ||
+            !this.contentWrapperEl)
+            return;
+        // Preventing the event's default to trigger click underneath
+        e.preventDefault();
+        var elWindow = getElementWindow(this.el);
+        this.axis[axis].scrollbar.rect =
+            currentAxis.scrollbar.el.getBoundingClientRect();
+        var scrollbar = this.axis[axis].scrollbar;
+        var scrollbarOffset = (_b = (_a = scrollbar.rect) === null || _a === void 0 ? void 0 : _a[this.axis[axis].offsetAttr]) !== null && _b !== void 0 ? _b : 0;
+        var hostSize = parseInt((_d = (_c = this.elStyles) === null || _c === void 0 ? void 0 : _c[this.axis[axis].sizeAttr]) !== null && _d !== void 0 ? _d : '0px', 10);
+        var scrolled = this.contentWrapperEl[this.axis[axis].scrollOffsetAttr];
+        var t = axis === 'y'
+            ? this.mouseY - scrollbarOffset
+            : this.mouseX - scrollbarOffset;
+        var dir = t < 0 ? -1 : 1;
+        var scrollSize = dir === -1 ? scrolled - hostSize : scrolled + hostSize;
+        var speed = 40;
+        var scrollTo = function () {
+            if (!_this.contentWrapperEl)
+                return;
+            if (dir === -1) {
+                if (scrolled > scrollSize) {
+                    scrolled -= speed;
+                    _this.contentWrapperEl[_this.axis[axis].scrollOffsetAttr] = scrolled;
+                    elWindow.requestAnimationFrame(scrollTo);
+                }
+            }
+            else {
+                if (scrolled < scrollSize) {
+                    scrolled += speed;
+                    _this.contentWrapperEl[_this.axis[axis].scrollOffsetAttr] = scrolled;
+                    elWindow.requestAnimationFrame(scrollTo);
+                }
+            }
+        };
+        scrollTo();
+    };
+    /**
+     * Getter for content element
+     */
+    SimpleBarCore.prototype.getContentElement = function () {
+        return this.contentEl;
+    };
+    /**
+     * Getter for original scrolling element
+     */
+    SimpleBarCore.prototype.getScrollElement = function () {
+        return this.contentWrapperEl;
+    };
+    SimpleBarCore.prototype.removeListeners = function () {
+        var elWindow = getElementWindow(this.el);
+        // Event listeners
+        this.el.removeEventListener('mouseenter', this.onMouseEnter);
+        this.el.removeEventListener('pointerdown', this.onPointerEvent, true);
+        this.el.removeEventListener('mousemove', this.onMouseMove);
+        this.el.removeEventListener('mouseleave', this.onMouseLeave);
+        if (this.contentWrapperEl) {
+            this.contentWrapperEl.removeEventListener('scroll', this.onScroll);
+        }
+        elWindow.removeEventListener('resize', this.onWindowResize);
+        if (this.mutationObserver) {
+            this.mutationObserver.disconnect();
+        }
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+        }
+        // Cancel all debounced functions
+        this.onMouseMove.cancel();
+        this.onWindowResize.cancel();
+        this.onStopScrolling.cancel();
+        this.onMouseEntered.cancel();
+    };
+    /**
+     * Remove all listeners from DOM nodes
+     */
+    SimpleBarCore.prototype.unMount = function () {
+        this.removeListeners();
+    };
+    /**
+     * Check if mouse is within bounds
+     */
+    SimpleBarCore.prototype.isWithinBounds = function (bbox) {
+        return (this.mouseX >= bbox.left &&
+            this.mouseX <= bbox.left + bbox.width &&
+            this.mouseY >= bbox.top &&
+            this.mouseY <= bbox.top + bbox.height);
+    };
+    /**
+     * Find element children matches query
+     */
+    SimpleBarCore.prototype.findChild = function (el, query) {
+        var matches = el.matches ||
+            el.webkitMatchesSelector ||
+            el.mozMatchesSelector ||
+            el.msMatchesSelector;
+        return Array.prototype.filter.call(el.children, function (child) {
+            return matches.call(child, query);
+        })[0];
+    };
+    SimpleBarCore.rtlHelpers = null;
+    SimpleBarCore.defaultOptions = {
+        forceVisible: false,
+        clickOnTrack: true,
+        scrollbarMinSize: 25,
+        scrollbarMaxSize: 0,
+        ariaLabel: 'scrollable content',
+        tabIndex: 0,
+        classNames: {
+            contentEl: 'simplebar-content',
+            contentWrapper: 'simplebar-content-wrapper',
+            offset: 'simplebar-offset',
+            mask: 'simplebar-mask',
+            wrapper: 'simplebar-wrapper',
+            placeholder: 'simplebar-placeholder',
+            scrollbar: 'simplebar-scrollbar',
+            track: 'simplebar-track',
+            heightAutoObserverWrapperEl: 'simplebar-height-auto-observer-wrapper',
+            heightAutoObserverEl: 'simplebar-height-auto-observer',
+            visible: 'simplebar-visible',
+            horizontal: 'simplebar-horizontal',
+            vertical: 'simplebar-vertical',
+            hover: 'simplebar-hover',
+            dragging: 'simplebar-dragging',
+            scrolling: 'simplebar-scrolling',
+            scrollable: 'simplebar-scrollable',
+            mouseEntered: 'simplebar-mouse-entered'
+        },
+        scrollableNode: null,
+        contentNode: null,
+        autoHide: true
+    };
+    /**
+     * Static functions
+     */
+    SimpleBarCore.getOptions = getOptions;
+    SimpleBarCore.helpers = helpers;
+    return SimpleBarCore;
+}());
+
+
+//# sourceMappingURL=index.mjs.map
+
+
+/***/ }),
+
+/***/ "./node_modules/simplebar/dist/index.mjs":
+/*!***********************************************!*\
+  !*** ./node_modules/simplebar/dist/index.mjs ***!
+  \***********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SimpleBar)
+/* harmony export */ });
+/* harmony import */ var simplebar_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar-core */ "./node_modules/simplebar-core/dist/index.mjs");
+/**
+ * simplebar - v6.3.1
+ * Scrollbars, simpler.
+ * https://grsmto.github.io/simplebar/
+ *
+ * Made by Adrien Denat from a fork by Jonathan Nicol
+ * Under MIT License
+ */
+
+
+
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics = function(d, b) {
+    extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+    return extendStatics(d, b);
+};
+
+function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+    extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+var _a = simplebar_core__WEBPACK_IMPORTED_MODULE_0__["default"].helpers, getOptions = _a.getOptions, addClasses = _a.addClasses, canUseDOM = _a.canUseDOM;
+var SimpleBar = /** @class */ (function (_super) {
+    __extends(SimpleBar, _super);
+    function SimpleBar() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        var _this = _super.apply(this, args) || this;
+        // // Save a reference to the instance, so we know this DOM node has already been instancied
+        SimpleBar.instances.set(args[0], _this);
+        return _this;
+    }
+    SimpleBar.initDOMLoadedElements = function () {
+        document.removeEventListener('DOMContentLoaded', this.initDOMLoadedElements);
+        window.removeEventListener('load', this.initDOMLoadedElements);
+        Array.prototype.forEach.call(document.querySelectorAll('[data-simplebar]'), function (el) {
+            if (el.getAttribute('data-simplebar') !== 'init' &&
+                !SimpleBar.instances.has(el))
+                new SimpleBar(el, getOptions(el.attributes));
+        });
+    };
+    SimpleBar.removeObserver = function () {
+        var _a;
+        (_a = SimpleBar.globalObserver) === null || _a === void 0 ? void 0 : _a.disconnect();
+    };
+    SimpleBar.prototype.initDOM = function () {
+        var _this = this;
+        var _a, _b, _c;
+        // make sure this element doesn't have the elements yet
+        if (!Array.prototype.filter.call(this.el.children, function (child) {
+            return child.classList.contains(_this.classNames.wrapper);
+        }).length) {
+            // Prepare DOM
+            this.wrapperEl = document.createElement('div');
+            this.contentWrapperEl = document.createElement('div');
+            this.offsetEl = document.createElement('div');
+            this.maskEl = document.createElement('div');
+            this.contentEl = document.createElement('div');
+            this.placeholderEl = document.createElement('div');
+            this.heightAutoObserverWrapperEl = document.createElement('div');
+            this.heightAutoObserverEl = document.createElement('div');
+            addClasses(this.wrapperEl, this.classNames.wrapper);
+            addClasses(this.contentWrapperEl, this.classNames.contentWrapper);
+            addClasses(this.offsetEl, this.classNames.offset);
+            addClasses(this.maskEl, this.classNames.mask);
+            addClasses(this.contentEl, this.classNames.contentEl);
+            addClasses(this.placeholderEl, this.classNames.placeholder);
+            addClasses(this.heightAutoObserverWrapperEl, this.classNames.heightAutoObserverWrapperEl);
+            addClasses(this.heightAutoObserverEl, this.classNames.heightAutoObserverEl);
+            while (this.el.firstChild) {
+                this.contentEl.appendChild(this.el.firstChild);
+            }
+            this.contentWrapperEl.appendChild(this.contentEl);
+            this.offsetEl.appendChild(this.contentWrapperEl);
+            this.maskEl.appendChild(this.offsetEl);
+            this.heightAutoObserverWrapperEl.appendChild(this.heightAutoObserverEl);
+            this.wrapperEl.appendChild(this.heightAutoObserverWrapperEl);
+            this.wrapperEl.appendChild(this.maskEl);
+            this.wrapperEl.appendChild(this.placeholderEl);
+            this.el.appendChild(this.wrapperEl);
+            (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.setAttribute('tabindex', this.options.tabIndex.toString());
+            (_b = this.contentWrapperEl) === null || _b === void 0 ? void 0 : _b.setAttribute('role', 'region');
+            (_c = this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c.setAttribute('aria-label', this.options.ariaLabel);
+        }
+        if (!this.axis.x.track.el || !this.axis.y.track.el) {
+            var track = document.createElement('div');
+            var scrollbar = document.createElement('div');
+            addClasses(track, this.classNames.track);
+            addClasses(scrollbar, this.classNames.scrollbar);
+            track.appendChild(scrollbar);
+            this.axis.x.track.el = track.cloneNode(true);
+            addClasses(this.axis.x.track.el, this.classNames.horizontal);
+            this.axis.y.track.el = track.cloneNode(true);
+            addClasses(this.axis.y.track.el, this.classNames.vertical);
+            this.el.appendChild(this.axis.x.track.el);
+            this.el.appendChild(this.axis.y.track.el);
+        }
+        simplebar_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.initDOM.call(this);
+        this.el.setAttribute('data-simplebar', 'init');
+    };
+    SimpleBar.prototype.unMount = function () {
+        simplebar_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.unMount.call(this);
+        SimpleBar.instances["delete"](this.el);
+    };
+    SimpleBar.initHtmlApi = function () {
+        this.initDOMLoadedElements = this.initDOMLoadedElements.bind(this);
+        // MutationObserver is IE11+
+        if (typeof MutationObserver !== 'undefined') {
+            // Mutation observer to observe dynamically added elements
+            this.globalObserver = new MutationObserver(SimpleBar.handleMutations);
+            this.globalObserver.observe(document, { childList: true, subtree: true });
+        }
+        // Taken from jQuery `ready` function
+        // Instantiate elements already present on the page
+        if (document.readyState === 'complete' || // @ts-ignore: IE specific
+            (document.readyState !== 'loading' && !document.documentElement.doScroll)) {
+            // Handle it asynchronously to allow scripts the opportunity to delay init
+            window.setTimeout(this.initDOMLoadedElements);
+        }
+        else {
+            document.addEventListener('DOMContentLoaded', this.initDOMLoadedElements);
+            window.addEventListener('load', this.initDOMLoadedElements);
+        }
+    };
+    SimpleBar.handleMutations = function (mutations) {
+        mutations.forEach(function (mutation) {
+            mutation.addedNodes.forEach(function (addedNode) {
+                if (addedNode.nodeType === 1) {
+                    if (addedNode.hasAttribute('data-simplebar')) {
+                        !SimpleBar.instances.has(addedNode) &&
+                            document.documentElement.contains(addedNode) &&
+                            new SimpleBar(addedNode, getOptions(addedNode.attributes));
+                    }
+                    else {
+                        addedNode
+                            .querySelectorAll('[data-simplebar]')
+                            .forEach(function (el) {
+                            if (el.getAttribute('data-simplebar') !== 'init' &&
+                                !SimpleBar.instances.has(el) &&
+                                document.documentElement.contains(el))
+                                new SimpleBar(el, getOptions(el.attributes));
+                        });
+                    }
+                }
+            });
+            mutation.removedNodes.forEach(function (removedNode) {
+                var _a;
+                if (removedNode.nodeType === 1) {
+                    if (removedNode.getAttribute('data-simplebar') === 'init') {
+                        !document.documentElement.contains(removedNode) &&
+                            ((_a = SimpleBar.instances.get(removedNode)) === null || _a === void 0 ? void 0 : _a.unMount());
+                    }
+                    else {
+                        Array.prototype.forEach.call(removedNode.querySelectorAll('[data-simplebar="init"]'), function (el) {
+                            var _a;
+                            !document.documentElement.contains(el) &&
+                                ((_a = SimpleBar.instances.get(el)) === null || _a === void 0 ? void 0 : _a.unMount());
+                        });
+                    }
+                }
+            });
+        });
+    };
+    SimpleBar.instances = new WeakMap();
+    return SimpleBar;
+}(simplebar_core__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/**
+ * HTML API
+ * Called only in a browser env.
+ */
+if (canUseDOM) {
+    SimpleBar.initHtmlApi();
+}
+
+
+//# sourceMappingURL=index.mjs.map
+
+
+/***/ }),
+
 /***/ "./node_modules/slick-carousel/slick/slick.js":
 /*!****************************************************!*\
   !*** ./node_modules/slick-carousel/slick/slick.js ***!
@@ -33807,6 +38810,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins_Slick__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../plugins/Slick */ "./resources/js/plugins/Slick.js");
 /* harmony import */ var _ui_copy_link__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./ui/_copy-link */ "./resources/js/components/ui/_copy-link.js");
 /* harmony import */ var _ui_screens__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ui/_screens */ "./resources/js/components/ui/_screens.js");
+/* harmony import */ var _plugins_scroll_bar_init__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../plugins/_scroll-bar-init */ "./resources/js/plugins/_scroll-bar-init.js");
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
@@ -33814,6 +38818,7 @@ function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = 
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+
 
 
 
@@ -33886,6 +38891,7 @@ var Application = /*#__PURE__*/function () {
         (0,_plugins_Slick__WEBPACK_IMPORTED_MODULE_10__.initGallery)();
         t.loadMore();
         (0,_ui_screens__WEBPACK_IMPORTED_MODULE_12__.initScreensNav)();
+        (0,_plugins_scroll_bar_init__WEBPACK_IMPORTED_MODULE_13__.scrollBarInit)();
         _this2.showLoaderOnClick();
         _this2.linkListener();
         var form = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_7__["default"]('.form-js');
@@ -35018,6 +40024,94 @@ function showNotices() {
     showNotices(nextIndex);
   };
   jquery__WEBPACK_IMPORTED_MODULE_0___default().fancybox.open($item, args);
+}
+
+/***/ }),
+
+/***/ "./resources/js/plugins/_scroll-bar-init.js":
+/*!**************************************************!*\
+  !*** ./resources/js/plugins/_scroll-bar-init.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   scrollBarInit: () => (/* binding */ scrollBarInit)
+/* harmony export */ });
+/* harmony import */ var simplebar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simplebar */ "./node_modules/simplebar/dist/index.mjs");
+/* harmony import */ var overlayscrollbars__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! overlayscrollbars */ "./node_modules/overlayscrollbars/overlayscrollbars.mjs");
+/* harmony import */ var _components_utils_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/utils/_helpers */ "./resources/js/components/utils/_helpers.js");
+/* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+
+
+
+function scrollBarInit() {
+  OverlayScrollbarsInit();
+  $('.scrollbar-container').each(function () {
+    new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"](this, {
+      autoHide: false,
+      scrollbarMinSize: 50,
+      clickOnTrack: true
+    });
+  });
+}
+function OverlayScrollbarsInit() {
+  $('.scroll-box').each(function (index) {
+    var $t = $(this);
+    var sensitivity = $t.attr('data-scroll-sensitivity') || 1;
+    var decor = $t.attr('data-decor-text');
+    sensitivity = Number(sensitivity);
+    var osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_2__.OverlayScrollbars)(this, {
+      scrollbars: {
+        autoHide: 'leave'
+      }
+    });
+    var scrollEl = osInstance.elements().viewport;
+    var isDown = false;
+    var startX, startY, scrollLeft, scrollTop, decorID;
+    if (decor) {
+      decorID = 'lawyers-section-scrollbar-decor-' + index;
+      $t.append('<div id="' + decorID + '" class="lawyers-section-scrollbar-decor">' + decor + '</div>');
+      var $decorEl = _components_utils_helpers__WEBPACK_IMPORTED_MODULE_1__.$doc.find('#' + decorID);
+      $t.mousemove(function (e) {
+        var x = e.pageX;
+        var y = e.pageY;
+        var walkX = x - $t.offset().left;
+        var walkY = y - $t.offset().top;
+        $decorEl.css({
+          'left': walkX,
+          'top': walkY
+        });
+      });
+    }
+    scrollEl.addEventListener('mousedown', function (e) {
+      isDown = true;
+      scrollEl.classList.add('dragging');
+      startX = e.pageX;
+      startY = e.pageY;
+      scrollLeft = scrollEl.scrollLeft;
+      scrollTop = scrollEl.scrollTop;
+    });
+    scrollEl.addEventListener('mouseleave', function () {
+      isDown = false;
+      scrollEl.classList.remove('dragging');
+    });
+    scrollEl.addEventListener('mouseup', function () {
+      isDown = false;
+      scrollEl.classList.remove('dragging');
+    });
+    scrollEl.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX;
+      var y = e.pageY;
+      var walkX = x - startX;
+      var walkY = y - startY;
+      scrollEl.scrollLeft = scrollLeft - walkX * sensitivity;
+      scrollEl.scrollTop = scrollTop - walkY * sensitivity;
+    });
+  });
 }
 
 /***/ }),

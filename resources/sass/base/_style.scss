@@ -248,3 +248,33 @@ em, i {
     }
   }
 }
+
+.simplebar-scrollbar::before {
+  background-color: rgba(#151616, 0.2);
+}
+.simplebar-track.simplebar-vertical {
+  width: 10px;
+  right: -4rem;
+}
+.os-scrollbar-track {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30rem;background: rgba(21, 22, 22, 0.10);
+}
+.os-scrollbar-horizontal .os-scrollbar-handle{
+  border-radius: 0;
+  background-color: #393939;
+  opacity: 1;
+
+}
+
+
+.scroll-box {
+
+  overflow: auto;
+  user-select: none;
+  cursor: grab;
+}
+.dragging {
+  cursor: grabbing;
+}
