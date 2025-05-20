@@ -10,6 +10,12 @@
   transform: translateY(-50%);
   border-radius: 2rem 0rem 0rem 2rem;
   background: #F8F8F8;
+  @media (max-width: 1500px) {
+    padding: 3rem 1rem;
+  }
+  @media (max-width: 1300px) {
+    display: none;
+  }
 
   a {
     display: block;

@@ -266,6 +266,9 @@
       height: 0.6rem;
       border-radius: 50%;
       background-color: #BC3631;
+      @media (max-width: 450px) {
+        top: 8px;
+      }
     }
   }
 

@@ -34848,7 +34848,40 @@ var Slick = /*#__PURE__*/function () {
   return _createClass(Slick, [{
     key: "init",
     value: function init() {
-      this.gallerySliderInit();
+      this.affairsSlick();
+    }
+  }, {
+    key: "affairsSlick",
+    value: function affairsSlick() {
+      $(document).find('.affairs-slick').each(function () {
+        var $slider = $(this);
+        var param = {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+          adaptiveHeight: true,
+          responsive: [{
+            breakpoint: 1201,
+            settings: {
+              slidesToShow: 3
+            }
+          }, {
+            breakpoint: 901,
+            settings: {
+              slidesToShow: 2
+            }
+          }, {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1
+            }
+          }]
+        };
+        if ($slider.find('> *').length > 1) {
+          $slider.slick(param);
+        }
+      });
     }
   }, {
     key: "gallerySliderInit",
@@ -34905,7 +34938,7 @@ var Slick = /*#__PURE__*/function () {
     key: "gallerySliderRefresh",
     value: function gallerySliderRefresh() {
       $(window).on('load', function () {
-        $(document).find('.single-gallery.slick-slider').each(function () {
+        $(document).find('.affairs-slick.slick-slider').each(function () {
           $(this).slick('refresh');
         });
       });
