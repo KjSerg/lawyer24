@@ -39855,6 +39855,7 @@ var Slick = /*#__PURE__*/function () {
     key: "init",
     value: function init() {
       this.affairsSlick();
+      this.lawyersInit();
     }
   }, {
     key: "affairsSlick",
@@ -39882,6 +39883,27 @@ var Slick = /*#__PURE__*/function () {
             settings: {
               slidesToShow: 1
             }
+          }]
+        };
+        if ($slider.find('> *').length > 1) {
+          $slider.slick(param);
+        }
+      });
+    }
+  }, {
+    key: "lawyersInit",
+    value: function lawyersInit() {
+      $(document).find('.lawyers-list-slick').each(function () {
+        var $slider = $(this);
+        var param = {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          mobileFirst: true,
+          dots: true,
+          responsive: [{
+            breakpoint: 768,
+            settings: 'unslick' // Знищує слайдер при ширині 768px і більше
           }]
         };
         if ($slider.find('> *').length > 1) {

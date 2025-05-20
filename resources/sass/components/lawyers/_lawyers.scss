@@ -1,8 +1,16 @@
 .lawyers {
+  &__button{
+    @media (max-width: 450px){
+      width: 100%;
+    }
+  }
   &-section{
     &-scrollbar {
       position: relative;
       padding-bottom:  3rem;
+      @media (max-width: 767px){
+        display: none;
+      }
       &-decor{
         opacity: 0;
         position: absolute;
@@ -37,6 +45,12 @@
   &-list {
     display: flex;
     gap: 5rem;
+    &-slick{
+      display: none;
+      @media (max-width: 767px){
+        display: block;
+      }
+    }
     @media (max-width: 767px){
       gap: 2rem;
     }
@@ -62,6 +76,7 @@
         height: 70rem;
       }
 
+
       &__img {
         width: 100%;
         height: 100%;
@@ -73,6 +88,13 @@
 
       &-description {
         width: calc(100% - 49.6rem);
+        margin: 5rem;
+        color: #151616;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 2.6rem;
+
         @media (max-width: 1600px){
           width: calc(100% - 60rem);
         }
@@ -82,19 +104,26 @@
         @media (max-width: 900px){
           width: calc(100% - 48rem);
         }
-
         @media (max-width: 767px){
           width: 84%;
           height: calc(100% - 40rem);
         }
-        margin: 5rem;
-        color: #151616;
-        font-size: 1.6rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 2.6rem;
         @media (max-width: 1050px){
           margin: 2rem;
+        }
+        @media (max-width: 450px){
+          width: 85%;
+          height: calc(100% - 43rem);
+          margin: 1.6rem;
+          font-size: 1.4rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 2.4rem;
+        }
+
+        @media (max-width: 400px){
+
+          width: 82%;
         }
         &:not(.scrollbar-container) > *:not(:last-child){
           margin-bottom: 1rem;
@@ -125,6 +154,11 @@
         @media (max-width: 767px){
           height: 36rem;
         }
+
+        @media (max-width: 450px){
+          width: 100%;
+          height: 39rem;border-radius: 2rem;
+        }
         &__head{
           position: absolute;
           right: 2.4rem;
@@ -143,11 +177,26 @@
             top:  1rem;
             right: 1rem;
           }
+
+          @media (max-width: 450px){
+            font-size: 1.2rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.8rem;
+          }
           strong{
             display: block;
             margin-bottom: 1rem;
             font-size: 3.6rem;
             font-weight: 500;
+            @media (max-width: 450px){
+
+              margin-bottom: 0;font-size: 2.6rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 3.6rem;
+
+            }
           }
         }
         &__footer{
@@ -167,9 +216,22 @@
             bottom: 1rem;
             left: 1rem;
           }
+
+          @media (max-width: 450px){
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 2.4rem;
+          }
           strong{
             display: block;
             font-size: 2rem;
+            @media (max-width: 450px){
+              font-size: 1.6rem;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 2.6rem;
+            }
           }
         }
       }

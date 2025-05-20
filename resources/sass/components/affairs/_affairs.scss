@@ -1,4 +1,9 @@
 .affairs {
+  &__button{
+    @media (max-width: 450px){
+      width: 100%;
+    }
+  }
   &-list {
 
     &:not(.slick-slider) {

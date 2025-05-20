@@ -20,6 +20,7 @@ export default class Slick {
 
     init() {
         this.affairsSlick();
+        this.lawyersInit();
     }
 
     affairsSlick() {
@@ -56,9 +57,30 @@ export default class Slick {
                 $slider.slick(param);
             }
         });
-
     }
 
+
+    lawyersInit(){
+        $(document).find('.lawyers-list-slick').each(function () {
+            const $slider = $(this);
+            const param = {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                mobileFirst: true,
+                dots: true,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: 'unslick' // Знищує слайдер при ширині 768px і більше
+                    }
+                ]
+            };
+            if ($slider.find('> *').length > 1) {
+                $slider.slick(param);
+            }
+        });
+    }
 
     gallerySliderInit() {
         $(document).find('.single-gallery').each(function () {
