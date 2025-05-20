@@ -40046,8 +40046,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var osInstances = new Map();
+function isMobile() {
+  return window.innerWidth < 768;
+}
 function scrollBarInit() {
   OverlayScrollbarsInit();
+  $(window).on('resize', function () {
+    OverlayScrollbarsInit();
+  });
   $('.scrollbar-container').each(function () {
     new simplebar__WEBPACK_IMPORTED_MODULE_0__["default"](this, {
       autoHide: false,
@@ -40059,29 +40066,45 @@ function scrollBarInit() {
 function OverlayScrollbarsInit() {
   $('.scroll-box').each(function (index) {
     var $t = $(this);
-    var sensitivity = $t.attr('data-scroll-sensitivity') || 1;
+    var id = $t.attr('id') || 'scroll-box-' + index;
+
+    // Якщо інстанс існує — знищити
+    var existingInstance = osInstances.get(id);
+    if (existingInstance) {
+      $t.removeClass('OverlayScrollbars-init');
+      existingInstance.destroy();
+      osInstances["delete"](id);
+      _components_utils_helpers__WEBPACK_IMPORTED_MODULE_1__.$doc.find('.lawyers-section-scrollbar-decor').remove();
+    }
+    if (isMobile()) {
+      // Не ініціалізуємо на мобільному
+      return;
+    }
+    var sensitivity = Number($t.attr('data-scroll-sensitivity') || 1);
     var decor = $t.attr('data-decor-text');
-    sensitivity = Number(sensitivity);
     var osInstance = (0,overlayscrollbars__WEBPACK_IMPORTED_MODULE_2__.OverlayScrollbars)(this, {
       scrollbars: {
         autoHide: 'leave'
       }
     });
+    osInstances.set(id, osInstance);
+    $t.addClass('OverlayScrollbars-init');
     var scrollEl = osInstance.elements().viewport;
     var isDown = false;
     var startX, startY, scrollLeft, scrollTop, decorID;
     if (decor) {
       decorID = 'lawyers-section-scrollbar-decor-' + index;
-      $t.append('<div id="' + decorID + '" class="lawyers-section-scrollbar-decor">' + decor + '</div>');
-      var $decorEl = _components_utils_helpers__WEBPACK_IMPORTED_MODULE_1__.$doc.find('#' + decorID);
+      var $decorEl = $('#' + decorID);
+      if ($decorEl.length === 0) {
+        $t.append('<div id="' + decorID + '" class="lawyers-section-scrollbar-decor">' + decor + '</div>');
+        $decorEl = $('#' + decorID);
+      }
       $t.mousemove(function (e) {
-        var x = e.pageX;
-        var y = e.pageY;
-        var walkX = x - $t.offset().left;
-        var walkY = y - $t.offset().top;
+        var x = e.pageX - $t.offset().left;
+        var y = e.pageY - $t.offset().top;
         $decorEl.css({
-          'left': walkX,
-          'top': walkY
+          left: x,
+          top: y
         });
       });
     }

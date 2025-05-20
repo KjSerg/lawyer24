@@ -37,7 +37,9 @@
   &-list {
     display: flex;
     gap: 5rem;
-
+    @media (max-width: 767px){
+      gap: 2rem;
+    }
     &-item {
       display: flex;
       height: 52.2rem;
@@ -53,7 +55,12 @@
       @media (max-width: 1024px){
         border-radius: 1rem;
       }
-
+      @media (max-width: 767px){
+        flex-direction: column;
+        max-width: 40rem;
+        margin: 0 auto;
+        height: 70rem;
+      }
 
       &__img {
         width: 100%;
@@ -74,6 +81,11 @@
         }
         @media (max-width: 900px){
           width: calc(100% - 48rem);
+        }
+
+        @media (max-width: 767px){
+          width: 84%;
+          height: calc(100% - 40rem);
         }
         margin: 5rem;
         color: #151616;
@@ -109,6 +121,9 @@
         overflow: hidden;
         @media (max-width: 900px){
           width: 40rem;
+        }
+        @media (max-width: 767px){
+          height: 36rem;
         }
         &__head{
           position: absolute;
