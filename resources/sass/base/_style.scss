@@ -283,7 +283,7 @@ em, i {
   user-select: none;
   cursor: grab;
   overflow: auto;
-  @media (max-width: 767px){
+  @media (max-width: 767px) {
     overflow: visible;
   }
 }
@@ -291,6 +291,42 @@ em, i {
 .dragging {
   cursor: grabbing;
 }
-.slick-slide{
+
+.slick-slide {
   height: auto;
+}
+
+.slick {
+  &-controls {
+    display: flex;
+    gap: 2rem;
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 6rem;
+      height: 6rem;
+      padding: 2rem;
+      border-radius: 50%;
+      border: 1px solid rgba(21, 22, 22, 0.20);
+      background: #F8F8F8;
+
+      svg {
+        path {
+          stroke: #878787;
+        }
+      }
+
+      &:hover {
+        background: #BC3631;
+        border-color: #BC3631;
+
+        svg {
+          path {
+            stroke: #ffffff;
+          }
+        }
+      }
+    }
+  }
 }

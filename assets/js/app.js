@@ -39856,6 +39856,7 @@ var Slick = /*#__PURE__*/function () {
     value: function init() {
       this.affairsSlick();
       this.lawyersInit();
+      this.reviewsSlick();
     }
   }, {
     key: "affairsSlick",
@@ -39868,6 +39869,43 @@ var Slick = /*#__PURE__*/function () {
           arrows: false,
           dots: true,
           adaptiveHeight: true,
+          responsive: [{
+            breakpoint: 1201,
+            settings: {
+              slidesToShow: 3
+            }
+          }, {
+            breakpoint: 901,
+            settings: {
+              slidesToShow: 2
+            }
+          }, {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1
+            }
+          }]
+        };
+        if ($slider.find('> *').length > 1) {
+          $slider.slick(param);
+        }
+      });
+    }
+  }, {
+    key: "reviewsSlick",
+    value: function reviewsSlick() {
+      $(document).find('.reviews-slider').each(function () {
+        var $slider = $(this);
+        var $section = $slider.closest('section');
+        var $prev = $section.find('.slick__prev');
+        var $next = $section.find('.slick__next');
+        var param = {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          arrows: true,
+          prevArrow: $prev,
+          nextArrow: $next,
+          dots: false,
           responsive: [{
             breakpoint: 1201,
             settings: {
