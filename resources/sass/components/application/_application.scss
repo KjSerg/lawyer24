@@ -1,0 +1,84 @@
+.application {
+  &-form-wrap{
+    @media (max-width: 1400px) {
+      width: 100%;
+    }
+    @media (max-width: 992px) {
+      max-width: 100%;
+    }
+    @media (max-width: 767px) {
+      max-width: 42rem;
+    }
+    button{
+      background-color: #151616;
+    }
+  }
+  &-section {
+    &-image{
+      padding-right: calc((100vw - 153rem) / 2);
+      @media (max-width: 1600px) {
+        padding-right: calc(50vw - 73.5rem);
+
+      }
+      @media (max-width: 1350px) {
+        padding-right: 1.6rem;
+
+      }
+
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      width: 50%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      @media (max-width: 767px) {
+        width: 100%;
+        padding: 3rem;
+        padding-bottom: 0;
+      }
+      &__box{
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 59.58rem;
+        height: 77.3rem;
+        @media (max-width: 767px) {
+          width: 23.6622rem;
+          height: 30.7rem;
+        }
+      }
+    }
+    &-box{
+      padding-left: calc((100vw - 153rem) / 2);
+      @media (max-width: 1600px) {
+        padding-left: calc(50vw - 73.5rem);
+      }
+      @media (max-width: 1400px) {
+        padding-right: 1.6rem;
+      }
+      @media (max-width: 1350px) {
+        padding-left: 1.6rem;
+
+      }
+      display: flex;
+      align-items: center;
+      width: 50%;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      @media (max-width: 767px) {
+        justify-content: center;
+        width: 100%;
+        padding: 3.2rem 1.6rem;
+      }
+    }
+    &-container{
+      display: flex;
+      @media (max-width: 767px) {
+        flex-direction: column;
+      }
+    }
+  }
+}

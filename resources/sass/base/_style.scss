@@ -79,6 +79,15 @@ main.content {
       @media (max-width: 992px) {
         display: none;
       }
+      &--hide-on-mobile{
+
+        @media (max-width: 992px) {
+          display: block;
+        }
+        @media (max-width: 767px) {
+          display: none;
+        }
+      }
     }
 
     &-subtitle {

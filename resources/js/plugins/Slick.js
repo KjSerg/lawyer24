@@ -88,7 +88,8 @@ export default class Slick {
                     {
                         breakpoint: 768,
                         settings: {
-                            slidesToShow: 1
+                            slidesToShow: 1,
+                            dots: true,
                         }
                     }
                 ]
