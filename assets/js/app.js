@@ -39909,7 +39909,7 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 var initGallery = function initGallery() {
   var lightbox = new photoswipe_lightbox__WEBPACK_IMPORTED_MODULE_1__["default"]({
-    gallery: '.single-gallery',
+    gallery: '.gallery-lightbox',
     children: 'a',
     showHideAnimationType: 'fade',
     pswpModule: photoswipe__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -39928,6 +39928,7 @@ var Slick = /*#__PURE__*/function () {
       this.lawyersInit();
       this.reviewsSlick();
       this.locationsSlidersInit();
+      this.achievementInit();
     }
   }, {
     key: "affairsSlick",
@@ -40061,6 +40062,32 @@ var Slick = /*#__PURE__*/function () {
             breakpoint: 768,
             settings: 'unslick' // Знищує слайдер при ширині 768px і більше
           }]
+        };
+        if ($slider.find('> *').length > 1) {
+          $slider.slick(param);
+        }
+      });
+    }
+  }, {
+    key: "achievementInit",
+    value: function achievementInit() {
+      $(document).find('.achievement-gallery').each(function () {
+        var $slider = $(this);
+        var $section = $slider.closest('section');
+        var $prev = $section.find('.slick__prev');
+        var $next = $section.find('.slick__next');
+        var param = {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          centerMode: true,
+          dots: true,
+          arrows: true,
+          prevArrow: $prev,
+          nextArrow: $next,
+          accessibility: true,
+          autoplay: false,
+          infinite: true,
+          responsive: []
         };
         if ($slider.find('> *').length > 1) {
           $slider.slick(param);

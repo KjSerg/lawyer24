@@ -6,7 +6,7 @@ import PhotoSwipe from 'photoswipe';
 
 export const initGallery = () => {
     const lightbox = new PhotoSwipeLightbox({
-        gallery: '.single-gallery',
+        gallery: '.gallery-lightbox',
         children: 'a', showHideAnimationType: 'fade',
         pswpModule: PhotoSwipe
     });
@@ -23,6 +23,7 @@ export default class Slick {
         this.lawyersInit();
         this.reviewsSlick();
         this.locationsSlidersInit();
+        this.achievementInit();
     }
 
     affairsSlick() {
@@ -167,6 +168,33 @@ export default class Slick {
                         breakpoint: 768,
                         settings: 'unslick' // Знищує слайдер при ширині 768px і більше
                     }
+                ]
+            };
+            if ($slider.find('> *').length > 1) {
+                $slider.slick(param);
+            }
+        });
+    }
+
+    achievementInit() {
+        $(document).find('.achievement-gallery').each(function () {
+            const $slider = $(this);
+            const $section = $slider.closest('section');
+            const $prev = $section.find('.slick__prev');
+            const $next = $section.find('.slick__next');
+            const param = {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true,
+                dots: true,
+                arrows: true,
+                prevArrow: $prev,
+                nextArrow: $next,
+                accessibility: true,
+                autoplay: false,
+                infinite: true,
+                responsive: [
+
                 ]
             };
             if ($slider.find('> *').length > 1) {

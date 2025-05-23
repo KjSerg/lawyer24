@@ -1,0 +1,22 @@
+.achievement {
+  &-gallery {
+    .slick-slide{
+      transition: 0.4s ease-in-out;
+      will-change: transform;
+      &.slick-active{
+        transform: scale(0.6);
+      }
+      &.slick-center{
+        transform: scale(1);
+      }
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 56rem;
+      max-height: 56rem;
+    }
+  }
+}
