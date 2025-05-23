@@ -1,15 +1,21 @@
 {
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
+    "/assets/img/application-bg.jpg": "/assets/img/application-bg.jpg",
+    "/assets/img/application-section-box-background.png": "/assets/img/application-section-box-background.png",
     "/assets/img/arrow-left.svg": "/assets/img/arrow-left.svg",
     "/assets/img/arrow-right.svg": "/assets/img/arrow-right.svg",
     "/assets/img/ArrowIcon.svg": "/assets/img/ArrowIcon.svg",
+    "/assets/img/ArticleImage.png": "/assets/img/ArticleImage.png",
+    "/assets/img/clock.svg": "/assets/img/clock.svg",
+    "/assets/img/close.svg": "/assets/img/close.svg",
     "/assets/img/fi_1241017.svg": "/assets/img/fi_1241017.svg",
     "/assets/img/fi_1944502.svg": "/assets/img/fi_1944502.svg",
     "/assets/img/fi_2190505.svg": "/assets/img/fi_2190505.svg",
     "/assets/img/fi_2564766.svg": "/assets/img/fi_2564766.svg",
     "/assets/img/fi_9918743.png": "/assets/img/fi_9918743.png",
     "/assets/img/form-bg.png": "/assets/img/form-bg.png",
+    "/assets/img/heroimage.png": "/assets/img/heroimage.png",
     "/assets/img/Image (1).png": "/assets/img/Image (1).png",
     "/assets/img/Image (2).png": "/assets/img/Image (2).png",
     "/assets/img/Image.png": "/assets/img/Image.png",
@@ -23,9 +29,5 @@
     "/assets/img/Profile Image.png": "/assets/img/Profile Image.png",
     "/assets/img/reviewer-image.png": "/assets/img/reviewer-image.png",
     "/assets/img/Reviewerimage.png": "/assets/img/Reviewerimage.png",
-    "/assets/img/application-bg.jpg": "/assets/img/application-bg.jpg",
-    "/assets/img/application-section-box-background.png": "/assets/img/application-section-box-background.png",
-    "/assets/img/heroimage.png": "/assets/img/heroimage.png",
-    "/assets/img/ArticleImage.png": "/assets/img/ArticleImage.png",
-    "/assets/img/clock.svg": "/assets/img/clock.svg"
+    "/assets/img/Ukrane.svg": "/assets/img/Ukrane.svg"
 }

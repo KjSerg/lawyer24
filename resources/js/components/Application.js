@@ -1,4 +1,4 @@
-import {detectBrowser, hidePreloader, isHorizontal, isMobile, showPreloader} from "./utils/_helpers";
+import {$doc, detectBrowser, hidePreloader, isHorizontal, isMobile, showPreloader} from "./utils/_helpers";
 import {burger} from "./ui/_burger";
 import {accordion} from "./ui/_accardion";
 import {numberInput} from "./forms/_number-input";
@@ -8,7 +8,7 @@ import {selectrickInit} from "../plugins/_selectric-init";
 import FormHandler from "./forms/FormHandler";
 import {toggler} from "./ui/_togglers";
 import {tabs} from "./ui/_tabs";
-import Slick, {initGallery} from "../plugins/Slick";
+import Slick, {initGallery, sliderRefresh} from "../plugins/Slick";
 import {copyLink} from "./ui/_copy-link";
 import {initScreensNav} from "./ui/_screens";
 import {scrollBarInit} from "../plugins/_scroll-bar-init";
@@ -73,6 +73,7 @@ export default class Application {
             scrollBarInit();
             this.showLoaderOnClick();
             this.linkListener();
+            this.mapInit();
             const form = new FormHandler('.form-js');
             const slick = new Slick();
             slick.gallerySliderRefresh();
@@ -146,5 +147,72 @@ export default class Application {
         });
     }
 
+    mapInit() {
+        $doc.on('click', '.locations-map-window__close', function (e) {
+            e.preventDefault();
+            const $this = $(this);
+            const $locations = $this.closest('.locations-map');
+            const $videoIframes = $this.closest('.locations-map-window').find('iframe');
+            $locations.find('.locations-map-window').removeClass('active');
+            $locations.find('[data-area]').removeClass('current');
+            if ($videoIframes.length === 0) return;
+            $videoIframes.each(function () {
+                const $videoIframe = $(this);
+                const src = $videoIframe.attr('src');
+                if (src.includes('youtube')) {
+                    if (!src.includes('enablejsapi=1')) {
+                        $videoIframe.attr('src', src + '&enablejsapi=1');
+                    }
+                    $videoIframe[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+                }
+            })
+
+        });
+        $doc.find('.locations-map svg').each(function (mapIndex) {
+            const $map = $(this);
+            let current = $map.attr('data-current') || '';
+            current = current ? current.split(",") : [];
+            if (current.length === 0) return;
+            const $names = $map.find('path:not([stroke])');
+            const $areas = $map.find('path[stroke]');
+            current.forEach(function (name) {
+                $map.find('path[data-name="' + name + '"]').addClass('active');
+                $map.find('path[data-area="' + name + '"]').addClass('active');
+            });
+            $areas.each(function (index) {
+                const $area = $(this);
+                const areaName = $area.attr('data-area');
+                $area.on('click', function (e) {
+                    e.preventDefault();
+                    const top = $map.find('path[data-name="' + areaName + '"]').offset().top;
+                    const left = $map.find('path[data-name="' + areaName + '"]').offset().left;
+                    const topMap = $map.offset().top;
+                    const leftMap = $map.offset().left;
+                    $map.closest('.locations-map').find('.locations-map-window').removeClass('active');
+                    $map.closest('.locations-map').find('.locations-map-window[data-for-area="' + areaName + '"]').addClass('active');
+                    $map.closest('.locations-map').find('.locations-map-window[data-for-area="' + areaName + '"]').css({
+                        top: top - topMap,
+                        left: left - leftMap,
+                    });
+                    $map.closest('.locations-map').find('[data-area]').removeClass('current');
+                    $map.closest('.locations-map').find('[data-area="' + areaName + '"]').addClass('current');
+                    if ($(window).width() <= 1023) {
+                        $('html, body').animate({
+                            scrollTop: $map.closest('.locations-map').find('.locations-map-windows').offset().top
+                        }, 2000);
+                        const $slider = $map.closest('.locations-map').find('.locations-map-window[data-for-area="' + areaName + '"] .locations-map-window-slider');
+                        if ($slider.length > 0) sliderRefresh($slider);
+                    }
+                })
+                $area.hover(function (e) {
+                    $map.find('path[data-area="' + areaName + '"]').addClass('hovered');
+                    $map.find('path[data-name="' + areaName + '"]').addClass('hovered');
+                }, function (e) {
+                    $map.find('path[data-area="' + areaName + '"]').removeClass('hovered');
+                    $map.find('path[data-name="' + areaName + '"]').removeClass('hovered');
+                })
+            });
+        });
+    }
 
 }

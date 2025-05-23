@@ -38894,6 +38894,7 @@ var Application = /*#__PURE__*/function () {
         (0,_plugins_scroll_bar_init__WEBPACK_IMPORTED_MODULE_13__.scrollBarInit)();
         _this2.showLoaderOnClick();
         _this2.linkListener();
+        _this2.mapInit();
         var form = new _forms_FormHandler__WEBPACK_IMPORTED_MODULE_7__["default"]('.form-js');
         var slick = new _plugins_Slick__WEBPACK_IMPORTED_MODULE_10__["default"]();
         slick.gallerySliderRefresh();
@@ -38964,6 +38965,74 @@ var Application = /*#__PURE__*/function () {
           load = false;
           $pagination.removeClass('not-active');
           $t.remove();
+        });
+      });
+    }
+  }, {
+    key: "mapInit",
+    value: function mapInit() {
+      _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.on('click', '.locations-map-window__close', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $locations = $this.closest('.locations-map');
+        var $videoIframes = $this.closest('.locations-map-window').find('iframe');
+        $locations.find('.locations-map-window').removeClass('active');
+        $locations.find('[data-area]').removeClass('current');
+        if ($videoIframes.length === 0) return;
+        $videoIframes.each(function () {
+          var $videoIframe = $(this);
+          var src = $videoIframe.attr('src');
+          if (src.includes('youtube')) {
+            if (!src.includes('enablejsapi=1')) {
+              $videoIframe.attr('src', src + '&enablejsapi=1');
+            }
+            $videoIframe[0].contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+          }
+        });
+      });
+      _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('.locations-map svg').each(function (mapIndex) {
+        var $map = $(this);
+        var current = $map.attr('data-current') || '';
+        current = current ? current.split(",") : [];
+        if (current.length === 0) return;
+        var $names = $map.find('path:not([stroke])');
+        var $areas = $map.find('path[stroke]');
+        current.forEach(function (name) {
+          $map.find('path[data-name="' + name + '"]').addClass('active');
+          $map.find('path[data-area="' + name + '"]').addClass('active');
+        });
+        $areas.each(function (index) {
+          var $area = $(this);
+          var areaName = $area.attr('data-area');
+          $area.on('click', function (e) {
+            e.preventDefault();
+            var top = $map.find('path[data-name="' + areaName + '"]').offset().top;
+            var left = $map.find('path[data-name="' + areaName + '"]').offset().left;
+            var topMap = $map.offset().top;
+            var leftMap = $map.offset().left;
+            $map.closest('.locations-map').find('.locations-map-window').removeClass('active');
+            $map.closest('.locations-map').find('.locations-map-window[data-for-area="' + areaName + '"]').addClass('active');
+            $map.closest('.locations-map').find('.locations-map-window[data-for-area="' + areaName + '"]').css({
+              top: top - topMap,
+              left: left - leftMap
+            });
+            $map.closest('.locations-map').find('[data-area]').removeClass('current');
+            $map.closest('.locations-map').find('[data-area="' + areaName + '"]').addClass('current');
+            if ($(window).width() <= 1023) {
+              $('html, body').animate({
+                scrollTop: $map.closest('.locations-map').find('.locations-map-windows').offset().top
+              }, 2000);
+              var $slider = $map.closest('.locations-map').find('.locations-map-window[data-for-area="' + areaName + '"] .locations-map-window-slider');
+              if ($slider.length > 0) (0,_plugins_Slick__WEBPACK_IMPORTED_MODULE_10__.sliderRefresh)($slider);
+            }
+          });
+          $area.hover(function (e) {
+            $map.find('path[data-area="' + areaName + '"]').addClass('hovered');
+            $map.find('path[data-name="' + areaName + '"]').addClass('hovered');
+          }, function (e) {
+            $map.find('path[data-area="' + areaName + '"]').removeClass('hovered');
+            $map.find('path[data-name="' + areaName + '"]').removeClass('hovered');
+          });
         });
       });
     }
@@ -39819,7 +39888,8 @@ function isInRange(number, min, max) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Slick),
-/* harmony export */   initGallery: () => (/* binding */ initGallery)
+/* harmony export */   initGallery: () => (/* binding */ initGallery),
+/* harmony export */   sliderRefresh: () => (/* binding */ sliderRefresh)
 /* harmony export */ });
 /* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! slick-carousel */ "./node_modules/slick-carousel/slick/slick.js");
 /* harmony import */ var slick_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(slick_carousel__WEBPACK_IMPORTED_MODULE_0__);
@@ -39857,6 +39927,7 @@ var Slick = /*#__PURE__*/function () {
       this.affairsSlick();
       this.lawyersInit();
       this.reviewsSlick();
+      this.locationsSlidersInit();
     }
   }, {
     key: "affairsSlick",
@@ -39926,6 +39997,52 @@ var Slick = /*#__PURE__*/function () {
         };
         if ($slider.find('> *').length > 1) {
           $slider.slick(param);
+        }
+      });
+    }
+  }, {
+    key: "locationsSlidersInit",
+    value: function locationsSlidersInit() {
+      $(document).find('.locations-map-window-slider').each(function () {
+        var $slider = $(this);
+        var $section = $slider.closest('.locations-map-window-slider-wrapper');
+        var $prev = $section.find('.slick__prev');
+        var $next = $section.find('.slick__next');
+        var param = {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: true,
+          prevArrow: $prev,
+          nextArrow: $next,
+          dots: false,
+          accessibility: true,
+          autoplay: false,
+          infinite: false,
+          responsive: [{
+            breakpoint: 1301,
+            settings: {
+              slidesToShow: 1
+            }
+          }, {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 1,
+              dots: true
+            }
+          }, {
+            breakpoint: 451,
+            settings: {
+              slidesToShow: 1,
+              arrows: false,
+              dots: true
+            }
+          }]
+        };
+        if ($slider.find('> *').length > 1) {
+          $slider.slick(param);
+        } else {
+          $prev.hide();
+          $next.hide();
         }
       });
     }
@@ -40008,11 +40125,17 @@ var Slick = /*#__PURE__*/function () {
         $(document).find('.affairs-slick.slick-slider').each(function () {
           $(this).slick('refresh');
         });
+        $(document).find('.locations-map-window-slider.slick-slider').each(function () {
+          $(this).slick('refresh');
+        });
       });
     }
   }]);
 }();
 
+var sliderRefresh = function sliderRefresh($slider) {
+  $slider.slick('refresh');
+};
 
 /***/ }),
 

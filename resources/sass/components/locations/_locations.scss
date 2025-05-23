@@ -1,0 +1,290 @@
+.locations {
+  &-map {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 117.6rem;
+    height: 80rem;
+
+    &-container{
+      width: 100%;
+      height: 100%;
+      @media (max-width: 1023px) {
+        height: 68rem;
+      }
+      @media (max-width: 900px) {
+        height: 60rem;
+      }
+      @media (max-width: 768px) {
+        height: 56rem;
+      }
+      @media (max-width: 600px) {
+        height: 48rem;
+      }
+      @media (max-width: 500px) {
+        height: 30rem;
+      }
+      @media (max-width: 425px) {
+        height: 25rem;
+      }
+    }
+
+    @media (max-width: 1440px) {
+
+      max-width: 100rem;
+      height: 68rem;
+    }
+    @media (max-width: 1023px) {
+      flex-direction: column;
+      gap: 2rem;
+      height: auto;
+    }
+    @media (max-width: 450px) {
+      margin-bottom: 5rem;
+    }
+
+
+    &-window{
+      position: absolute;
+      width: 32rem;
+      padding: 2rem;
+      border-radius: 2rem;
+      background-color: #393939;
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+      transform: translate( -42%, -105%);
+
+      &--width-slider{
+        width: 62.9rem;
+
+        @media (max-width: 1300px) {
+          width: 32rem;
+        }
+      }
+
+      @media (max-width: 1023px) {
+        width: 100%;
+        max-width: 40rem;
+        position: static;
+        pointer-events: auto;
+        opacity: 1;
+        display: none;
+        transform: translate( 0,0);
+      }
+
+      @media (max-width: 450px) {
+        padding: 1.6rem;
+      }
+      &.active{
+        pointer-events: auto;
+        opacity: 1;
+        @media (max-width: 1023px) {
+          display: block;
+        }
+      }
+      &__close{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 3.2rem;
+        height: 3.2rem;
+        transform: translate(50%, -50%);
+        display: inline-flex;
+        padding: 1rem;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.10);
+        background: #FFF;
+        transition: 0.4s ease-in-out;
+        &:hover{
+          transform:  translate(50%, -50%) rotate(360deg);
+        }
+        @media (max-width: 1023px) {
+          display: none;
+        }
+      }
+      &:after{
+        top: 100%;
+        left: 50%;
+        position: absolute;
+        content: '';
+        display: block;
+        width: 2rem;
+        height:2rem;
+        background-color: #393939;
+        border-radius: 0.6rem;
+        
+        transform: translate(-1.2rem, -1.2rem) rotate(45deg);
+        @media (max-width: 1023px) {
+          display: none;
+        }
+      }
+      &__link{
+        color:rgba( #FFF, 0.7);
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 2.6rem;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+        @media (max-width: 450px) {
+          font-size: 1.4rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 2.4rem;
+          text-decoration: none;
+        }
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      &__title{
+        color: #FFF;
+        font-size: 1.8rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 3rem;
+        @media (max-width: 450px) {
+          font-size: 1.6rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 2.6rem;
+        }
+      }
+      &__video{
+        margin-bottom: 1.4rem;
+        width: 100%;
+        height: 14rem;
+        border-radius: 2rem;
+        overflow: hidden;
+        @media (max-width: 1023px) {
+          height: 20rem;
+        }
+
+        @media (max-width: 450px) {
+          height: 17.4rem;
+        }
+        & > *{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &-slider{
+        .slick-slide:last-child .locations-map-window-slider__item{
+          &:after{
+            display: none;
+          }
+        }
+        &__item{
+          position: relative;
+          width: calc(100% - 2rem);
+          margin: auto;
+          @media (max-width: 1300px) {
+            width: 100%;
+          }
+          &:after{
+            position: absolute;
+            content: '';
+            display: block;
+            width: 1px;
+            height: 100%;
+            top: 0;
+            right: -1rem;
+            background: rgba(255, 255, 255, 0.10);
+            @media (max-width: 1300px) {
+              display: none;
+            }
+          }
+
+        }
+        &.slick-dotted{
+          @media (max-width: 1023px){
+            margin-bottom: 0;
+          }
+          .slick-dots{
+            bottom: -4rem;
+          }
+        }
+        &-wrapper{
+          position: relative;
+        }
+        &-controls{
+          position: absolute;
+          width: calc(100% + 12rem);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          @media (max-width: 450px) {
+            display: none;
+          }
+          .slick-controls{
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+    &-windows{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      @media (max-width: 1023px) {
+        position: static;
+        height: auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      path[stroke] {
+        &:not(.active) {
+          fill: #F2F2F2;
+        }
+        &.active {
+          transition: 0.4s ease-in-out;
+          cursor: pointer;
+          &.hovered, &.current{
+            fill: #BC3631;
+          }
+        }
+      }
+      path:not([stroke]) {
+        transition: 0.4s ease-in-out;
+        pointer-events: none;
+        @media (max-width: 450px) {
+
+          transform: scale(2);
+          transform-origin: center;
+          transform-box: fill-box;
+        }
+        @media (max-width: 425px) {
+
+          transform: scale(2.3);
+          transform-origin: center;
+          transform-box: fill-box;
+        }
+        &:not(.active) {
+          opacity: 0;
+        }
+        &.hovered{
+          fill: #FFF;
+
+        }
+      }
+    }
+  }
+}

@@ -22,6 +22,7 @@ export default class Slick {
         this.affairsSlick();
         this.lawyersInit();
         this.reviewsSlick();
+        this.locationsSlidersInit();
     }
 
     affairsSlick() {
@@ -59,6 +60,7 @@ export default class Slick {
             }
         });
     }
+
     reviewsSlick() {
         $(document).find('.reviews-slider').each(function () {
             const $slider = $(this);
@@ -100,8 +102,58 @@ export default class Slick {
         });
     }
 
+    locationsSlidersInit() {
+        $(document).find('.locations-map-window-slider').each(function () {
+            const $slider = $(this);
+            const $section = $slider.closest('.locations-map-window-slider-wrapper');
+            const $prev = $section.find('.slick__prev');
+            const $next = $section.find('.slick__next');
+            const param = {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                arrows: true,
+                prevArrow: $prev,
+                nextArrow: $next,
+                dots: false,
+                accessibility: true,
+                autoplay: false,
+                infinite: false,
+                responsive: [
+                    {
+                        breakpoint: 1301,
+                        settings: {
+                            slidesToShow: 1,
+                        }
+                    },
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 1,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 451,
+                        settings: {
+                            slidesToShow: 1,
+                            arrows: false,
+                            dots: true
+                        }
+                    },
+                ]
+            };
 
-    lawyersInit(){
+            if ($slider.find('> *').length > 1) {
+                $slider.slick(param);
+            } else {
+                $prev.hide();
+                $next.hide();
+            }
+
+        });
+    }
+
+    lawyersInit() {
         $(document).find('.lawyers-list-slick').each(function () {
             const $slider = $(this);
             const param = {
@@ -183,7 +235,14 @@ export default class Slick {
             $(document).find('.affairs-slick.slick-slider').each(function () {
                 $(this).slick('refresh');
             });
+            $(document).find('.locations-map-window-slider.slick-slider').each(function () {
+                $(this).slick('refresh');
+            });
         });
     }
+}
+
+export const sliderRefresh = ($slider) => {
+    $slider.slick('refresh');
 }
 
