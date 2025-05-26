@@ -35,7 +35,6 @@ export function isElementInView(el) {
 
 const setActiveScreen = () => {
     const updateActive = () => {
-        console.log(isFooterInViewport())
         if(isFooterInViewport()){
             $doc.find('.screens-nav').addClass('hidden');
             return;

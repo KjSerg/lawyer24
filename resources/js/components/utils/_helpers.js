@@ -1,3 +1,4 @@
+
 export function removeArrayElement(element, array) {
     const index = array.indexOf(element);
     if (index !== -1) {
@@ -29,7 +30,7 @@ export const isObjectEmpty = (objectName) => {
     return JSON.stringify(objectName) === "{}";
 };
 
-export function isElementInViewport(el) {
+export function isElementInViewportRect(el) {
     if (typeof jQuery === 'function' && el instanceof jQuery) {
         el = el[0];
     }
@@ -44,6 +45,15 @@ export function isElementInViewport(el) {
         rect.top <= windowHeight &&
         rect.right <= windowWidth
     );
+}
+
+export function isElementInViewport($el) {
+    const top = $el.offset().top;
+    const height = $el.outerHeight();
+    const windowHeight = $(window).scrollTop() + window.innerHeight;
+
+    return windowHeight > top &&
+        windowHeight < (top + height) ;
 }
 
 export function isFooterInViewport() {

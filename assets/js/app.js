@@ -39579,7 +39579,6 @@ function isElementInView(el) {
 }
 var setActiveScreen = function setActiveScreen() {
   var updateActive = function updateActive() {
-    console.log((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isFooterInViewport)());
     if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isFooterInViewport)()) {
       _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('.screens-nav').addClass('hidden');
       return;
@@ -39727,6 +39726,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   hidePreloader: () => (/* binding */ hidePreloader),
 /* harmony export */   invertNumber: () => (/* binding */ invertNumber),
 /* harmony export */   isElementInViewport: () => (/* binding */ isElementInViewport),
+/* harmony export */   isElementInViewportRect: () => (/* binding */ isElementInViewportRect),
 /* harmony export */   isEven: () => (/* binding */ isEven),
 /* harmony export */   isFooterInViewport: () => (/* binding */ isFooterInViewport),
 /* harmony export */   isHorizontal: () => (/* binding */ isHorizontal),
@@ -39775,7 +39775,7 @@ function isJsonString(str) {
 var isObjectEmpty = function isObjectEmpty(objectName) {
   return JSON.stringify(objectName) === "{}";
 };
-function isElementInViewport(el) {
+function isElementInViewportRect(el) {
   if (typeof jQuery === 'function' && el instanceof jQuery) {
     el = el[0];
   }
@@ -39785,6 +39785,12 @@ function isElementInViewport(el) {
 
   // Елемент вважається видимим, якщо його верхня частина в межах вікна
   return rect.top >= 0 && rect.left >= 0 && rect.top <= windowHeight && rect.right <= windowWidth;
+}
+function isElementInViewport($el) {
+  var top = $el.offset().top;
+  var height = $el.outerHeight();
+  var windowHeight = $(window).scrollTop() + window.innerHeight;
+  return windowHeight > top && windowHeight < top + height;
 }
 function isFooterInViewport() {
   var top = $doc.find('footer.footer').offset().top;

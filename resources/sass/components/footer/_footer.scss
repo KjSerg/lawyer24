@@ -218,10 +218,9 @@
 
     &-item {
       width: 100%;
-      max-width: 24.2rem;
-
+      max-width:calc(20% - 6.5rem);
       @media (max-width: 1600px) {
-        max-width: calc(33.3% - 2.7rem);
+        max-width:calc(20% - 3.5rem);
       }
       @media (max-width: 600px) {
         max-width: 100%;
