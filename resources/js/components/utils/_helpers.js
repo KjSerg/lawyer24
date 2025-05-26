@@ -46,6 +46,12 @@ export function isElementInViewport(el) {
     );
 }
 
+export function isFooterInViewport() {
+    const top = $doc.find('footer.footer').offset().top;
+    const windowHeight = $(window).scrollTop() + window.innerHeight;
+    return windowHeight >= top;
+}
+
 export function getCurrentDate() {
     let today = new Date();
     let day = today.getDate();

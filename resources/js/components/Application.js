@@ -118,6 +118,12 @@ export default class Application {
             }
             window.location.href = href;
         });
+        $doc.on('click', '.scroll-to-top', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, 1000)
+        })
     }
 
     loadMore() {

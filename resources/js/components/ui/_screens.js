@@ -1,4 +1,4 @@
-import {$doc, isElementInViewport, moveToElement} from "../utils/_helpers";
+import {$doc, isElementInViewport, isFooterInViewport, moveToElement} from "../utils/_helpers";
 
 const $screens = $doc.find('main section');
 const $nav = $doc.find('.screens-nav');
@@ -35,6 +35,13 @@ export function isElementInView(el) {
 
 const setActiveScreen = () => {
     const updateActive = () => {
+        console.log(isFooterInViewport())
+        if(isFooterInViewport()){
+            $doc.find('.screens-nav').addClass('hidden');
+            return;
+        }
+        $doc.find('.screens-nav').removeClass('hidden');
+
         $screens.each(function () {
             const $t = $(this);
             const id = $t.attr('id');

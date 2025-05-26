@@ -197,7 +197,7 @@ export default class Slick {
                 infinite: true,
                 responsive: [
                     {
-                        breakpoint: 900, // Для мобільних
+                        breakpoint: 1024, // Для мобільних
                         settings: {
                             variableWidth: false, // Якщо на мобільних variableWidth не подобається
                             slidesToShow: 1,

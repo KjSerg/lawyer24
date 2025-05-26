@@ -38939,6 +38939,12 @@ var Application = /*#__PURE__*/function () {
         }
         window.location.href = href;
       });
+      _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.on('click', '.scroll-to-top', function (e) {
+        e.preventDefault();
+        $('html, body').animate({
+          scrollTop: 0
+        }, 1000);
+      });
     }
   }, {
     key: "loadMore",
@@ -39573,6 +39579,12 @@ function isElementInView(el) {
 }
 var setActiveScreen = function setActiveScreen() {
   var updateActive = function updateActive() {
+    console.log((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isFooterInViewport)());
+    if ((0,_utils_helpers__WEBPACK_IMPORTED_MODULE_0__.isFooterInViewport)()) {
+      _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('.screens-nav').addClass('hidden');
+      return;
+    }
+    _utils_helpers__WEBPACK_IMPORTED_MODULE_0__.$doc.find('.screens-nav').removeClass('hidden');
     $screens.each(function () {
       var $t = $(this);
       var id = $t.attr('id');
@@ -39716,6 +39728,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   invertNumber: () => (/* binding */ invertNumber),
 /* harmony export */   isElementInViewport: () => (/* binding */ isElementInViewport),
 /* harmony export */   isEven: () => (/* binding */ isEven),
+/* harmony export */   isFooterInViewport: () => (/* binding */ isFooterInViewport),
 /* harmony export */   isHorizontal: () => (/* binding */ isHorizontal),
 /* harmony export */   isImageUrl: () => (/* binding */ isImageUrl),
 /* harmony export */   isInRange: () => (/* binding */ isInRange),
@@ -39772,6 +39785,11 @@ function isElementInViewport(el) {
 
   // Елемент вважається видимим, якщо його верхня частина в межах вікна
   return rect.top >= 0 && rect.left >= 0 && rect.top <= windowHeight && rect.right <= windowWidth;
+}
+function isFooterInViewport() {
+  var top = $doc.find('footer.footer').offset().top;
+  var windowHeight = $(window).scrollTop() + window.innerHeight;
+  return windowHeight >= top;
 }
 function getCurrentDate() {
   var today = new Date();
@@ -40090,7 +40108,7 @@ var Slick = /*#__PURE__*/function () {
           autoplay: false,
           infinite: true,
           responsive: [{
-            breakpoint: 900,
+            breakpoint: 1024,
             // Для мобільних
             settings: {
               variableWidth: false,
