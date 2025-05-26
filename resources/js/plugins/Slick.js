@@ -183,9 +183,11 @@ export default class Slick {
             const $prev = $section.find('.slick__prev');
             const $next = $section.find('.slick__next');
             const param = {
-                slidesToShow: 3,
+                slidesToShow: 1,
                 slidesToScroll: 1,
                 centerMode: true,
+                adaptiveHeight: true,
+                variableWidth: true,
                 dots: true,
                 arrows: true,
                 prevArrow: $prev,
@@ -194,7 +196,25 @@ export default class Slick {
                 autoplay: false,
                 infinite: true,
                 responsive: [
-
+                    {
+                        breakpoint: 900, // Для мобільних
+                        settings: {
+                            variableWidth: false, // Якщо на мобільних variableWidth не подобається
+                            slidesToShow: 1,
+                            arrows: true // Залишимо стрілки для планшетів, але менші
+                        }
+                    },
+                    {
+                        breakpoint: 480, // Для дуже малих екранів
+                        settings: {
+                            arrows: false, // Ховаємо стрілки, керування свайпом
+                            dots: true,   // Показуємо точки
+                            centerMode: false, // Можливо, вимкнути centerMode для кращого вигляду
+                            variableWidth: false, // І використовувати фіксовану ширину слайда
+                            slidesToShow: 1,
+                            adaptiveHeight: true
+                        }
+                    }
                 ]
             };
             if ($slider.find('> *').length > 1) {

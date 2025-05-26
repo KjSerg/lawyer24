@@ -1,13 +1,32 @@
 .achievement {
   &-gallery {
+    margin: 0 auto;
     .slick-slide{
-      transition: 0.4s ease-in-out;
+      margin: 0 15px;
+      padding: 20px 0;
+      outline: none;
+      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
       will-change: transform;
+      @media (max-width: 450px) {
+        margin: auto;
+        padding: 0;
+      }
+      &:not(.slick-center) {
+        transform: scale(0.85); /* Зменшуємо неактивні слайди */
+        opacity: 0.8; /* Робимо їх напівпрозорими */
+        @media (max-width: 480px) {
+          transform: scale(1); /* Зменшуємо неактивні слайди */
+          opacity: 1;
+        }
+      }
       &.slick-active{
-        transform: scale(0.6);
+
       }
       &.slick-center{
-        transform: scale(1);
+        transform: scale(1.05); /* Трохи збільшуємо центральний слайд */
+        opacity: 1;
+        z-index: 1;
+
       }
     }
 
@@ -15,8 +34,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 56rem;
-      max-height: 56rem;
+      margin: auto;
+      //max-height: 56rem;
+      img{
+        display: block;
+        width: auto; /* Дозволяє зображенню мати власну ширину */
+        max-width: 100%; /* Але не виходити за межі слайда */
+        height: auto;   /* Зберігаємо пропорції */
+        max-height: 65vh; /* Обмеження максимальної висоти зображення */
+        object-fit: contain; /* Гарантує, що все зображення буде видно */
+        margin: 0 auto; /* Центрування зображення в слайді, якщо воно менше */
+      }
     }
   }
 }

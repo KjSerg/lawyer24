@@ -1,6 +1,10 @@
 {
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
+    "/assets/img/achievement.png": "/assets/img/achievement.png",
+    "/assets/img/achievement1.png": "/assets/img/achievement1.png",
+    "/assets/img/achievement2.png": "/assets/img/achievement2.png",
+    "/assets/img/achievement3.png": "/assets/img/achievement3.png",
     "/assets/img/application-bg.jpg": "/assets/img/application-bg.jpg",
     "/assets/img/application-section-box-background.png": "/assets/img/application-section-box-background.png",
     "/assets/img/arrow-left.svg": "/assets/img/arrow-left.svg",
@@ -29,9 +33,5 @@
     "/assets/img/Profile Image.png": "/assets/img/Profile Image.png",
     "/assets/img/reviewer-image.png": "/assets/img/reviewer-image.png",
     "/assets/img/Reviewerimage.png": "/assets/img/Reviewerimage.png",
-    "/assets/img/Ukrane.svg": "/assets/img/Ukrane.svg",
-    "/assets/img/achievement.png": "/assets/img/achievement.png",
-    "/assets/img/achievement1.png": "/assets/img/achievement1.png",
-    "/assets/img/achievement2.png": "/assets/img/achievement2.png",
-    "/assets/img/achievement3.png": "/assets/img/achievement3.png"
+    "/assets/img/Ukrane.svg": "/assets/img/Ukrane.svg"
 }
